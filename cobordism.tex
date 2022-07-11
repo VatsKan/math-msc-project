@@ -1,0 +1,107 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsthm, amsmath, latexsym, amssymb}
+\usepackage{verbatim}
+\usepackage[dvipsnames]{xcolor}
+
+\theoremstyle{definition} \newtheorem*{definition}{Definition}
+\theoremstyle{definition} \newtheorem*{definitions}{Definitions}
+\theoremstyle{plain} \newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain} \newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{plain} \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{plain} \newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{plain} \newtheorem{example}[theorem]{Example}
+
+\newcommand{\checkCorrect}[1]{\textcolor{red}{#1}}
+\newcommand{\understandBetter}[1]{\textcolor{red}{#1}}
+\newcommand{\question}[1]{\textcolor{red}{#1}}
+\newcommand{\explainFurther}[1]{\textcolor{red}{#1}}
+\newcommand{\finish}[1]{\textcolor{red}{#1}}
+\newcommand{\defn}[1]{\textbf{#1}}
+\newcommand{\realnos}{\mathbb{R}}
+\newcommand{\complexnos}{\mathbb{C}}
+
+
+\begin{document}
+\title{Cobordism}
+\author{Vatsal Kanoria}
+\date{August 2022}
+\maketitle
+\begin{abstract}
+An exposition on the proof that cobordant manifolds have the same characteristic classes.
+\end{abstract}
+\tableofcontents
+
+\section{Introduction}
+
+
+\section{Manifolds}
+
+We begin by recalling some important facts from differential geometry. Point-set topology and familiarity with these notions are assumed.
+
+A (smooth) $n$-dimensional \defn{manifold} $M$ is a second countable, Hausdorff space with a smooth maximal atlas. An \defn{atlas} consists of a collection of charts, that is, an open cover $U_\alpha$ ($\alpha\in I$, $I$ \checkCorrect{finite} index set) of $M$ and homeomorphims $\phi_\alpha:U_\alpha \to \phi_\alpha(U_\alpha) \subseteq k^n$, such that the \defn{transition maps} $\phi_\alpha \circ \phi_\beta^{-1}$ are smooth (on $\phi_\beta(U_\alpha \cap U_\beta)\subseteq k^n$) for all $\alpha, \beta\in I$. Generally we set $k=\realnos$ and assume that our manifolds are smooth and \checkCorrect{without boundary}, unless otherwise specified. 
+
+\understandBetter{Note that every atlas uniquely gives rise to a maximal atlas, so it will generally be sufficient to define any convenient atlas on a given manifold. Recall also the non-trivial fact that the dimension of a manifold is a \explainFurther{topological invariant}. It is also easy to show that the coordinate maps $\phi_\alpha$ are not only homeomorphisms but also diffeomorphisms.} \question{Do these statements also hold for complex manifolds/manifolds with boundary?}
+
+\understandBetter{In certain cases, we will require our manifold to be a \defn{complex manifold} in which case $k=\complexnos$, and transition maps will be required to be \understandBetter{holomorphic}.}
+\explainFurther{Say more on this?}
+
+A manifold has a \defn{boundary} if some of its charts are \defn{boundary charts}. That is, a boundary chart $\phi:U\to \phi(U)\subseteq \mathbb{H}^n$ takes values in the closed upper half space $\mathbb{H}^n := \{(x_1, \ldots, x_n): x_i\geq 0, \forall i\}$ (so that $\partial \mathbb{H}^n \cap \phi(U)$ is non-empty, where $\partial \mathbb{H}^n := \{(x_1, \ldots, x_n): x_n=0\}$). Note that $\mathbb{H}^0 = \{0\}$ and $\partial \mathbb{H}^0 = \{\}$ by definition. The remaining charts $\phi:U\to \phi(U)\subseteq \realnos^n$ are called \defn{interior charts}. The \defn{interior} of a manifold $M$ are the points that come from an interior chart, $\texttt{Int} M := \{p\in M: \exists \textrm{interior chart } \phi:U\to \phi(U)\subseteq \realnos^n, p\in U \}$. The \defn{boundary} of $M$ are the points that come from a boundary chart, $\partial M:=\{p\in M: \exists \textrm{boundary chart } \phi:U\to \phi(U)\subseteq \mathbb{H}^n, p\in U \textrm{ and } \phi(p)\in \partial \mathbb{H}^n \}$. \checkCorrect{Confusingly, the boundary of a manifold is not the same as its topological boundary in general}. It is non-trivial to show that $M$ can be decomposed into a disjoint union of its interior and boundary, $M = \texttt{Int} \ M \mathbin{\dot{\cup}} \partial M$, hence every point of $M$ is either an interior point or exclusively, a boundary point.
+
+Compact manifold, closed manifold, oriented manifold.
+
+submanifolds submersions immersions? partition of unity? regular level set theorem?
+
+\subsection{Examples}
+
+Manifolds with boundaries: 
+
+\section{Fibre Bundles}
+
+Define Fibre Bundle.
+
+Define Bundle morphism.
+
+\section{Vector Bundles}
+
+\subsection{De Rham Cohomology}
+
+\subsection{Integration??}
+
+\subsection{Examples (of vect bundles)}
+
+\section{Principle G-Bundles}
+
+\subsection{Examples}
+
+\section{Connections on Vector Bundles}
+
+\subsection{Examples}
+
+\section{Connections on Principle G-Bundles}
+
+\section{Equivalence of Connections}
+
+\section{Curvature}
+
+\subsection{Flat connections and more general De Rham Cohomology}
+
+\subsection{Examples}
+
+\section{Torsion??}
+
+\section{Characteristic classes}
+
+\section{Bordism and Cobordism}
+
+\section{Chern Simons}
+
+\section{Topological Quantum Computing}
+
+\section{Appendix: Functors and Categories}
+
+\section*{References}
+\begin{enumerate}
+\item J.M.Lee; \textit{Introduction to Smooth Manifolds, 2nd ed.} Springer (2012).
+\end{enumerate}
+\end{document}

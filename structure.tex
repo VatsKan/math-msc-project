@@ -1,0 +1,270 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsthm, amsmath, latexsym, amssymb, verbatim}
+\usepackage[dvipsnames]{xcolor}
+
+\theoremstyle{definition} \newtheorem*{definition}{Definition}
+\theoremstyle{definition} \newtheorem*{definitions}{Definitions}
+\theoremstyle{plain} \newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain} \newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{plain} \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{plain} \newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{plain} \newtheorem{example}[theorem]{Example}
+
+\newcommand{\done}[1]{\textcolor{ForestGreen}{#1}}
+\newcommand{\finish}[1]{\textcolor{orange}{#1}}
+\newcommand{\checkCorrect}[1]{\textcolor{red}{#1}}
+
+\begin{document}
+\title{Cobordism, Chern Simons, Topological Quantum Computing}
+\author{Vatsal Kanoria}
+\date{August 2022}
+\maketitle
+\begin{abstract}
+This is the abstract
+\end{abstract}
+\tableofcontents
+
+\section{Introduction}
+
+\finish{About the project}
+
+Acknowledgements
+
+\section{Manifolds and Fibre Bundles}
+
+Define Smooth Manifold, differential structure/(maximal) atlas.
+
+Define manifold with boundary, compact manifold, closed manifold, oriented manifold.
+
+Define complex manifold.
+
+submanifolds submersions immersions? partition of unity? regular level set theorem?
+
+Define Fibre Bundle.
+
+Define Bundle morphism.
+
+\subsection{Examples}
+
+Manifolds with boundaries
+
+\section{Vector Bundles}
+
+Define Vector Bundle (local trivs).
+
+Define Complex vector bundle?? [DO ALL FOLLOWING DEFS HOLD IN SAME WAY?]. (Do i need oriented, riemannian, hermitian vector bundle? -- salamon)
+
+Explain that complex vector bundles can be on real manifolds.
+
+Define euclidean vect bundles (and riem manifolds)? (milnor pg21-23)
+
+Define transition maps between local trivs and Structure group?? ...[Do this for fibre bundles instead??]
+
+Define Tangent Bundle. 
+Explain briefly that tangent vectors are point derivations which form an (algebra?).
+Explain given chart of M, $\frac{\partial}{\partial{x_i}} |_p$ for all $i$ is a basis of $T_p M$.
+
+Go into derivatives/jacobians etc??
+
+Define sections, module of sections over smooth functions. Define space of local sections $\Gamma (U, E)$ and local expression for this (see exposition notes).
+Define vector field (and notation for space of all vect fields)...Q: is there a name for sections of general vector bundle (like is it called a tensor field or something)?
+
+Explain relationship between local trivialisations with local frames, and global trivs with non-vanishing sections. (milnor T2.2, or perhaps gilkey)
+[See later: G-bundles can have vanishing sections with corresponding global trivs --- true?? --check.]. 
+
+Define Vector Bundle Morphism.
+
+Identification between vect bundle morphims and module-homos of sections. (See Ivan notes).
+
+\subsection{De Rham Cohomology}
+
+Define Differential forms.
+
+Define chain complex/homology/cohomology in more general setting??
+
+Define de Rham differential/Exterior Derivative.
+
+Define De Rham Cohomology.
+
+\subsection{Integration??}
+
+Define integration of forms??
+
+Stokes theorem??
+
+\subsection{Examples (of vect bundles)}
+
+Zero section
+
+Trivial line-bundle.
+
+Trivial bundle.
+
+Is tangent bundle always a trivial bundle? -- see milnor pg 7.
+
+Normal bundle (milnor)
+
+Canonical line bundle over real projective space (milnor). (is a non-trivial bundle).
+
+Mobius band (see sinha youtube + milnor ch2)
+
+Double twisted mobius band (see sinha youtube)
+
+New bundles from old. [see Hatcher]
+e.g. tensor bundle -- see notes.
+dual bundle (see ivan notes 21 june).
+endomorphism bundle ($End(E)\to M$).
+
+Frame bundle
+
+Hopf fibrations. $S^3$ over $S^2$. Hopf line over $CP^1$. Hopf line bundle. line bundle on $RP^1$ isomorphic to $S^1$. double cover of $S^1$ (figure 8). 
+
+Perhaps grassmanians.
+
+Tangent bundle over $S^n$. Write up transition functions etc.
+
+$R^n/Z^n$ quotient spaces. 
+
+Example of computing de rham cohom/integration??
+
+\section{Principle G-Bundles}
+
+Lie groups, lie algebras, lie alegbra of a lie group --> Appendix. (see Lee)
+
+left/right G-actions on manifold. Orbits (and example of orbit with $M=R^2, G=SO(2)$. Orbit space. Stabiliser (example of stabiliser in $SO(2)$ example.)
+Free G-action and examples. (see Schuller)
+
+Explain diffeo of orbit space at point with the Lie group, given a free G-action. (see Schuller)
+
+Define G-Bundle??? Q: is this different to principle G-bundle??
+
+Define Principle G-Bundle. (see Schuller notes/youtube)
+
+Define Principle Bundle Morphism. (see Schuller notes/youtube)
+
+Define Trivial principle G-bundle. (Schuller notes)
+
+Theorem that trivial principle G-bundle iff exists smooth section. (Proof -- appendix. See schuller).  (Did simon also mention this in meeting?--20 june pics)
+
+(Define associated bundle?)
+
+\subsection{Examples}
+$SO(2)$ on $R^2$
+
+Frame bundle as a principle G bundle.
+
+Some example of trival principle G-bundle?
+
+$GL(2)$ on $LS^2$ non-trivial principle G-bundle (due to hairy ball theorem).
+
+$U(n)$ with base $C^n$ ?
+
+$SU(2)$ with base $C^2$ ? 
+
+\section{Connections on Vector Bundles}
+
+Define connection in 2 ways.
+
+Explain various linear/module isomorphisms --> Appendix (linear algebra). (see Exposition notes and Ivan notes)
+More generally, write the isos in diff geo/global setting. Bundle homo characterisation lemma (see Lee) etc. [Move this to vector bundle section???] 
+
+Equivalence of connections. 
+Appendix --> Show equivalence of 2-4 different defs of connections from the various refs.  (see Ivan notes 21 june and exposition )
+
+Define affine/linear connection.
+
+Explain $\bigtriangledown = d +A$
+
+\subsection{Examples}
+
+Directional derivative.
+
+Show $\bigtriangledown^1 - \bigtriangledown^2$ is tensorial (i.e. comes from bundle homo even though $\bigtriangledown^1,  \bigtriangledown^2$ is not neccessarily). (See exposition notes). (See Salamon notes for why relevant).
+
+Standard trivial connection on trival bundle. (For line bundle, and more generally for $MxR^k$). Various perspectives on this (i.e. using the two defs). Also obtain d+A formula in this setting (i.e. $\bigtriangledown = \omega + d$ (see exposition notes), also noting that diff of connections is tensorial from previous example).
+
+Riemannian metric, Levi-Civita connection (example of affine connection). Christoffel symbols.
+
+\section{Connections on Principle G-Bundles}
+
+G-connections. (see Salamon)
+
+Pullback connections? (see Salamon)
+
+Gauge transformations, gauge group. Gauge group action on G-connections. (see Salamon)
+
+\section{Equivalence of Connections}
+Show equivalence between vector bundles and principle G-bundles (see pictures from Simon meeting 20 June)
+and connections on these spaces??
+
+\section{Curvature}
+
+Define curvature. 
+
+(Alt defs of curvature and show equivalent). (See  lecture notes. and also salamon notes).
+
+Show curvature is module-trilinear [to do]. --> Appendix.
+
+Explain $R^\bigtriangledown = dA + A\wedge A$. (see Salamon notes).
+
+\subsection{Flat connections and more general De Rham Cohomology}
+
+Define vector valued differential forms (see salamon notes). 
+Show that $\Omega^1 (E, M) = \Gamma (T^*M\otimes E)$ (See exposition notes). 
+(Rewrite connection def in terms of this).
+
+(see Salamon notes):
+Define vector valued exterior derivative. That it doesn't form a chain complex, but Bianchi identity holds. 
+
+Aside: show how $d^\bigtriangledown$ relates to the usual exterior derivative $d$.
+
+Define flat connection (i.e. when curvature vanishes).
+
+Define cohomology for when have a flat connection.
+
+TODO: Understand correspondance $\rho^\bigtriangledown -> \bigtriangledown$ in salamon pg 235. (Looks like some kind of Rep theory I think).
+
+\subsection{Examples}
+
+Horizontal sub-bundles of tangent bundle of total space of vector bundle. (for intuition on flat connection). (see Salamon)
+
+
+
+\section{Torsion??}
+[Is torsion needed? Do torsion before curvature?]
+
+Define torsion on affine connection. 
+
+Show torsion is module-bilinear/tensorial. (see exposition notes) --> Appendix
+
+\section{Characteristic classes}
+Cohomology --> appendix. (what do i need from cohomology theory?)
+
+Euler characteristic. Euler characteristic zero means parralelizable (i.e. exists trivial bundle --check) (milnor).
+
+Chern classes
+
+Review characters from repr theory? Explain how this is pointwise version of characteristic classes (if true)?
+
+Secondary character class?
+
+\section{Bordism and Cobordism}
+
+\section{Chern Simons}
+
+
+\section{Topological Quantum Computing}
+SU(2)-Chern Simons. Yang-Mills theory.
+
+Word lines of non-abelian anyons.
+
+Define TQFT. [Understand associativity axiom in Atiyah related to Cobordism.]
+
+\section{Appendix: Functors and Categories}
+
+\section*{References}
+\begin{enumerate}
+\item This is a reference
+\end{enumerate}
+\end{document}
