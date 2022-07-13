@@ -14,14 +14,16 @@
 \theoremstyle{plain} \newtheorem{example}[theorem]{Example}
 
 \newcommand{\checkCorrect}[1]{\textcolor{red}{#1}}
-\newcommand{\understandBetter}[1]{\textcolor{red}{#1}}
-\newcommand{\question}[1]{\textcolor{red}{#1}}
-\newcommand{\explainFurther}[1]{\textcolor{red}{#1}}
-\newcommand{\finish}[1]{\textcolor{red}{#1}}
+\newcommand{\understandBetter}[1]{\textcolor{orange}{#1}}
+\newcommand{\question}[1]{\textcolor{orange}{#1}}
+\newcommand{\explainFurther}[1]{\textcolor{blue}{#1}}
+\newcommand{\finish}[1]{\textcolor{green}{#1}}
+
 \newcommand{\defn}[1]{\textbf{#1}}
 \newcommand{\realnos}{\mathbb{R}}
 \newcommand{\complexnos}{\mathbb{C}}
-
+\newcommand{\canonicaliso}{\cong}
+\newcommand{\id}{\mathtt{id}}
 
 \begin{document}
 \title{Cobordism}
@@ -42,12 +44,12 @@ We begin by recalling some important facts from differential geometry. Point-set
 
 A (smooth) $n$-dimensional \defn{manifold} $M$ is a second countable, Hausdorff space with a smooth maximal atlas. An \defn{atlas} consists of a collection of charts, that is, an open cover $U_\alpha$ ($\alpha\in I$, $I$ \checkCorrect{finite} index set) of $M$ and homeomorphims $\phi_\alpha:U_\alpha \to \phi_\alpha(U_\alpha) \subseteq k^n$, such that the \defn{transition maps} $\phi_\alpha \circ \phi_\beta^{-1}$ are smooth (on $\phi_\beta(U_\alpha \cap U_\beta)\subseteq k^n$) for all $\alpha, \beta\in I$. Generally we set $k=\realnos$ and assume that our manifolds are smooth and \checkCorrect{without boundary}, unless otherwise specified. 
 
-\understandBetter{Note that every atlas uniquely gives rise to a maximal atlas, so it will generally be sufficient to define any convenient atlas on a given manifold. Recall also the non-trivial fact that the dimension of a manifold is a \explainFurther{topological invariant}. It is also easy to show that the coordinate maps $\phi_\alpha$ are not only homeomorphisms but also diffeomorphisms.} \question{Do these statements also hold for complex manifolds/manifolds with boundary?}
+\understandBetter{Note that every atlas uniquely gives rise to a maximal atlas, so it will generally be sufficient to define any convenient atlas on a given manifold.} Recall also the non-trivial fact that the dimension of a manifold is a topological invariant (in other words given two charts $\phi$, $\tilde{\phi}$ of $M$ with $\mathtt{im}(\phi)\subseteq \realnos^m$, $\mathtt{im}(\tilde{\phi})\subseteq \realnos^n$, we have $m=n$). \question{Is this true? In milnor seems to allow locally constant function as dimension, and terms this kind of vector bundle as a special case, i.e. an $R^n$-bundle!?} It is also easy to show that the coordinate maps $\phi_\alpha$ are not only homeomorphisms but also diffeomorphisms. \question{Do these statements also hold for complex manifolds/manifolds with boundary etc.?}
 
 \understandBetter{In certain cases, we will require our manifold to be a \defn{complex manifold} in which case $k=\complexnos$, and transition maps will be required to be \understandBetter{holomorphic}.}
 \explainFurther{Say more on this?}
 
-A manifold has a \defn{boundary} if some of its charts are \defn{boundary charts}. That is, a boundary chart $\phi:U\to \phi(U)\subseteq \mathbb{H}^n$ takes values in the closed upper half space $\mathbb{H}^n := \{(x_1, \ldots, x_n): x_i\geq 0, \forall i\}$ (so that $\partial \mathbb{H}^n \cap \phi(U)$ is non-empty, where $\partial \mathbb{H}^n := \{(x_1, \ldots, x_n): x_n=0\}$). Note that $\mathbb{H}^0 = \{0\}$ and $\partial \mathbb{H}^0 = \{\}$ by definition. The remaining charts $\phi:U\to \phi(U)\subseteq \realnos^n$ are called \defn{interior charts}. The \defn{interior} of a manifold $M$ are the points that come from an interior chart, $\texttt{Int} M := \{p\in M: \exists \textrm{interior chart } \phi:U\to \phi(U)\subseteq \realnos^n, p\in U \}$. The \defn{boundary} of $M$ are the points that come from a boundary chart, $\partial M:=\{p\in M: \exists \textrm{boundary chart } \phi:U\to \phi(U)\subseteq \mathbb{H}^n, p\in U \textrm{ and } \phi(p)\in \partial \mathbb{H}^n \}$. \checkCorrect{Confusingly, the boundary of a manifold is not the same as its topological boundary in general}. It is non-trivial to show that $M$ can be decomposed into a disjoint union of its interior and boundary, $M = \texttt{Int} \ M \mathbin{\dot{\cup}} \partial M$, hence every point of $M$ is either an interior point or exclusively, a boundary point.
+A manifold has a \defn{boundary} if some of its charts are \defn{boundary charts}. That is, a boundary chart $\phi:U\to \phi(U)\subseteq \mathbb{H}^n$ takes values in the closed upper half space $\mathbb{H}^n := \{(x_1, \ldots, x_n): x_i\geq 0, \forall i\}$ (so that $\partial \mathbb{H}^n \cap \phi(U)$ is non-empty, where $\partial \mathbb{H}^n := \{(x_1, \ldots, x_n): x_n=0\}$). Note that $\mathbb{H}^0 = \{0\}$ and $\partial \mathbb{H}^0 = \{\}$ by definition. The remaining charts $\phi:U\to \phi(U)\subseteq \realnos^n$ are called \defn{interior charts}. The \defn{interior} of a manifold $M$ are the points that come from an interior chart, $\texttt{Int} M := \{p\in M: \exists \textrm{interior chart } \phi:U\to \phi(U)\subseteq \realnos^n, p\in U \}$. The \defn{boundary} of $M$ are the points that come from a boundary chart, $\partial M:=\{p\in M: \exists \textrm{boundary chart } \phi:U\to \phi(U)\subseteq \mathbb{H}^n, p\in U \textrm{ and } \phi(p)\in \partial \mathbb{H}^n \}$. \checkCorrect{Confusingly, the boundary of a manifold is not the same as its topological boundary in general}. It is non-trivial to show that $M$ can be decomposed into a disjoint union of its interior and boundary, $M = \mathtt{Int} \ M \mathbin{\dot{\cup}} \partial M$, hence every point of $M$ is either an interior point or exclusively, a boundary point.
 
 \subsection{Examples}
 
@@ -55,11 +57,11 @@ Manifolds with boundaries:
 
 \section{Fibre Bundles}
 
-A \defn{fibre bundle} consists of three topological spaces $E, B, F$, and a continuous \defn{projection} map $\pi:E\rightarrow B$, such that \defn{`local trivialisations`} exist (i.e. for every $p\in B$, there exists a neighbourhood $U_p\subseteq B$ of $p$ and a homeomorphism $\psi: E_p \rightarrow U_p \times F$, such that $\pi \vert_{E_p} = \pi_1 \circ \psi$ where $\pi_1$ is the projection on to the first component, and $E_p:=\pi^{-1}(p)$ is called the \defn{fibre} over $p$. $E$ is called the \defn{total space}, $B$ the \defn{base space}, and $F$ the \defn{typical fibre}. 
+A \defn{fibre bundle} consists of three topological spaces $E, B, F$, and a continuous surjection $\pi:E\rightarrow B$ (called the \defn{projection}), such that \defn{`local trivialisations'} exist (i.e. for every $p\in B$, there exists a neighbourhood $U_p\subseteq B$ of $p$ and a homeomorphism $\psi: \pi^{-1}(U_p) \rightarrow U_p \times F$, such that $\pi \vert_{\pi^{-1}(U_p)} = \pi_1 \circ \psi$ where $\pi_1$ is the projection on to the first component). $E$ is called the \defn{total space}, $B$ the \defn{base space}, $F$ the \defn{typical fibre}, and $E_p:=\pi^{-1}(p)$ the \defn{fibre} over $p$. 
 
 \finish{PUT IN A COMMUTATIVE DIAGRAM/PICTURE FOR LOCAL TRIVS? -- DO THIS FOR VECTOR BUNDLE CASE. SHOULD I MAKE OBSERVATION ABOUT LOCAL TRIVS AT A POINT, OR ONLY FOR VECTOR BUNDLES?}
 
-A continuous map $U:E\rightarrow E'$ is a \defn{(fibre) bundle morphism} between two fibre bundles $E\xrightarrow{\pi} B$ and $E'\xrightarrow{\pi'} B'$ \checkCorrect{with the same typical fibre $F$}, if there exists a map $u:B\rightarrow B'$ such that $\pi' \circ U = u \circ \pi$
+A continuous map $U:E\rightarrow E'$ is a \defn{\checkCorrect{(fibre)} bundle morphism} between two fibre bundles $E\xrightarrow{\pi} B$ and $E'\xrightarrow{\pi'} B'$ \checkCorrect{with the same typical fibre $F$}, if there exists a map $u:B\rightarrow B'$ such that $\pi' \circ U = u \circ \pi$
 
 \finish{PUT IN COMMUTATIVE DIAGRAM.}
 
@@ -67,10 +69,64 @@ A continuous map $U:E\rightarrow E'$ is a \defn{(fibre) bundle morphism} between
 
 \finish{Define Bundle iso. smooth bundle iso. etc. (see Lee.)}
 
-We will work with two types of fibre bundles, namely, vector bundles and principle $G$-bundles. Roughly speaking, in the case of vector bundles, each fibre is isomorphic to $\realnos^k$, whereas for $G$-bundles, the fibres are isomorphic to the Lie group $G$. The notion of a bundle morphism also generalises to both these structures, with some extra conditions to preserve the additional structure. Note that we will use the same terminology `bundle morphism` for morphisms betweeen vector bundles and morphisms between fibre bundles and this will have to be understood from the context. In the case of principle G-bundles, we will always specify `principle G-bundle morphism`.
+We will work with two types of fibre bundles, namely, vector bundles and principle $G$-bundles. Roughly speaking, in the case of vector bundles, each fibre is isomorphic to $\realnos^k$, whereas for $G$-bundles, the fibres are isomorphic to the Lie group $G$. The notion of a bundle morphism also generalises to both these structures, with some extra conditions to preserve the additional structure. Note that we will use the same terminology `bundle morphism' for morphisms betweeen vector bundles and morphisms between fibre bundles and this will have to be understood from the context. In the case of principle G-bundles, we will always specify `principle bundle morphism'.
 
 \section{Vector Bundles}
+A $k$-dimensional (real, \checkCorrect{smooth}) \defn{vector bundle} is a fibre bundle with typical fibre $\realnos^k$, such that the projection map $E\xrightarrow{\pi} B$ is a smooth surjection of smooth manifolds, and the local trivialisations $\psi:\pi^{-1}(U_p) \rightarrow U_p \times \realnos^k$ are diffeomorphisms. Moreover, the fibres $E_p:=\pi^{-1}(p)$ are required to be $k$-dimensional vector spaces and restricting any local trivialisation $\psi_p:=\psi \vert_{E_p}$ should give a linear isomorphism $\psi_p:\pi^{-1}(p)\rightarrow \{p\} \times \realnos^k \canonicaliso \realnos^k$ at each point $p\in B$. \question{Do we require only a single local triv at each point $p, (U_p)$ in def of fibre bundle, for the notation in last statement to make sense? Or is it because when you restrict, you always get the same iso?...not sure if this is true...see transition functions. Perhaps the notation makes sense up to some transition function.}
 
+Consider two collections of local trivialisations $\{\psi_i \}_i$, $\{\tilde{\psi}_j\}_j$ (defined on $\pi^{-1}(U_i)$, $\pi^{-1}(\tilde{U}_j)$ respectively) 
+for a vector bundle $E\xrightarrow{\pi} B$. Assume $U_i \cap \tilde{U}_j\neq \phi$ and given a 
+point $p\in U_i \cap \tilde{U}_j$, the map $\psi_i \circ \tilde{\psi}_j^{-1}:=(\psi_i)_p \circ (\tilde{\psi}_j^{-1}\vert_{\{p\}\times \realnos^k})$ 
+is a linear isomorphism $\psi_i \circ \tilde{\psi}_j^{-1} : \realnos^k \rightarrow \realnos^k$, 
+which can be seen from the following diagram.
+[DRAW COMM DIAGRAM]
+Hence we can represent $\psi_i \circ \tilde{\psi}_j^{-1}$ by an invertible matrix $(g_{mn})$ \finish{[Write lin alg identification explicitly, \question{choosing standard basis?}]} which depends on the point $p$ (in other words, each entry is a smooth map $g_{mn}\in C^\infty(U_i\cap \tilde{U}_j)$). Whence we obtain a map, called a \defn{transition function}
+$g:U_i\cap \tilde{U}_j\rightarrow \mathtt{GL}_k(\realnos)$ such that $g:p\mapsto (g_{mn}(p))$. \question{How to extend domain of the map g to the whole manifold M, using the full collection of trivialisations? Or do we just do this on a single collection of trivialisations, so i should get rid of the i, j everywhere?} \checkCorrect{The image of $g$ which can be shown to be a subgroup of $\mathtt{GL}_k(\realnos)$ is called the \defn{structure group} of the transition function.} \question{When is it a Lie group? is it always a subgroup?, is it always the same subgroup no matter which trivialisations we choose. How to prove these results if true?} \question{Is it possible to define the structrue group in terms of sections instead of local trivialisations?}
+\question{...[Do this for fibre bundles instead?? make a point for complex vect bundles/euclidean vect bundles etc that $\realnos^k$ can be replaced by $\complexnos^k$ etc. if true]}
+\question{Is there alt def of vector bundles using the tranistion maps instead?}
+
+\finish{An \defn{oriented vector bundle} ...}
+
+A \defn{complex vector bundle} has typical fibre $\complexnos^k$. Hence the fibres $E_p$ are $k$-dimensional vector spaces over $\complexnos$. \finish{Note that complex vector bundles are canonically oriented vector bundles since...} Note also that we may have complex vector bundles where the \checkCorrect{total space and} base space are real manifolds \question{Example of this?}.
+
+[MOVE FOLLOWING TWO PARAS TO EXAMPLES-- NEW BUNDLES FROM OLD.]
+
+\question{How to construct a vector bundle in practice by gluing together some specific fibres to give the total space E, and then specifying local trivs or otherwise sections of E? What is the theory behind this?}
+
+Note that given a real vector space $V$ we can construct another real vector space $V^\complexnos := V\otimes_\realnos \complexnos$, \checkCorrect{where $\complexnos$ is considered as a real vector space}. $V^\complexnos$ can be made into a complex vector space by defining complex multiplication $\beta(v\otimes \alpha) = v\otimes (\beta \alpha)$ for $v\in V$, $\alpha, \beta \in \complexnos$. The \checkCorrect{complex} vector space $V^\complexnos$ is called the \defn{complexification} of $V$. Similarly we can obtain a complex vector bundle $E^\complexnos := E\otimes \complexnos$ from a real vector bundle $E$, by complexifying each fibre. \checkCorrect{Note that this is a special case of the tensor product of bundles. \question{How can $\complexnos$ be considered as a vector bundle?}} To be explicit, the fibres of $E^\complexnos$ are given by $(E\otimes \complexnos)_p := E_p\otimes \complexnos$ and \finish{local trivialisations/sections ??? Why is the new bundle a vector bundle?---SEE tensor product of bundles example and if this is just a special case...do the tensor product example first}
+
+Conversely we can obtain a real vector space from a complex vector space by \finish{restriction of scalars. We can obtan a real vector bundle from a complex vector bundle by restricting. (See Milnor for more general restrictions ---check if it specialises to this case)}
+
+\question{[DO ALL FOLLOWING DEFS/RESULTS on VECT BUNDLES HOLD IN SAME WAY on complex vect bundles etc?]}. (Do i need oriented, riemannian, hermitian vector bundle? -- salamon)
+
+Define euclidean vect bundles (and riem manifolds)? (milnor pg21-23)
+
+Define Tangent Bundle. 
+Explain briefly that tangent vectors are point derivations which form an (algebra?).
+Explain given chart of M, $\frac{\partial}{\partial{x_i}} |_p$ for all $i$ is a basis of $T_p M$.
+
+Go into derivatives/jacobians etc??
+
+A \defn{section} of a vector bundle $E\xrightarrow{\pi} B$ is a smooth map $\sigma:B\rightarrow E$, such that $\pi \circ \sigma=\id_B$ (in other words, $\sigma(p)\in E_p, \forall p\in B$). The set of all sections of a vector bundle $E$ is denoted $\Gamma (E)$ and is a module over smooth functions $C^\infty(M)$. \question{true in complex case, functions into complex nos also?}
+
+Given an open subset $U\subseteq M$, we denote the \checkCorrect{$C^\infty (U)$}-module of sections on $U$ rather than on the whole base manifold, as $\Gamma (U, E)$. A \defn{local frame} for a vector bundle $E$ is a collection of local sections $s_1, s_2, \ldots, s_k\in \Gamma (U, E)$, such that for every $p\in U$, $s_1(p),\ldots, s_k(p)$ is a basis of the fibre $E_p$. \question{Do I need a collection of U that covers M? for a local frame?} Hence we can \understandBetter{smoothly} decompose any section $s\in \Gamma(U, E)$ in terms of a local frame $s(p)=\sum_{i=1}^k f_i(p)s_i(p)$, for some $f_i(p)\in \realnos$, giving us a local expression $s=\sum_{i=1}^k f_i s_i$ for $f_i\in C^\infty(U)$. 
+
+We can identify local trivialisations with local frames. Given a local frame $s_1, \ldots, s_k\in \Gamma(U, E)$, define a local trivialisation $\psi^{-1}:U\times \realnos^k \to \pi^{-1}(U)$ by
+$\psi^{-1}(p, a_1, \ldots, a_k) = \sum_{i=1}^k a_is_i(p)$. \finish{show this is indeed a local triv? - appendix?} Conversely, given a local trivialisation $\psi:\pi^{-1}(U) \to U\times \realnos^k$, define a local frame $s_1,\ldots , s_k\in \Gamma(U, E)$ by $s_i(p)=\psi^{-1} (p, e_i)$, where $e_i = (0, \ldots, 0, 1, 0, \ldots, 0)$ with the $1$ in the $i$'th position. \finish{show this is indeed a local frame? - appendix?}
+
+Furthermore a \defn{global frame} (i.e. a set of sections $s_1, \ldots s_k\in \Gamma(E)$ which form a basis at each point $p\in B$) corresponds to a \defn{global trivialisation} $\psi:E \to M\times \realnos^k$ \finish{[Milnor, T2.2]}. If such a global trivialisation exists, we write $E\cong M\times \realnos^k$ (noting that global trivialisations are diffeomorphisms) and say that $E$ is the \defn{trivial vector bundle} of dimension $k$. 
+Note that if in particular, we cannot find $k$ non-vanishing sections in a vector bundle (in which case we cannot find $k$ linearly independent vectors in $E_p$ at every point $p\in B$), then a global frame does not exist, hence the vector bundle is non-trivial.  
+
+\finish{[See later: G-bundles can have vanishing sections with corresponding global trivs --- true?? --check.].}
+
+Define vector field (and notation for space of all vect fields)...Q: is there a name for sections of general vector bundle (like is it called a tensor field or something)?
+
+
+Define Vector Bundle Morphism.
+
+Isomorphic vector bundles. (i.e. if fibres get mapped to fibres --- see pg 14 milnor. Or alternatively, exists iso of bundle morphims?)
+
+Identification between vect bundle morphims and module-homos of sections. (See Ivan notes).
 
 \subsection{De Rham Cohomology}
 
@@ -112,5 +168,6 @@ We will work with two types of fibre bundles, namely, vector bundles and princip
 \begin{enumerate}
 \item J.M.Lee; \textit{Introduction to Smooth Manifolds, 2nd ed.} Springer (2012)
 \item I.Madsen, J.Tornehave; \textit{From Calculus to Cohomology, De Rham Cohomology and characteristic classes.} Cambridge University Press (1997)
+\item P.B.Gilkey, R.Ivanova, S.Nik{\u c}evi\'c; \textit{Characteristic classes.} Elsevier Ltd (2006)
 \end{enumerate}
 \end{document}
