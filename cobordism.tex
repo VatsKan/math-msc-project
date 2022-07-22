@@ -51,13 +51,28 @@ A (smooth) $n$-dimensional \defn{manifold} $M$ is a second countable, Hausdorff 
 
 A manifold has a \defn{boundary} if some of its charts are \defn{boundary charts}. That is, a boundary chart $\phi:U\to \phi(U)\subseteq \mathbb{H}^n$ takes values in the closed upper half space $\mathbb{H}^n := \{(x_1, \ldots, x_n): x_i\geq 0, \forall i\}$ (so that $\partial \mathbb{H}^n \cap \phi(U)$ is non-empty, where $\partial \mathbb{H}^n := \{(x_1, \ldots, x_n): x_n=0\}$). Note that $\mathbb{H}^0 = \{0\}$ and $\partial \mathbb{H}^0 = \{\}$ by definition. The remaining charts $\phi:U\to \phi(U)\subseteq \realnos^n$ are called \defn{interior charts}. The \defn{interior} of a manifold $M$ are the points that come from an interior chart, $\texttt{Int} M := \{p\in M: \exists \textrm{interior chart } \phi:U\to \phi(U)\subseteq \realnos^n, p\in U \}$. The \defn{boundary} of $M$ are the points that come from a boundary chart, $\partial M:=\{p\in M: \exists \textrm{boundary chart } \phi:U\to \phi(U)\subseteq \mathbb{H}^n, p\in U \textrm{ and } \phi(p)\in \partial \mathbb{H}^n \}$. \checkCorrect{Confusingly, the boundary of a manifold is not the same as its topological boundary in general}. It is non-trivial to show that $M$ can be decomposed into a disjoint union of its interior and boundary, $M = \mathtt{Int} \ M \mathbin{\dot{\cup}} \partial M$, hence every point of $M$ is either an interior point or exclusively, a boundary point.
 
-\subsection{Examples}
+\subsection{Examples: new manifolds from old.}
 
-Manifolds with boundaries: 
+Subsets of $R^n$?? Quotient spaces.
+topology on $T^2$, $S^n$...smooth manifolds.
+
+\subsection{Examples: specific examples.}
+
+\question{Is $\realnos^{n+1}\setminus \{0\}$ endowed with subspace topology of $\realnos^{n+1}$?}
+\defn{Real projective space} $\realnos P^n := \frac{\realnos^{n+1}\setminus \{0\}}{\sim}$ is the quotient space of $\realnos^{n+1}\setminus \{0\}$ under the relation $x\sim y \iff \exists \lambda \in \realnos \setminus \{0\} : \lambda x=y$. We write the equivalence class of $(x_1, \ldots, x_{n+1})\in \realnos^{n+1}$ as $[x_1, \ldots, x_{n+1}]\in \realnos P^n$. (In other words, under the quotient map $q:\realnos^{n+1}\setminus \{0\}\to \realnos P^n$, $[x_1, \ldots, x_{n+1}]:=q(x_1, \ldots, x_{n+1})$ and recall $U \subseteq \realnos P^n \textrm{ open} \iff q^{-1}(U) \subseteq \realnos^{n+1}\setminus \{0\} \textrm{ open}$.) This is an $n$-dimensional smooth manifold with atlas $\{(U_i, \phi_i)\}_{i=1, \ldots, n+1}$ given by $U_i=\{[x_1, \ldots, x_{n+1}]: x_i\neq 0\}$ and $\phi_i([x_1, \ldots, x_{n+1}])=(\frac{x_1}{x_i}, \ldots , \frac{x_{i-1}}{x_i}, \frac{x_{i+1}}{x_i}, \ldots, \frac{x_{n+1}}{x_i})\in \realnos^n$. \checkCorrect{Note that $q^{-1}(U_i)=\realnos^{n+1}\setminus \{0\}$} which is open in $\realnos^{n+1}\setminus \{0\}$, hence $U_i$ is open in $\realnos P^n$, and one can also show $\phi_i$ are indeed homeomorphisms. \finish{Appendix: show $\phi_i$ homeos?} Note it is easy to see that the inverse of $\phi_i$ is given by $\phi_i^{-1}(a_1, \ldots, a_n)=[a_1, \ldots, a_{i-1}, 1, a_{i}, \ldots, a_n]$ (since $[a_1, \ldots, a_{i-1}, 1, a_{i}, \ldots, a_n]=[\lambda a_1, \ldots, \lambda a_{i-1}, \lambda, \lambda a_{i}, \ldots, \lambda a_n]$, and can \checkCorrect{set $\lambda=x_i$ accordingly}). It is also easy to show that the transition maps $\phi_i\circ \phi_j^{-1}$ are smooth. \finish{appendix: show this}
+
+\finish{Note that $RP^1 \cong S^1$, $RP^2\cong S^3$. check and explain.} \question{generalisation? do we get some similar isos to spheres for projective space over $\complexnos$ etc.?}
+
+ Recall the following division algebras: the complex numbers $\complexnos = \langle 1, i: i^2=-1 \rangle$, the quaternions $\mathbb{H} = \langle 1, i, j, k: i^2=j^2=k^2=-1, ij=k=-ji \rangle$ , and the octonions \checkCorrect{$\mathbb{O} = \mathbb{H}\times \mathbb{H}=\langle 1, i, j, k, l: i^2=j^2=k^2=l^2=-1 \rangle$}. \question{def of product $\mathbb{H}\times \mathbb{H}$?} As vector spaces, $\complexnos \simeq \realnos^2$, $\mathbb{H} \simeq \realnos^4$, $\mathbb{O} \simeq \realnos^8$. The \defn{projective spaces} $\complexnos P^n$, $\mathbb{H} P^n$, $\mathbb{O} P^n$ are defined similarly to $\realnos P^n$ (replacing $\realnos$ with the appropriate \checkCorrect{field}), and are also \question{are they all n-dimensional?} smooth manifolds with the \checkCorrect{atlas defined similarly}.
+\question{is quotient topology defined on $HP^n, OP^n$ in the same way? Are they second countable/hausdorff?}
+\question{Is $CP^n$ a complex manifold?}
+
+\subsection{Examples: manifolds with boundaries.}
+\finish{Manifolds with boundaries (see Lee)}
 
 \section{Fibre Bundles}
 
-A \defn{fibre bundle} consists of three topological spaces $E, B, F$, and a continuous surjection $\pi:E\rightarrow B$ (called the \defn{projection}), such that \defn{`local trivialisations'} exist (i.e. for every $p\in B$, there exists a neighbourhood $U_p\subseteq B$ of $p$ and a homeomorphism $\psi: \pi^{-1}(U_p) \rightarrow U_p \times F$, such that $\pi \vert_{\pi^{-1}(U_p)} = \pi_1 \circ \psi$ where $\pi_1$ is the projection on to the first component). $E$ is called the \defn{total space}, $B$ the \defn{base space}, $F$ the \defn{typical fibre}, and $E_p:=\pi^{-1}(p)$ the \defn{fibre} over $p$. 
+A \defn{fibre bundle} consists of three topological spaces $E, B, F$, and a continuous surjection $\pi:E\rightarrow B$ (called the \defn{projection}), such that \defn{`local trivialisations'} exist (i.e. for every $p\in B$, there exists a neighbourhood $U_p\subseteq B$ of $p$ and a homeomorphism $\psi: \pi^{-1}(U_p) \rightarrow U_p \times F$, such that $\pi \vert_{\pi^{-1}(U_p)} = \pi_1 \circ \psi$ where $\pi_1$ is the projection on to the first component). $E$ is called the \defn{total space}, $B$ the \defn{base space}, $F$ the \defn{typical fibre}, and $E_p:=\pi^{-1}(p)$ the \defn{fibre} over $p$. As a shorthand we may denote a fibre bundle as $F\hookrightarrow E\xrightarrow{\pi} B$.
 
 \finish{PUT IN A COMMUTATIVE DIAGRAM/PICTURE FOR LOCAL TRIVS? -- DO THIS FOR VECTOR BUNDLE CASE. SHOULD I MAKE OBSERVATION ABOUT LOCAL TRIVS AT A POINT, OR ONLY FOR VECTOR BUNDLES?}
 
@@ -70,6 +85,34 @@ A continuous map $U:E\rightarrow E'$ is a \defn{\checkCorrect{(fibre)} bundle mo
 \finish{Define Bundle iso. smooth bundle iso. etc. (see Lee.)}
 
 We will work with two types of fibre bundles, namely, vector bundles and principle $G$-bundles. Roughly speaking, in the case of vector bundles, each fibre is isomorphic to $\realnos^k$, whereas for $G$-bundles, the fibres are isomorphic to the Lie group $G$. The notion of a bundle morphism also generalises to both these structures, with some extra conditions to preserve the additional structure. Note that we will use the same terminology `bundle morphism' for morphisms betweeen vector bundles and morphisms between fibre bundles and this will have to be understood from the context. In the case of principle G-bundles, we will always specify `principle bundle morphism'.
+
+\subsection{Examples}
+We can view the torus $T^2=S^1\times S^1$ as a fibre bundle over the base manifold $S^1$. We define the projection $T^2 \xrightarrow{\pi} S^1$ as $\pi(x, y)=x$. Hence a fibre at $p\in S^1$ is $E_p := T^2_p = \pi^{-1}(p) = \{(p, y): y\in S^1\} = \{p\}\times S^1 \cong S^1$. Furthermore, we can define a global trivialisation on this space as follows. Given a point $p\in S^1$, $S^1$ is an open neighbourhood of $p$ \question{WHY? in subspace topology of $R^2$??}, and $\psi:T^2=\pi^{-1}(\{p\}\times S^1)\to S^1 \times S^1$ given by $\psi(x, y)=(x, y)$. Hence $T^2 \xrightarrow{\pi} S^1$ is a trivial bundle $T^2\cong S^1\times S^1$. 
+\finish{draw a picture of the torus sitting over $S^1$.} \question{Is this an example of a hopf fibration? If yes, why and what is a hopf fibration formally?}
+\finish{move stuff on local and global trivialisations to fibre bundle section for more generality and for above example to make sense?}
+
+Mobius band (see sinha youtube + milnor ch2)
+
+Double twisted mobius band (see sinha youtube)
+
+Hopf line over $CP^1$. 
+Hopf line bundle. 
+line bundle on $RP^1$ isomorphic to $S^1$. 
+
+\subsection{Examples: Hopf fibrations.}
+\understandBetter{(Hopf invarient is invarient of homotopy group).}
+The 4 hopf fibrations from the division algebras R, C, H, O.
+double cover of $S^1$ (figure 8). 
+$\mathbb{Z}^2 = S^0 \to S^1 \xrightarrow{2:1} S^1$;; note last $S^1$ comes from $RP^1$, middle one is boundary of mobius strip;; twisted fibration, so non trivial.
+$(S^1\to) S^3$ over $S^2$; ($S^2$ comes from $CP^1$. $S^3$ all lines in $C^2 - \{0\}$).
+(gives homotopy groups of spheres. (homotopy group is equivalence class of loops in a space -- throw a loop (sphere) into space and can you catch something with it))
+
+ Consider $E:=S^1=\{(x,y)\in \realnos^2:x^2+y^2=1\}$. We obtain a fibre bundle $S^1\xrightarrow{\pi} \realnos P^1$ with typical fibre $S^0$, and projection $\pi(x, y)=[x, y]$. \checkCorrect{We obtain a global trivialisation $\psi:S^1\to \realnos P^1\times S^0$ given by $p\mapsto ([p], p)$.} \finish{(show it is global triv (homeo), if it is.). (is this correct?? does a global triv exist? why send to $p$ instead of $-p$ in $S^0$? what if we sent to $-p$ instead?). Does this give the double cover vs figure 8 stuff? Need to understand properly.} \checkCorrect{Since we found a homeomorphism $S^1\overset{\psi}{\simeq} \realnos P^1\times S^0$, we can conclude that $\realnos P^1 \simeq \frac{S^1}{S^0}$ \question{why?? true?} (i.e. one dimensional real projective space is the same as the circle with antipodal points identified). \question{why?}} \question{where does the double cover stuff come in?}
+
+Consider $\frac{S^1}{\sim}$ with $p\sim -p \forall p\in S^1$ (i.e. the circle with antipodal points identified). \question{How to consider this as $\frac{S^1}{\mathbb{Z}}$?}
+
+
+Consider $S^3\xrightarrow{\pi} S^2$ with typical fibre $S^1$, where $\pi(x, y, z)=(x, y)$. \finish{We will see later that this is a principle G-bundle}
 
 \section{Vector Bundles}
 A $k$-dimensional (real, \checkCorrect{smooth}) \defn{vector bundle} is a fibre bundle with typical fibre $\realnos^k$, such that the projection map $E\xrightarrow{\pi} B$ is a smooth surjection of smooth manifolds, and the local trivialisations $\psi:\pi^{-1}(U_p) \rightarrow U_p \times \realnos^k$ are diffeomorphisms. Moreover, the fibres $E_p:=\pi^{-1}(p)$ are required to be $k$-dimensional vector spaces and restricting any local trivialisation $\psi_p:=\psi \vert_{E_p}$ should give a linear isomorphism $\psi_p:\pi^{-1}(p)\rightarrow \{p\} \times \realnos^k \canonicaliso \realnos^k$ at each point $p\in B$. \question{Do we require only a single local triv at each point $p, (U_p)$ in def of fibre bundle, for the notation in last statement to make sense? Or is it because when you restrict, you always get the same iso?...not sure if this is true...see transition functions. Perhaps the notation makes sense up to some transition function.}
@@ -133,6 +176,8 @@ Identification between vect bundle morphims and module-homos of sections. (See I
 \subsection{Integration??}
 
 \subsection{Examples (of vect bundles)}
+
+\finish{The \defn{line bundle over $\realnos P^n$}, $L\xrightarrow{\pi} \realnos P^n$, where $L:= $}
 
 \section{Principle G-Bundles}
 

@@ -14,6 +14,8 @@
 \newcommand{\done}[1]{\textcolor{ForestGreen}{#1}}
 \newcommand{\finish}[1]{\textcolor{orange}{#1}}
 \newcommand{\checkCorrect}[1]{\textcolor{red}{#1}}
+\newcommand{\understandBetter}[1]{\textcolor{red}{#1}}
+
 
 \begin{document}
 \title{Cobordism, Chern Simons, Topological Quantum Computing}
@@ -45,11 +47,34 @@ submanifolds submersions immersions? partition of unity? regular level set theor
 
 Manifolds with boundaries
 
+New manifolds from old. Subsets of $R^n$??
+topology on $T^2$, $S^n$...smooth manifolds.
+
+$RP^n, CP^n, HP^n, OP^n$
+
 \section{Fibre Bundles}
 
 \done{Define Fibre Bundle.}
 
 \done{Define Bundle morphism.}
+
+\subsection{Examples}
+Mobius band (see sinha youtube + milnor ch2)
+
+Double twisted mobius band (see sinha youtube)
+
+Hopf fibrations. 
+The torus $T^2 = S^1 \times S^1$ over $S^1$, with fibres $E_p \cong S^1$. Is a trivial bundle/trivial fibration. \understandBetter{(Hopf invarient is invarient of homotopy group).}
+
+Hopf line over $CP^1$. 
+Hopf line bundle. 
+line bundle on $RP^1$ isomorphic to $S^1$. 
+
+The 4 hopf fibrations from the division algebras R, C, H, O.
+double cover of $S^1$ (figure 8). 
+$\mathbb{Z}^2 = S^0 \to S^1 \xrightarrow{2:1} S^1$;; note last $S^1$ comes from $RP^1$, middle one is boundary of mobius strip;; twisted fibration, so non trivial.
+$(S^1\to) S^3$ over $S^2$; ($S^2$ comes from $CP^1$. $S^3$ all lines in $C^2 - \{0\}$).
+(gives homotopy groups of spheres. (homotopy group is equivalence class of loops in a space -- throw a loop (sphere) into space and can you catch something with it))
 
 \section{Vector Bundles}
 
@@ -110,10 +135,6 @@ Normal bundle (milnor)
 
 Canonical line bundle over real projective space (milnor). (is a non-trivial bundle).
 
-Mobius band (see sinha youtube + milnor ch2)
-
-Double twisted mobius band (see sinha youtube)
-
 New bundles from old. [see Hatcher]
 e.g. tensor bundle -- see notes.
 dual bundle (see ivan notes 21 june).
@@ -122,12 +143,11 @@ complexification/realification
 
 Frame bundle
 
-Hopf fibrations. $S^3$ over $S^2$. Hopf line over $CP^1$. Hopf line bundle. line bundle on $RP^1$ isomorphic to $S^1$. double cover of $S^1$ (figure 8). 
-
 Perhaps grassmanians.
 
 Tangent bundle over $S^n$. Write up transition functions etc.
-(Explain global triv on $TS^2$ does not exist by hairy ball theorem.--- for which $n$ does it/(not) exist?)
+(Explain global triv on $TS^2$ does not exist by hairy ball theorem.--- for which $n$ does it/(not) exist?).
+\understandBetter{(Note: Sits inside $R^5$, invarient - curvature, integrating over invarient to tangent bundle gives euler number (quantum/topological invarient). leads to gauss-bonet theorem)}
 
 $R^n/Z^n$ quotient spaces. 
 
@@ -168,6 +188,8 @@ $GL(2)$ on $LS^2$ non-trivial principle G-bundle (due to hairy ball theorem).
 $U(n)$ with base $C^n$ ?
 
 $SU(2)$ with base $C^2$ ? 
+
+\understandBetter{The unit quaternions can be thought of as a choice of a group structure on the 3-sphere S3 that gives the group Spin(3), which is isomorphic to SU(2) and also to the universal cover of SO(3).} (wikipedia quaternion)
 
 \section{Connections on Vector Bundles}
 
