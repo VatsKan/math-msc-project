@@ -124,11 +124,13 @@ is a linear isomorphism $\psi_i \circ \tilde{\psi}_j^{-1} : \realnos^k \rightarr
 which can be seen from the following diagram.
 [DRAW COMM DIAGRAM]
 Hence we can represent $\psi_i \circ \tilde{\psi}_j^{-1}$ by an invertible matrix $(g_{mn})$ \finish{[Write lin alg identification explicitly, \question{choosing standard basis?}]} which depends on the point $p$ (in other words, each entry is a smooth map $g_{mn}\in C^\infty(U_i\cap \tilde{U}_j)$). Whence we obtain a map, called a \defn{transition function}
-$g:U_i\cap \tilde{U}_j\rightarrow \mathtt{GL}_k(\realnos)$ such that $g:p\mapsto (g_{mn}(p))$. \question{How to extend domain of the map g to the whole manifold M, using the full collection of trivialisations? Or do we just do this on a single collection of trivialisations, so i should get rid of the i, j everywhere?} \checkCorrect{The image of $g$ which can be shown to be a subgroup of $\mathtt{GL}_k(\realnos)$ is called the \defn{structure group} of the transition function.} \question{When is it a Lie group? is it always a subgroup?, is it always the same subgroup no matter which trivialisations we choose. How to prove these results if true?} \question{Is it possible to define the structrue group in terms of sections instead of local trivialisations?}
+$g:U_i\cap \tilde{U}_j\rightarrow \mathrm{GL}_k(\realnos)$ such that $g:p\mapsto (g_{mn}(p))$. \question{How to extend domain of the map g to the whole manifold M, using the full collection of trivialisations? Or do we just do this on a single collection of trivialisations, so i should get rid of the i, j everywhere?} \checkCorrect{The image of $g$ which can be shown to be a subgroup of $\mathrm{GL}_k(\realnos)$ is called the \defn{structure group} of the transition function.} \question{When is it a Lie group? is it always a subgroup?, is it always the same subgroup no matter which trivialisations we choose. How to prove these results if true?} \question{Is it possible to define the structrue group in terms of sections instead of local trivialisations?}
 \question{...[Do this for fibre bundles instead?? make a point for complex vect bundles/euclidean vect bundles etc that $\realnos^k$ can be replaced by $\complexnos^k$ etc. if true]}
 \question{Is there alt def of vector bundles using the tranistion maps instead?}
 
-\finish{An \defn{oriented vector bundle} ...}
+An \defn{orientation} of an $n$-dimensional \checkCorrect{real?? (does it hold for general v.spaces?)} vector space $V$ is an equivalence class of ordered bases $[e_1, \ldots, e_n]$ under the relation $(e_1, \ldots, e_n)\sim (e_1', \ldots, e_n')$ if and only if \checkCorrect{the change of basis matrix} $(a_{ij})$ (so $e_j=\sum_i a_{ji}e_i'$) has positive determinant $\mathrm{det}(a_{ij})>0$. So to any non-zero vector space we can have exactly two possible orientations $\pm 1$ (corresponding to the two equivalence classes corresponding to the strictly positive and negative determinants). \checkCorrect{Note given two orderings of a basis $\{e_i\}$, with $e_{\sigma(j)}=e_i$ for a permutation $\sigma\in S^n$, have the same orientation if and only if $\mathrm{sign}(\sigma)=1$.} Furthermore an orientation of $+1$ is associated to the standard ordered basis of $\realnos^k$.  
+A vector bundle $E\xrightarrow{\pi} M$ with local trivialisations $\psi_U:\pi^{-1}(U)\to U\times \realnos^k$ is \defn{oriented} if the fibres $\pi^{-1}(p)$ have the same orientation as $\realnos^k$ for every $p \in U$ (in other words the local trivialisations are orientation preserving).\explainFurther{We could equivalently say that a vector bundle is oriented if at each point $p\in U$ of \checkCorrect{any} local frame $s_1, \ldots, s_k\in \Gamma(U, E)$, the basis $s_1(p), \ldots, s_k(p)$ \checkCorrect{has the same} orientation.} 
+\finish{[MOVE ORIENTATION STUFF TO AFTER SECTIONS ETC]} \explainFurther{Note that the structure group of an oriented vector bundle can be restricted to the subgroup $\mathrm{GL}_k(\realnos)^+=\{A\in \mathrm{GL}_k(\realnos): \mathrm{det}(A)>0\}$.} \checkCorrect{check!} 
 
 A \defn{complex vector bundle} has typical fibre $\complexnos^k$. Hence the fibres $E_p$ are $k$-dimensional vector spaces over $\complexnos$. \finish{Note that complex vector bundles are canonically oriented vector bundles since...} Note also that we may have complex vector bundles where the \checkCorrect{total space and} base space are real manifolds \question{Example of this?}.
 
@@ -144,9 +146,18 @@ Conversely we can obtain a real vector space from a complex vector space by \fin
 
 Define euclidean vect bundles (and riem manifolds)? (milnor pg21-23)
 
-Define Tangent Bundle. 
-Explain briefly that tangent vectors are point derivations which form an (algebra?).
-Explain given chart of M, $\frac{\partial}{\partial{x_i}} |_p$ for all $i$ is a basis of $T_p M$.
+The \defn{tangent space} $T_p M$ at a point $p\in M$ is  the \explainFurther{algebra of point derivations of $C^\infty (M)$}. \finish{Is product in the algebra composition?}
+In particular a \defn{tangent vector} $X_p:C^\infty (M)\to \realnos \in T_p M$ satisfies the following Liebniz rule $X_p(fg)=f(p)X_p(g) + X_p(f)g(p)$, for $f,g\in C^\infty (M)$. Equivalently we can define a tangent vector at $p\in M$ \explainFurther{as the derivative to a curve $\gamma: (-\epsilon, \epsilon)\to M$ in the manifold with $p\in \gamma (-\epsilon, \epsilon)$}. 
+ \finish{Other def of tangent vectors?}
+
+Given a chart $(U, \phi)$ of $M$, we can write $\phi = (x^1, \ldots, x^n)$, where $x^i := \pi^i\circ \phi$, and $\pi^i:\realnos^n \to \realnos$ is the canonical projection. We obtain a basis $\{\frac{\partial}{\partial{x^i}} \vert_p\}_{i=1,\ldots, n}$ 
+of $T_p M$, where we define $\frac{\partial}{\partial{x^i}} \vert_p f := \frac{\partial}{\partial{\pi^i}}\vert_p f\circ \phi^{-1}$. Note in particular that 
+$\mathtt{dim} (T_p M) = n$ where 
+$n$ is the dimension of $M$. \finish{Write coordinate formula for applying differential?}
+
+The \defn{tangent bundle} over an $n$-dimensional manifold $M$ is the $n$-dimensional vector bundle $TM:=\cup_p T_p M\xrightarrow{\pi} M$ with $\pi(X_p)=p$ for $X_p\in T_p M$. Note that given a chart $(U, \phi)$ of $M$ with coordinates $\phi =(x_1, \ldots, x_n)$, we obtain a local frame $\{\frac{\partial}{\partial{x^i}}\}_i$ for the tangent bundle, \explainFurther{and the corresponding local trivialisation}. \finish{MOVE TO lower section after global frames are discussed. Perhaps tangent bundle etc. should be an example.}
+
+
 
 Go into derivatives/jacobians etc??
 
@@ -162,12 +173,16 @@ Note that if in particular, we cannot find $k$ non-vanishing sections in a vecto
 
 \finish{[See later: G-bundles can have vanishing sections with corresponding global trivs --- true?? --check.].}
 
-Define vector field (and notation for space of all vect fields)...Q: is there a name for sections of general vector bundle (like is it called a tensor field or something)?
+A \defn{vector field} is a section of the tangent bundle $TM$. The $C^\infty (M)$ module of vector fields is denoted $\mathfrak{X}:=\Gamma(TM)$.
+\question{Q: is there a name for sections of general vector bundle (like is it called a tensor field or something)?} \question{Are there any results on conditions on the base manifold of a space for when the tangent bundle gives a global trivialisation?} 
 
+\subsection{Bundle morphisms} 
 
-Define Vector Bundle Morphism.
+A \defn{(vector) bundle morphism} between two vector bundles $E'\xrightarrow{\pi '} M'$,  $E\xrightarrow{\pi} M$ is a fibre bundle morphism $u:E'\to E$ (i.e. \checkCorrect{satisfies the condition $\exists \textrm{smooth } U:M'\to M: \pi\circ u=U\circ \pi '$) such that the restrictions $u_p:E'_{U(p)}\to E_p$ are linear maps between fibres $\forall p \in M$.
+Most often we are interested in the case where the bundles are over the same base manifold $M'=M$, in which case we restrict our definition so that $U=\mathit{id}_M$, whence the restrictions $u_p:E'_p\to E_p$. } \finish{ADD COMMUTATIVE DIAGRAM for restricted case}.
 
-Isomorphic vector bundles. (i.e. if fibres get mapped to fibres --- see pg 14 milnor. Or alternatively, exists iso of bundle morphims?)
+Define isomorphic vector bundles. (i.e. if fibres get mapped to fibres? --- see pg 14 milnor. Or alternatively, exists iso of bundle morphims?)
+
 
 Identification between vect bundle morphims and module-homos of sections. (See Ivan notes).
 
@@ -178,6 +193,8 @@ Identification between vect bundle morphims and module-homos of sections. (See I
 \subsection{Examples (of vect bundles)}
 
 \finish{The \defn{line bundle over $\realnos P^n$}, $L\xrightarrow{\pi} \realnos P^n$, where $L:= $}
+
+See milnor section 13 for examples of complex vector bundles
 
 \section{Principle G-Bundles}
 
@@ -200,6 +217,9 @@ Identification between vect bundle morphims and module-homos of sections. (See I
 \section{Torsion??}
 
 \section{Characteristic classes}
+\explainFurther{The euler class is an invarient of oriented vector bundles.}
+\explainFurther{An invarient of complex vector bundles is its Chern class. Complex vector bundles have a canonical orientation (looking at the underlying real bundle), hence can find its euler class.}
+\explainFurther{Stiefal whitney classes give an invarient of (cobordism??)??} 
 
 \section{Bordism and Cobordism}
 
