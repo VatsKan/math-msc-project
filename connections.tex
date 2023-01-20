@@ -1,0 +1,106 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsthm, amsmath, latexsym, amssymb}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage[dvipsnames]{xcolor}
+
+\theoremstyle{definition} \newtheorem*{definition}{Definition}
+\theoremstyle{definition} \newtheorem*{definitions}{Definitions}
+\theoremstyle{plain} \newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain} \newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{plain} \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{plain} \newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{plain} \newtheorem{example}[theorem]{Example}
+
+\newcommand{\checkCorrect}[1]{\textcolor{red}{#1}}
+\newcommand{\understandBetter}[1]{\textcolor{orange}{#1}}
+\newcommand{\question}[1]{\textcolor{orange}{#1}}
+\newcommand{\explainFurther}[1]{\textcolor{blue}{#1}}
+\newcommand{\finish}[1]{\textcolor{green}{#1}}
+
+\newcommand{\defn}[1]{\textbf{#1}}
+\newcommand{\realnos}{\mathbb{R}}
+\newcommand{\complexnos}{\mathbb{C}}
+\newcommand{\canonicaliso}{\cong}
+\newcommand{\id}{\mathtt{id}}
+\newcommand{\smoothCmaps}{C^\infty (U, \complexnos)}
+
+\begin{document}
+\title{Connections}
+\author{Vatsal Kanoria}
+\date{2023}
+\maketitle
+
+\tableofcontents
+
+\section{Connections}
+We will adopt the following notation throughout this section. Let $E\to M$ be a $\complexnos$-vector bundle over a smooth manifold of rank $r$.
+Let $f=(e_1,\ldots, e_r)$ be a local frame of the bundle over some open neighbourhood $U\subseteq M$. (Hence $e_j\in \Gamma(U, E)$ are linearly independent at each $p\in U$).
+
+\subsubsection{Local frames}
+A smooth map $g:U\to GL_r(\complexnos)$ is called a \defn{change of frame mapping}, since $fg$ is another local frame on $U$ given by 
+$$fg=(\sum_{k=1}^r g_{k1}e_k,\ldots, \sum_{k=1}^r g_{kr}e_k)$$
+noting that $g_{kj}\in \smoothCmaps$. We may also express this in terms of matrix multiplication as $(fg)(p):=f(x)g(x)$. Note if we wrote $f$ as a column vector instead of a row vector then we would write $gf$ instead of $fg$.
+
+One can show that given any two local frames $f, f'$ of $E$ over $U$, there always exists a change of frame mapping $g:U\to GL_r(\complexnos)$ such that $f'=fg$. 
+
+\subsubsection{Local representation of sections}
+Given a local frame $f=(e_1,\ldots, e_r)$ we may express a section $s\in \Gamma(U, E)$ locally as
+$$s=\sum_{i=1}^r s^i(f)e_i$$
+for some unique $s^i(f)\in \smoothCmaps$ ($i=1,\ldots, r$), and we define 
+$$s(f):= \begin{pmatrix}s^1(f) \\ \vdots \\ s^r(f)\end{pmatrix}$$
+
+Suppose $g:U\to GL_r(\complexnos)$ is a change of frame mapping, so that $f'=fg$ is another local frame. Then we obtain the following transformation law $s(f')=s(fg)=g^{-1}s(f)$, or in other words
+$$gs(f')=s(f)$$
+which follows from direct computation since $s^i(fg)=\sum_{j=1}^r g_{ij}^{-1} s^j(f)$.
+
+\subsubsection{Hermitian Vector bundles}
+On a complex vector space $V$, a \defn{Hermitian inner product} is a map $(\cdot, \cdot):V\times V\to \complexnos$ such that for all $u,v\in V$
+\begin{align*}
+& (u,v)=\overline{(v, u)} \\
+& (\lambda u + v, w) = \lambda (u, w) + (v, w) \\
+& (u, v)\geq 0 \\
+& (u,v)=0, \forall v \implies u=0
+\end{align*}
+Or in other words $(\cdot, \cdot)$ is a conjugate-symmetric, sesquilinear, positive, non-degenerate map. 
+
+For example on $V=\complexnos^n$, $(x, y)=\sum_i x_i\overline{y_i}$, $\forall x,y\in \complexnos^n$, is a Hermitian inner product. Note in this case we have that for a matrix $A\in M_n(\complexnos)$ we have $(Au, v)=(u, \overline{A}^Tv)$.
+
+A \defn{Hermitian vector bundle} assigns a Hermitian inner product to each fibre $E_p$ of the vector bundle. More formally, for every open neighbourhood $U\subseteq M$, and for every pair of sections $s, \gamma \in \Gamma(U, E)$, \defn{a Hermitian metric} $h$ on $E$ is a map $h(s, \gamma):=\langle s, \gamma \rangle:U\to \complexnos$ such that $\langle s, \gamma \rangle(p)=\langle s(p), \gamma (p) \rangle$ is a Herimitian inner product on $E_p$, and $\langle s, \gamma \rangle$ is smooth. 
+
+One may show that it is possible to construct a Hermitian metric on any complex vector bundle (the construction of which involves a partitions of unity). 
+
+\subsubsection{Hermitian metric local representation}
+Given a local frame $f=(e_1, \ldots, e_r)$ over $U$, define 
+$$h(f)_{ij}=\langle e_i, e_j \rangle \ (:U\to \complexnos)$$
+Whence $h(f)\in M_r(\smoothCmaps)$ is a positive definite, Hermitian, symmetric matrix, that represents $h$ locally with respect to the frame $f$. 
+
+Recall given $s, \gamma\in \Gamma(U, E)$, we can write $s(f)=(s^1(f), \ldots, s^r(f))^T$, $\gamma(f)=(\gamma^1(f), \ldots, \gamma^r(f))^T$ locally with respect to the frame $f$. Then one may show that 
+$$\langle s, \gamma \rangle = \overline{\gamma(f)^T}h(f)s(f)$$
+(where the product here is matrix multipilicaiton).
+
+Furthermore, if $g:U\to GL_r(\complexnos)$ is a change of frame mapping with $f'=fg$. Then we get the transformation law
+$$h(f')=\overline{g^T}h(f)g$$
+for the local representation of $h$ with respect to the frames $f, f'$.
+
+\subsubsection{Differential forms with vector coefficients}
+Define $\bigwedge^p_\complexnos(T^\ast M):=\bigwedge^p (T^\ast M)\otimes \complexnos$, i.e.\ the complexification of $\bigwedge^p_\realnos(T^\ast M)$. Note that we can express the elements of $\Omega^p_\complexnos(M)=\Gamma(\bigwedge^p_\complexnos(T^\ast M))$ as $\omega+i\eta \in \Omega^p_\complexnos(M)$ for $\omega, \eta \in \bigwedge^p_\realnos(T^\ast M)$, and $i$ the imaginary unit. 
+
+We define the differential $p$-forms with coeffecients in $E$ as 
+\begin{align*}
+\Omega^p(M, E) & :=\Gamma(M, \bigwedge {}^p_\complexnos(T^\ast M) \otimes_\complexnos E) \\
+& \simeq Hom(\bigwedge {}^p_\realnos (TM), E)
+\end{align*}
+\understandBetter{UNDERSTAND THE ISO PROPERLY!}
+In other words the elements $\omega\in \Omega^p(M, E)$ at a point $x\in M$ are skew-symmetric multilinear forms 
+$$\omega_x:\underbrace{T_xM\times T_xM\times \ldots T_xM}_{p \text{ times}} \to E_x$$
+assigning a vector in the fibre $E_x$ to the $p$-tuples of tangent vectors at $x$. 
+
+\subsubsection{Connections}
+
+\section*{References}
+\begin{enumerate}
+\item Wells
+\end{enumerate}
+\end{document}
