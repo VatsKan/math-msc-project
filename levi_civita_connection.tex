@@ -1,0 +1,94 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsthm, amsmath, latexsym, amssymb}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage[dvipsnames]{xcolor}
+
+\theoremstyle{definition} \newtheorem*{definition}{Definition}
+\theoremstyle{definition} \newtheorem*{definitions}{Definitions}
+\theoremstyle{plain} \newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain} \newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{plain} \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{plain} \newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{plain} \newtheorem{example}[theorem]{Example}
+
+\newcommand{\checkCorrect}[1]{\textcolor{red}{#1}}
+\newcommand{\understandBetter}[1]{\textcolor{orange}{#1}}
+\newcommand{\question}[1]{\textcolor{orange}{#1}}
+\newcommand{\explainFurther}[1]{\textcolor{blue}{#1}}
+\newcommand{\finish}[1]{\textcolor{green}{#1}}
+
+\newcommand{\defn}[1]{\textbf{#1}}
+\newcommand{\realnos}{\mathbb{R}}
+\newcommand{\complexnos}{\mathbb{C}}
+\newcommand{\canonicaliso}{\cong}
+\newcommand{\id}{\mathtt{id}}
+
+\begin{document}
+\title{Levi-Civita Connection}
+\author{Vatsal Kanoria}
+\date{August 2022}
+\maketitle
+\section{Levi-Civita Connection on Spheres}
+\subsection{Riemannian Manifolds}
+A \defn{Riemannian manifold} is a smooth manifold $M$ with a \checkCorrect{smooth map $g:p\mapsto g_p$, $p\in M$}, \question{is smooth over all of M or just an open subset?} called a \defn{Riemannian metric}, where $g_p:T_pM\times T_pM\to \realnos$ is an inner product (i.e.\ a symmetric, positive-definite, bilinear form).
+Note that it is always possible to find a Riemannian metric on any smooth manifold.
+
+Given a chart $(U, x^1, \ldots, x^n)$ of $M$, $g$ is smooth is \checkCorrect{equivalent} \question{[is it iff or only in one direction?]} to saying that $g_{ij}:=g(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j}):U\to \realnos$ is smooth $\forall i,j=1,\ldots, n$. Note $g_{ij}(p):=g_p(\frac{\partial}{\partial x^i}\vert_p, \frac{\partial}{\partial x^j}\vert_p) \in \realnos$ and we will make use of the shorthand notation $\partial_i:=\frac{\partial}{\partial x^i}$. We can now view $(g_{ij})$ as an $n^2$ matrix in $M_n(C^\infty (U))$, and since at each point $p$, $g_p$ is an inner product (so symmetric and positive definite) this also implies the matrix $(g_{ij})$ is symmetric and \checkCorrect{positive, and also in particular is non-degenerate, thus invertible.} \finish{Explain why the inverse exists more precisely!}
+
+Since $(g_{ij}(p))$ is an invertible matrix over $\realnos$, we write its inverse as $(g^{kl}(p))$, and recall matrix multiplication of a matrix with its inverse gives us the following \checkCorrect{\defn{`contraction'}}
+$\sum_j g_{ij}(p)g^{jk}(p)=\delta_i^k(p)$ (where $\delta_i^k\in C^\infty(U)$ such that $\delta_i^k(p)=1$ if $i=k$ or $0$ otherwise). In other words, as smooth functions over $U$ we have $\sum_j g_{ij}g^{jk}=\delta_i^k$. 
+
+Recall also that the vector space of bilinear forms on $V$ can be canonically identified with $V^\ast \otimes V^\ast$, by the map $\eta\otimes \psi \mapsto ((v,w)\mapsto \eta(v)\psi(w))$ \finish{PROVE}. Since $dx^i\vert_p\otimes dx^j\vert_p$, $i,j=1,\ldots, n$, is a basis of $T_pM^\ast \otimes T_pM^\ast$, we can write the bilinear form $g_p=\sum_{i,j} g_{ij}(p)dx^i\vert_p \otimes dx^j\vert_p$, for some $g_{ij}(p)\in \realnos$ as an element of $T_pM^\ast \otimes T_pM^\ast$ under the identification. \checkCorrect{Furthermore it is easy to show, that the coefficients $g_{ij}(p)\in \realnos$ in this expression agrees with the previous definition $g_{ij}(p)=g_p(\frac{\partial}{\partial x^i}\vert_p, \frac{\partial}{\partial x^j}\vert_p)$ under this identification \finish{SHOW}.} Further, this all makes sense if we forget the point dependency, and may write (within a local chart), $g=\sum_{i,j}g_{ij} dx^i\otimes dx^j$. \question{Does symmetry of bilinear form allow us to compress this further, using symmetric product of forms? See Lee, Riem Manifolds.}
+
+\finish{Define norm, isometry}
+
+\subsection{Levi-Civita connection}
+Let $(M, g)$ be a Riemannian manifold. There exists a unique affine connection $\nabla:\mathfrak{X}(M)\times \mathfrak{X}(M)\to \mathfrak{X}(M)$ with the properties, for $X,Y,Z\in \mathfrak{X}(M)$,
+$Xg(Y,Z)=g(\nabla_XY, Z)+g(Y, \nabla_XZ) (\in C^\infty(U))$ (compatibility with the metric) and $[X,Y]=\nabla_XY-\nabla_YX$ (torsion-free), called the \defn{Levi-Civita connection}. \checkCorrect{The uniqueness of the connection can be seen from the second christoffel [CORRECT SPELLING] formula (below).} \finish{GO OVER different formulation of compatibility with metric, and recall lie bracket def/or in local coord. SEE also questions in handwritten notes}.
+
+Note that given a chart $(U, x^1, \ldots, x^n)$ of $M$, any affine connection $\nabla:\mathfrak{X}(M)\times \mathfrak{X}(M)\to \mathfrak{X}(M)$ is completely determined by $n^3$ coefficients $\Gamma^k_{ij}\in C^\infty (U)$ where
+$$\nabla_{\partial_i}\partial_j=\sum_{k=1}^n \Gamma^k_{ij} \partial_k \in \mathfrak{X}(U)$$
+Note that this fully determines the affine connection since any vector field can be written as $X=\sum_{i=1}^n \alpha_i \partial_i\in \mathfrak{X}(U)$ where $\alpha_i\in C^\infty (U)$, and since \checkCorrect{affine connections are $C^\infty(U)$-bilinear}. In the case that $\nabla$ is a Levi-Civita connection, the $\Gamma^k_{ij}$ are called \checkCorrect{\defn{Christoffel symbols} (CHECK spelling)}.
+
+Let $\nabla$ be a Levi-Civita connection. Let us rewrite the compatiblity with a metric and torsion-free conditions in terms of local coordinates, with respect to the local frame $\{\partial_i\}_{i=1}^n$ of $TU$. Firstly, that $\nabla$ is compatible with the metric:
+\begin{align*}
+    \partial_i g(\partial_j, \partial_k) & = g(\nabla_{\partial_i}\partial_j, \partial_k) + g(\partial_j, \nabla_{\partial_i}\partial_k) \\
+    & = g(\sum_s \Gamma^s_{ij}\partial_s, \partial_k)+g(\partial_j, \sum_s \Gamma^s_{ik}\partial_s)\\
+    &= \sum_s (\Gamma^s_{ij}g(\partial_s, \partial_k)+\Gamma^s_{ik}g(\partial_j, \partial_s)) \\ & \textrm{\checkCorrect{(since $g$ is $C^\infty(U)$ bilinear and $\Gamma^s_{ij}\in C^\infty(U)$)}}
+\end{align*}
+In short $\partial_i g_{jk} = \sum_s (\Gamma^s_{ij}g_{sk}+\Gamma^s_{ik}g_{js})$. Now we find the torsion-free condition:
+\begin{align*}
+    [\partial_i, \partial_j] & = \nabla_{\partial_i}\partial_j - \nabla_{\partial_j}\partial_i \\
+    & = \sum_s (\Gamma^s_{ij} - \Gamma^s_{ji})\partial_s
+\end{align*}
+and noting that the lie bracket $[\partial_i, \partial_j]=0$ for all $i,j$ \checkCorrect{[WHY? TRUEE??]}, we get $(\Gamma^s_{ij} - \Gamma^s_{ji})=0$, i.e. $\Gamma^s_{ij}=\Gamma^s_{ji}$.
+
+Our goal now is to obtain a formula for the Christoffel symbols of a Levi-Civita connection, called the second Christoffel identity. We will first derive the first Christoffel identity to help us in this end:
+\begin{align*}
+    & \partial_i g_{jk} + \partial_j g_{ik} - \partial_k g_{ij} \\
+    & = \sum_s [(\Gamma^s_{ij}g_{sk}+\Gamma^s_{ik}g_{js})+
+    (\Gamma^s_{ji}g_{sk}+\Gamma^s_{jk}g_{is})-
+    (\Gamma^s_{ki}g_{sj}+\Gamma^s_{kj}g_{is})] \\
+    & = \sum_s 2\Gamma^s_{ij}g_{sk}
+\end{align*}
+where we used compatibility with the metric in the first step, and torsion-free and symmetry of the metric in the second step. Now to get the second Christorffel identity, we can contract with the inverse $(g^{tk})$ of the metric $g_{ij}$. Applying the contraction to the right hand side of the first Christoffel identity, we get
+\begin{align*}
+    \sum_k g^{tk}(2\sum_s \Gamma^s_{ij}g_{sk}) 
+    & = 2\sum_s \Gamma^s_{ij}\sum_k g_{sk}g^{kt} \\
+    & = 2 \sum_s \Gamma^s_{ij}\delta^t_s \\
+    & = 2\Gamma^t_{ij}
+\end{align*}
+Whence we obtain the second Christoffel identity,
+$$\Gamma^t_{ij} = \frac{1}{2}\sum_k g^{tk}(\partial_i g_{jk} + \partial_j g_{ik} - \partial_k g_{ij})$$
+
+Note that an invarient formulation (not depending on a local chart) of the second Christoffel identity also exists called the Koszul formula (stated below), which is also easy to derive from the properties of the Levi-Civita connection.
+\begin{align*}
+2g(\nabla_XY, Z) = & X(g(Y,Z))+Y(g(X,Z))-Z(g(X,Y)) \\
+& -g([Y,X],Z)-g([X,Z],Y)-g([Y,Z],X)    
+\end{align*}
+
+\subsection{Levi-Civita connection on $S^1$}
+
+\end{document}

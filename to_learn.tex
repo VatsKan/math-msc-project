@@ -1,0 +1,85 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsthm, amsmath, latexsym, amssymb, verbatim}
+
+\theoremstyle{definition} \newtheorem*{definition}{Definition}
+\theoremstyle{definition} \newtheorem*{definitions}{Definitions}
+\theoremstyle{plain} \newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain} \newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{plain} \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{plain} \newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{plain} \newtheorem{example}[theorem]{Example}
+
+\begin{document}
+\title{To Learn}
+\author{Vatsal Kanoria}
+\date{2022}
+\maketitle
+\begin{abstract}
+This is the abstract
+\end{abstract}
+\tableofcontents
+
+
+connections
+(parallel transport)
+((partition of unity))
+curvature
+(note that curvature form is generalisation of Riemann curvature tensor)
+
+\section{Chern class of line bundle}
+[Looks difficult in ref 2]
+Look instead for ref for tautological line bundle on $\mathbb{C}P^1$
+
+\section{Chern-Weil Homomorphism (Ref 1)}
+Helpful in generalisation of the gauss bonet theorem.
+(So understand gauss-bonet theorem as motivation?)
+
+\begin{enumerate}
+\item principle bundles on smooth manifolds
+\item (why $n$-dim complex vector bundle is same as principle $GL_n(\mathbb{C})$ bundle over topological space.) (Why these are classified by homotopy classes of maps from $X$ to $B GL_n(\mathbb{C})$....and note that $B GL_n(\mathbb{C})$ is the infinite grassmanian $Gr_n(\mathbb{C}^\infty)$ of $n$-planes in $\mathbb{C}^\infty$.  (see reference 2) 
+\item connection and curvature
+\item de rham cohomology
+\item complex (and real) lie group
+\item Lie algebra of a lie group
+\item ($\mathbb{C}[\mathfrak{g}]$ algebra of $\mathbb{C}$-valued polynomials on $\mathfrak{g}$
+\item subalgebra of fixed points $\mathbb{C}[\mathfrak{g}]^G$ of $\mathbb{C}[\mathfrak{g}]$ under adjoint action of $G$. )
+\item $H^*(M; \mathbb{C})$ for a principle bundle.  De Rham Cohomology.
+\item How to obtain chern-weil homomorphism by taking invariant polys in the curvature of any connection on the given bundle. 
+\begin{enumerate}
+\item connection form
+\item associated curvature form to connection form.  (i.e. if $\omega$ connection form,  then associated connection form is $D\omega$.  definition of exterior covarient derivative $D$. 
+\item lie-algebra valued forms ??
+\item closed forms
+\end{enumerate}
+\item Classifying Space
+\end{enumerate}
+
+\section{Chern classes}
+This is an example/special case of chern-weil homomorphism,  with
+$G=GL_n(\mathbb{C}$, $\mathfrak{g}=gl_n(\mathbb{C})$??
+\begin{enumerate}
+\item characteristic polynomial of $x\in \mathfrak{g}$ and invarient polys $f_k,  k=0, \ldots,  n$ given by the characteristic poly.
+\item k-th chern class of smooth complex vector bundle $E$ as image of $f_k$ under Chern-Weil homomorphism of frame bundle of $E$
+\item axioms of chern classes (see ref 1 and ref 2)
+\item total chern class. (and show that it satisfies axioms of chern classes)
+
+\section{Chern character}
+This is an example/special case of chern-weil homomorphism
+
+\end{enumerate}
+
+
+\section{Characteristic classes of a principal bundle over a lie group}
+
+Cohomology of classifying space of a lie group.  (its a certain algebra of invarient polys on the lie algebra)
+
+Yoneda's lemma
+
+
+\section*{References}
+\begin{enumerate}
+\item Wikipedia: Chern-Weil homomorphism
+\item amathew.wordpress.com 
+\end{enumerate}
+\end{document}

@@ -37,10 +37,9 @@ An exposition on the proof that cobordant manifolds have the same characteristic
 
 \section{Introduction}
 
+We begin by recalling some important facts from differential geometry. Point-set topology and familiarity with these notions are assumed.
 
 \section{Manifolds}
-
-We begin by recalling some important facts from differential geometry. Point-set topology and familiarity with these notions are assumed.
 
 A (smooth) $n$-dimensional \defn{manifold} $M$ is a second countable, Hausdorff space with a smooth maximal atlas. An \defn{atlas} consists of a collection of charts, that is, an open cover $U_\alpha$ ($\alpha\in I$, $I$ \checkCorrect{finite} index set) of $M$ and homeomorphims $\phi_\alpha:U_\alpha \to \phi_\alpha(U_\alpha) \subseteq k^n$, such that the \defn{transition maps} $\phi_\alpha \circ \phi_\beta^{-1}$ are smooth (on $\phi_\beta(U_\alpha \cap U_\beta)\subseteq k^n$) for all $\alpha, \beta\in I$. Generally we set $k=\realnos$ and assume that our manifolds are smooth and \checkCorrect{without boundary}, unless otherwise specified. 
 
@@ -56,16 +55,85 @@ A manifold has a \defn{boundary} if some of its charts are \defn{boundary charts
 Subsets of $R^n$?? Quotient spaces.
 topology on $T^2$, $S^n$...smooth manifolds.
 
-\subsection{Examples: specific examples.}
+\subsection{Examples: Spheres}
+
+On the circle $S^1:=\{(x, y): x^2+y^2 = 1\}\subseteq \realnos^2$, we can define an atlas \question{What is this kind of projection called?} $\mathfrak{A}_1 :=\cup_{i=1}^4 U_i$ given by 
+\begin{align*}
+&& U_1 = S^1 \cap \{(x, y): x>0 \} \\
+\phi_1 & : U_1\to \realnos &
+\phi_1^{-1} & :(-1, 1)\to U_1 \\
+& (x,y) \xmapsto{\phi_1} x 
+& & x \xmapsto{\phi_1^{-1}} (x, \sqrt{1-x^2})
+\end{align*}
+\begin{align*}
+&& U_2 = S^1 \cap \{(x, y): x<0 \} \\
+\phi_2 & : U_2\to \realnos &
+\phi_2^{-1} & :(-1, 1)\to U_2 \\
+& (x,y) \xmapsto{\phi_2} x 
+& & x \xmapsto{\phi_2^{-1}} (x, - \sqrt{1-x^2})
+\end{align*}
+\begin{align*}
+&& U_3 = S^1 \cap \{(x, y): y>0 \} \\
+\phi_3 & : U_3\to \realnos &
+\phi_3^{-1} & :(-1, 1)\to U_3 \\
+& (x,y) \xmapsto{\phi_3} y
+& & y \xmapsto{\phi_3^{-1}} (\sqrt{1-y^2}, y)
+\end{align*}
+\begin{align*}
+&& U_4 = S^1 \cap \{(x, y): y<0 \} \\
+\phi_4 & : U_4\to \realnos &
+\phi_4^{-1} & :(-1, 1)\to U_4 \\
+& (x,y) \xmapsto{\phi_4} y
+& & y \xmapsto{\phi_4^{-1}} (- \sqrt{1-y^2}, y)
+\end{align*}
+and with transition functions given by (noting that $\phi_i(U_i\cap U_j) = (0, 1) \text{ or } (-1, 0)$), 
+\begin{align*}
+\phi_3 \circ \phi_1^{-1} & :\phi_1(U_1\cap U_3)\to \phi_3(U_1 \cap U_3) \\
+\phi_3 \circ \phi_1^{-1} & : (0,1) \to (0,1) \\
+& : x \xmapsto{\phi_1^{-1}} (x, \sqrt{1-x^2}) \xmapsto{\phi_3} \sqrt{1-x^2}
+\end{align*}
+\begin{align*}
+\phi_1 \circ \phi_3^{-1} & : (0,1) \to (0,1) \\
+& : y \xmapsto{\phi_1 \circ \phi_3^{-1}}  \sqrt{1-y^2}
+\end{align*}
+\begin{align*}
+\phi_1 \circ \phi_4^{-1} & : (-1,0) \to (0,1) \\
+& : y \mapsto -\sqrt{1-y^2}
+\end{align*}
+\begin{align*}
+\phi_4 \circ \phi_1^{-1} & : (0,1) \to (-1, 0) \\
+& : x \mapsto \sqrt{1-x^2}
+\end{align*}
+\begin{align*}
+\phi_2 \circ \phi_3^{-1} & : (0,1) \to (-1, 0) \\
+& : y \mapsto \sqrt{1-y^2}
+\end{align*}
+\begin{align*}
+\phi_3 \circ \phi_2^{-1} & : (-1,0) \to (0,1)\\
+& : x \mapsto -\sqrt{1-x^2}
+\end{align*}
+\begin{align*}
+\phi_2 \circ \phi_4^{-1} & : (-1,0) \to (-1,0)\\
+& : y \mapsto -\sqrt{1-y^2}
+\end{align*}
+\begin{align*}
+\phi_4 \circ \phi_2^{-1} & : (-1,0) \to (-1,0)\\
+& : x \mapsto -\sqrt{1-x^2}
+\end{align*}
+
+\subsection{Examples: Projective space.}
 
 \question{Is $\realnos^{n+1}\setminus \{0\}$ endowed with subspace topology of $\realnos^{n+1}$?}
-\defn{Real projective space} $\realnos P^n := \frac{\realnos^{n+1}\setminus \{0\}}{\sim}$ is the quotient space of $\realnos^{n+1}\setminus \{0\}$ under the relation $x\sim y \iff \exists \lambda \in \realnos \setminus \{0\} : \lambda x=y$. We write the equivalence class of $(x_1, \ldots, x_{n+1})\in \realnos^{n+1}$ as $[x_1, \ldots, x_{n+1}]\in \realnos P^n$. (In other words, under the quotient map $q:\realnos^{n+1}\setminus \{0\}\to \realnos P^n$, $[x_1, \ldots, x_{n+1}]:=q(x_1, \ldots, x_{n+1})$ and recall $U \subseteq \realnos P^n \textrm{ open} \iff q^{-1}(U) \subseteq \realnos^{n+1}\setminus \{0\} \textrm{ open}$.) This is an $n$-dimensional smooth manifold with atlas $\{(U_i, \phi_i)\}_{i=1, \ldots, n+1}$ given by $U_i=\{[x_1, \ldots, x_{n+1}]: x_i\neq 0\}$ and $\phi_i([x_1, \ldots, x_{n+1}])=(\frac{x_1}{x_i}, \ldots , \frac{x_{i-1}}{x_i}, \frac{x_{i+1}}{x_i}, \ldots, \frac{x_{n+1}}{x_i})\in \realnos^n$. \checkCorrect{Note that $q^{-1}(U_i)=\realnos^{n+1}\setminus \{0\}$} which is open in $\realnos^{n+1}\setminus \{0\}$, hence $U_i$ is open in $\realnos P^n$, and one can also show $\phi_i$ are indeed homeomorphisms. \finish{Appendix: show $\phi_i$ homeos?} Note it is easy to see that the inverse of $\phi_i$ is given by $\phi_i^{-1}(a_1, \ldots, a_n)=[a_1, \ldots, a_{i-1}, 1, a_{i}, \ldots, a_n]$ (since $[a_1, \ldots, a_{i-1}, 1, a_{i}, \ldots, a_n]=[\lambda a_1, \ldots, \lambda a_{i-1}, \lambda, \lambda a_{i}, \ldots, \lambda a_n]$, and can \checkCorrect{set $\lambda=x_i$ accordingly}). It is also easy to show that the transition maps $\phi_i\circ \phi_j^{-1}$ are smooth. \finish{appendix: show this}
+\defn{Real projective space} $\realnos P^n := \frac{\realnos^{n+1}\setminus \{0\}}{\sim}$ is the quotient space of $\realnos^{n+1}\setminus \{0\}$ under the relation $x\sim y \iff \exists \lambda \in \realnos \setminus \{0\} : \lambda x=y$. We write the equivalence class of $(x_1, \ldots, x_{n+1})\in \realnos^{n+1}$ as $[x_1, \ldots, x_{n+1}]\in \realnos P^n$. (In other words, under the quotient map $q:\realnos^{n+1}\setminus \{0\}\to \realnos P^n$, $[x_1, \ldots, x_{n+1}]:=q(x_1, \ldots, x_{n+1})$ and recall $U \subseteq \realnos P^n \textrm{ open} \iff q^{-1}(U) \subseteq \realnos^{n+1}\setminus \{0\} \textrm{ open}$.) This is an $n$-dimensional smooth manifold with atlas $\{(U_i, \phi_i)\}_{i=1, \ldots, n+1}$ given by $U_i=\{[x_1, \ldots, x_{n+1}]: x_i\neq 0\}$ and $\phi_i([x_1, \ldots, x_{n+1}])=(\frac{x_1}{x_i}, \ldots , \frac{x_{i-1}}{x_i}, \frac{x_{i+1}}{x_i}, \ldots, \frac{x_{n+1}}{x_i})\in \realnos^n$. \checkCorrect{Note that $q^{-1}(U_i)^C=\realnos^n$ is a closed hyperplane in $\realnos^{n+1}\setminus \{0\}$, hence the complement $q^{-1}(U_i)$ is the union of two hyperspaces $(\realnos^{n+1})^+$,$(\realnos^{n+1})^-$, which is open in $\realnos^{n+1}\setminus \{0\}$}, hence $U_i$ is open in $\realnos P^n$, and one can also show $\phi_i$ are indeed homeomorphisms. \finish{Appendix: show $\phi_i$ homeos?} Note it is easy to see that the inverse of $\phi_i$ is given by $\phi_i^{-1}(a_1, \ldots, a_n)=[a_1, \ldots, a_{i-1}, 1, a_{i}, \ldots, a_n]$ (since $[a_1, \ldots, a_{i-1}, 1, a_{i}, \ldots, a_n]=[\lambda a_1, \ldots, \lambda a_{i-1}, \lambda, \lambda a_{i}, \ldots, \lambda a_n]$, and can \checkCorrect{set $\lambda=x_i$ accordingly}). It is also easy to show that the transition maps $\phi_i\circ \phi_j^{-1}$ are smooth. \finish{appendix: show this}
 
-\finish{Note that $RP^1 \cong S^1$, $RP^2\cong S^3$. check and explain.} \question{generalisation? do we get some similar isos to spheres for projective space over $\complexnos$ etc.?}
+\finish{Note that $RP^1 \cong S^1$. check and explain.} \question{generalisation? do we get some similar isos to spheres for projective space over $\complexnos$ etc.?} (This is all the hopf fibrations...see in that section)
 
- Recall the following division algebras: the complex numbers $\complexnos = \langle 1, i: i^2=-1 \rangle$, the quaternions $\mathbb{H} = \langle 1, i, j, k: i^2=j^2=k^2=-1, ij=k=-ji \rangle$ , and the octonions \checkCorrect{$\mathbb{O} = \mathbb{H}\times \mathbb{H}=\langle 1, i, j, k, l: i^2=j^2=k^2=l^2=-1 \rangle$}. \question{def of product $\mathbb{H}\times \mathbb{H}$?} As vector spaces, $\complexnos \simeq \realnos^2$, $\mathbb{H} \simeq \realnos^4$, $\mathbb{O} \simeq \realnos^8$. The \defn{projective spaces} $\complexnos P^n$, $\mathbb{H} P^n$, $\mathbb{O} P^n$ are defined similarly to $\realnos P^n$ (replacing $\realnos$ with the appropriate \checkCorrect{field}), and are also \question{are they all n-dimensional?} smooth manifolds with the \checkCorrect{atlas defined similarly}.
+ Recall the following division algebras: the complex numbers $\complexnos = \langle 1, i: i^2=-1 \rangle$, the quaternions $\mathbb{H} = \langle 1, i, j, k: i^2=j^2=k^2=-1, ij=k=-ji \rangle$ , and the octonions \checkCorrect{$\mathbb{O} = \mathbb{H}\times \mathbb{H}=\langle 1, i, j, k, l: i^2=j^2=k^2=l^2=-1 \rangle$}. \question{def of product $\mathbb{H}\times \mathbb{H}$?} As vector spaces, $\complexnos \simeq \realnos^2$, $\mathbb{H} \simeq \realnos^4$, $\mathbb{O} \simeq \realnos^8$. The \defn{projective spaces} $\complexnos P^n$, $\mathbb{H} P^n$, $\mathbb{O} P^n$ are defined similarly to $\realnos P^n$ (replacing $\realnos$ with the appropriate division algebra), and are also \question{are they all n-dimensional?} smooth manifolds with the \checkCorrect{atlas defined similarly}.
 \question{is quotient topology defined on $HP^n, OP^n$ in the same way? Are they second countable/hausdorff?}
 \question{Is $CP^n$ a complex manifold?}
+
+\subsection{Examples: Grassmanians \checkCorrect{[check spelling]}}
+
 
 \subsection{Examples: manifolds with boundaries.}
 \finish{Manifolds with boundaries (see Lee)}
@@ -87,8 +155,8 @@ A continuous map $U:E\rightarrow E'$ is a \defn{\checkCorrect{(fibre)} bundle mo
 We will work with two types of fibre bundles, namely, vector bundles and principle $G$-bundles. Roughly speaking, in the case of vector bundles, each fibre is isomorphic to $\realnos^k$, whereas for $G$-bundles, the fibres are isomorphic to the Lie group $G$. The notion of a bundle morphism also generalises to both these structures, with some extra conditions to preserve the additional structure. Note that we will use the same terminology `bundle morphism' for morphisms betweeen vector bundles and morphisms between fibre bundles and this will have to be understood from the context. In the case of principle G-bundles, we will always specify `principle bundle morphism'.
 
 \subsection{Examples}
-We can view the torus $T^2=S^1\times S^1$ as a fibre bundle over the base manifold $S^1$. We define the projection $T^2 \xrightarrow{\pi} S^1$ as $\pi(x, y)=x$. Hence a fibre at $p\in S^1$ is $E_p := T^2_p = \pi^{-1}(p) = \{(p, y): y\in S^1\} = \{p\}\times S^1 \cong S^1$. Furthermore, we can define a global trivialisation on this space as follows. Given a point $p\in S^1$, $S^1$ is an open neighbourhood of $p$ \question{WHY? in subspace topology of $R^2$??}, and $\psi:T^2=\pi^{-1}(\{p\}\times S^1)\to S^1 \times S^1$ given by $\psi(x, y)=(x, y)$. Hence $T^2 \xrightarrow{\pi} S^1$ is a trivial bundle $T^2\cong S^1\times S^1$. 
-\finish{draw a picture of the torus sitting over $S^1$.} \question{Is this an example of a hopf fibration? If yes, why and what is a hopf fibration formally?}
+We can view the torus $T^2=S^1\times S^1$ as a fibre bundle over the base manifold $S^1$. We define the projection $T^2 \xrightarrow{\pi} S^1$ as $\pi(x, y)=x$. Hence a fibre at $p\in S^1$ is $E_p := T^2_p = \pi^{-1}(p) = \{(p, y): y\in S^1\} = \{p\}\times S^1 \cong S^1$. Furthermore, we can define a global trivialisation on this space as follows. Given a point $p\in S^1$, $S^1$ is an open neighbourhood of $p$ \question{WHY? in subspace topology of $R^2$?? Answer: no, open in the base $S^1$ itself, which is endowed with subspace topology of $R^2$}, and $\psi:T^2=\pi^{-1}(\{p\}\times S^1)\to S^1 \times S^1$ given by $\psi(x, y)=(x, y)$. Hence $T^2 \xrightarrow{\pi} S^1$ is a trivial bundle $T^2\cong S^1\times S^1$. 
+\finish{draw a picture of the torus sitting over $S^1$.} \question{Is this an example of a hopf fibration? If yes, why and what is a hopf fibration formally? Answer: No...ignore.}
 \finish{move stuff on local and global trivialisations to fibre bundle section for more generality and for above example to make sense?}
 
 Mobius band (see sinha youtube + milnor ch2)
@@ -151,7 +219,7 @@ In particular a \defn{tangent vector} $X_p:C^\infty (M)\to \realnos \in T_p M$ s
  \finish{Other def of tangent vectors?}
 
 Given a chart $(U, \phi)$ of $M$, we can write $\phi = (x^1, \ldots, x^n)$, where $x^i := \pi^i\circ \phi$, and $\pi^i:\realnos^n \to \realnos$ is the canonical projection. We obtain a basis $\{\frac{\partial}{\partial{x^i}} \vert_p\}_{i=1,\ldots, n}$ 
-of $T_p M$, where we define $\frac{\partial}{\partial{x^i}} \vert_p f := \frac{\partial}{\partial{\pi^i}}\vert_p f\circ \phi^{-1}$. Note in particular that 
+of $T_p M$, where we define $\frac{\partial}{\partial{x^i}} \vert_p f := \frac{\partial}{\partial{\pi^i}}\vert_{\phi (p)} f\circ \phi^{-1}$. Note in particular that 
 $\mathtt{dim} (T_p M) = n$ where 
 $n$ is the dimension of $M$. \finish{Write coordinate formula for applying differential?}
 
@@ -174,7 +242,7 @@ Note that if in particular, we cannot find $k$ non-vanishing sections in a vecto
 \finish{[See later: G-bundles can have vanishing sections with corresponding global trivs --- true?? --check.].}
 
 A \defn{vector field} is a section of the tangent bundle $TM$. The $C^\infty (M)$ module of vector fields is denoted $\mathfrak{X}:=\Gamma(TM)$.
-\question{Q: is there a name for sections of general vector bundle (like is it called a tensor field or something)?} \question{Are there any results on conditions on the base manifold of a space for when the tangent bundle gives a global trivialisation?} 
+\question{Q: is there a name for sections of general vector bundle. ANSWER: NO. (like is it called a tensor field or something)?} \question{Are there any results on conditions on the base manifold of a space for when the tangent bundle gives a global trivialisation? } ANSWER: yes, see parallelizable manifolds.
 
 \subsection{Bundle morphisms} 
 
