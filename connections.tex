@@ -49,7 +49,19 @@ One can show that given any two local frames $f, f'$ of $E$ over $U$, there alwa
 Given a local frame $f=(e_1,\ldots, e_r)$ we may express a section $s\in \Gamma(U, E)$ locally as
 $$s=\sum_{i=1}^r s^i(f)e_i$$
 for some unique $s^i(f)\in \smoothCmaps$ ($i=1,\ldots, r$), and we define 
-$$s(f):= \begin{pmatrix}s^1(f) \\ \vdots \\ s^r(f)\end{pmatrix}$$
+$$s(f):= \begin{pmatrix}s^1(f) \\ \vdots \\ s^r(f)\end{pmatrix} \in \smoothCmaps^r$$
+Hence locally we have shown that $\Gamma(E, U) \simeq \smoothCmaps^r$.
+
+We can view this same fact in terms of local trivialisations.  Let $\psi: E\vert_U \to U\times \complexnos^r$ be a local trivialisation (which we can assume is associated with the frame $f$,  but the following holds in more generality also).  Then we may write
+\begin{align*}
+\Gamma(E, U) & \simeq \smoothCmaps^r \\
+s & \mapsto \psi\circ s = (s^1, \ldots,  s^r)
+\end{align*}
+for $s^i\in \smoothCmaps$.  
+The last equality holds since $\psi\circ s$ is a section of $U\times \complexnos^r$,
+\explainFurther{WHY?} 
+\checkCorrect{ARE we saying that the bundles are essentially $\psi$-related, which is why composition is also a section?}
+and $\Gamma(U\times \complexnos^r)$ are essentially smooth maps $U\to \complexnos^r$ [GO OVER WHY], which by taking components is the same as $r$ smooth maps,  i.e.  $\smoothCmaps^r$.  
 
 Suppose $g:U\to GL_r(\complexnos)$ is a change of frame mapping, so that $f'=fg$ is another local frame. Then we obtain the following transformation law $s(f')=s(fg)=g^{-1}s(f)$, or in other words
 $$gs(f')=s(f)$$
@@ -84,20 +96,82 @@ Furthermore, if $g:U\to GL_r(\complexnos)$ is a change of frame mapping with $f'
 $$h(f')=\overline{g^T}h(f)g$$
 for the local representation of $h$ with respect to the frames $f, f'$.
 
+\subsubsection{Tensors and bundle morphisms}
+\checkCorrect{CHECK correctness of this section. ..every line. Compare with Ivan notes also, and some reference (perhaps LEE). REWRITE THIS SECTION}
+
+Let $E,  E'$ be two vector bundles over the same base space $M$,  and $L:\Gamma(E)\to \Gamma(E')$ a smooth map.  \checkCorrect{(CHECK IF SMOOTH REQUIRED)}
+
+First recall that 
+$\Gamma(E^\ast \otimes E') \simeq Hom(E, E')$.  We can see this pointwise as $V^\ast \otimes V' \simeq Hom(V, V')$ [CHECK/PROVE if true].
+
+We say that $L$ is  \defn{tensorial} if $L_x(fs)=f L_x s$, for $f\in C^\infty(M), s\in Gamma(E), x\in M$.  For example vector fields and ... are tensorial  \checkCorrect{CHECK}. .
+However connections and (lie brackets?) in general are 
+not tensorial since they are operators of the form $L_x(fs)=f L_x s + Xf\cdot s$ \checkCorrect{CHECK}. 
+
+(However one may show that any two connections differ by a tensorial map,  which we will see allows us to express connections locally,  in terms of such an operator). 
+
+Note that a map $l\in \Gamma(E^\ast E') \simeq Hom(E,E')$ induces a map $L:Gamma(E)\to \Gamma(E')$, \checkCorrect{[HOW? CHECK, REWRITE PROPERLY]}.  Conversely if $L$ is tensorial then we get that it is a map in $Hom(E, E')$ by $(Ls)(x)=L(x)s(x)$. 
+
 \subsubsection{Differential forms with vector coefficients}
 Define $\bigwedge^p_\complexnos(T^\ast M):=\bigwedge^p (T^\ast M)\otimes \complexnos$, i.e.\ the complexification of $\bigwedge^p_\realnos(T^\ast M)$. Note that we can express the elements of $\Omega^p_\complexnos(M)=\Gamma(\bigwedge^p_\complexnos(T^\ast M))$ as $\omega+i\eta \in \Omega^p_\complexnos(M)$ for $\omega, \eta \in \bigwedge^p_\realnos(T^\ast M)$, and $i$ the imaginary unit. 
 
-We define the differential $p$-forms with coeffecients in $E$ as 
+We define the differential $p$-forms with coefficients in $E$ as 
 \begin{align*}
 \Omega^p(M, E) & :=\Gamma(M, \bigwedge {}^p_\complexnos(T^\ast M) \otimes_\complexnos E) \\
 & \simeq Hom(\bigwedge {}^p_\realnos (TM), E)
 \end{align*}
-\understandBetter{UNDERSTAND THE ISO PROPERLY!}
+\understandBetter{UNDERSTAND THE ISO PROPERLY! Check $R$ vs $C$}
 In other words the elements $\omega\in \Omega^p(M, E)$ at a point $x\in M$ are skew-symmetric multilinear forms 
 $$\omega_x:\underbrace{T_xM\times T_xM\times \ldots T_xM}_{p \text{ times}} \to E_x$$
 assigning a vector in the fibre $E_x$ to the $p$-tuples of tangent vectors at $x$. 
 
-\subsubsection{Connections}
+Note in particular that 
+$$\Omega^0(M, E) = \Gamma(E)$$
+$$\Omega^1(M, E) = \Gamma(T^\ast M \otimes E) \simeq Hom(TM, E)$$
+\understandBetter{GO OVER LAST ISO PROPERLY. ... bundle morphisms.}
+
+Note that locally (over $U$),  $0$-forms with coefficients in $E$ are local sections $s\in \Gamma(E, U)$ and hence can be expressed as an $r$-tuple of smooth maps $s=s(f)\in \smoothCmaps^r$ once a frame $f$ is fixed (or alternatively a local trivialisation is chosen),  as seen previously.  
+
+Moreover,  $1$-forms with coefficients in $E$ can be expressed locally (over $U$) as an $r$-tuple of one forms.  \explainFurther{Let us explain this formally. }
+
+\subsection{Connections}
+There are a few different ways to view connections.
+
+A \defn{connection} is a \checkCorrect{$\complexnos$-linear map} $\nabla : \Gamma(E)\to \Gamma(T^\ast M\otimes E)$ such that $\nabla(fs)=df \otimes s + f\nabla s$ for all $f\in C^\infty(M), s\in \Gamma(E)$.   
+
+Notice that we could have equivalently expressed the connection as $\nabla:\Omega^0(M, E)\to \Omega^1(M, E)$ in the language of differential $p$-forms with coefficients in $E$.  This approach will be used later to generalise differentiation to higher order forms. 
+
+An example is when $E=M\times \complexnos$ is the trivial bundle,  then we may take ordinary exterior differentiation  $d:\Omega^0(M)\to \Omega^1(M)$ as a connection on $E$.  \understandBetter{REWRITE AND EXPLIAN PARA}
+
+\explainFurther{WRITE MORE WITH EXAMPLES. SEE IVAN NOTES}
+
+\subsubsection{Local expression of Connections}
+Let $E\to M$ be a vector bundle with a connection $\nabla$.  Let $f=(e_1, \ldots, e_r)$ be a frame over $U$.  We can write the connection locally with respect to the frame as
+$$\nabla e_j = \sum_{i=1}^r A_{ij}(\nabla, f)\cdot e_i \in \Gamma(T^*M\otimes U)$$
+for some $A_{ij}:=A_{ij}(\nabla, f) \in \Omega_\complexnos^1(U)$.  Hence $A\in M_r(\Omega_\complexnos^1(U))$ is a matrix of complex-valued one forms on $U$. 
+\checkCorrect{[GO OVER AND UNDERSTAND THE CODOMAINS THESE LIE IN!]}
+
+Let us use this expression to find a local formula for $\nabla s$,  for an arbitrary section $s\in \Gamma(E, U)$.
+Recall we can write $s$ locally as $s=(s^1, \ldots,  s^r)$,  for $s^i\in \smoothCmaps$,  with respect to the local frame $f=(e_1, \ldots e_r)$ (or equivalently a local trivialisation $\psi$).  Then
+\begin{align*}
+\nabla s & = \nabla (\sum_{i=1}^r s^i e_i) \\
+& = \sum_{i=1}^r (d s^i \otimes e_i + s^i \nabla e_i) \\
+& = \sum_{i=1}^r (d s^i \otimes e_i + s^i (\sum_{k=1}^r A_{ki}\cdot e_k )) \\
+& = \sum_{i=1}^r (d s^i + \sum_{j=1}^r s^j A_{ij})\cdot e_i 
+\end{align*}
+\checkCorrect{[SHOULD I USE otimes notation OR dot notation? -- understand/ go over]}
+whence we have (in terms of matrix multiplication) that 
+$\nabla s = \sum_{i=1}^r (d s(f) + As(f))\cdot e_i$
+or in other words
+\begin{align*}
+\nabla s & = ds + As \\ 
+& = \begin{pmatrix}ds^1 \\ \vdots \\ ds^r\end{pmatrix} + \finish{[WRITE,  A,  MATRIX TIMES,  s]}
+\end{align*}
+or in short we write
+$$\nabla = d + A$$
+\explainFurther{(and think of this as an op acting on vector valued functions) - rewrite}
+
+[REWRITE SECTION WITH IVAN PERSPECTIVE ALSO]
 
 \section*{References}
 \begin{enumerate}
