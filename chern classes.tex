@@ -1,0 +1,638 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsthm, amsmath, latexsym, amssymb}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage[dvipsnames]{xcolor}
+
+\theoremstyle{definition} \newtheorem*{definition}{Definition}
+\theoremstyle{definition} \newtheorem*{definitions}{Definitions}
+\theoremstyle{plain} \newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain} \newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{plain} \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{plain} \newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{plain} \newtheorem{example}[theorem]{Example}
+
+\newcommand{\checkCorrect}[1]{\textcolor{red}{#1}}
+\newcommand{\understandBetter}[1]{\textcolor{orange}{#1}}
+\newcommand{\question}[1]{\textcolor{orange}{#1}}
+\newcommand{\explainFurther}[1]{\textcolor{blue}{#1}}
+\newcommand{\finish}[1]{\textcolor{green}{#1}}
+
+\newcommand{\defn}[1]{\textbf{#1}}
+\newcommand{\realnos}{\mathbb{R}}
+\newcommand{\complexnos}{\mathbb{C}}
+\newcommand{\canonicaliso}{\cong}
+\newcommand{\id}{\mathtt{id}}
+\newcommand{\smoothCmaps}{C^\infty (U, \complexnos)}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\smooth}{C^\infty}
+
+\begin{document}
+\title{Chern Classes}
+\author{Vatsal Kanoria}
+\date{2023}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+We begin by recalling some important facts from differential geometry. Point-set topology and familiarity with these notions are assumed.
+\finish{REWRITE INTRO}
+
+\section{Manifolds}
+
+\subsubsection{Smooth Manifolds}
+
+A (smooth) $n$-dimensional \defn{manifold} $M$ is a second countable, Hausdorff space with a smooth maximal atlas. An \defn{atlas} consists of a collection of charts, that is, an open cover $U_\alpha$ ($\alpha\in I$, $I$ \checkCorrect{finite} index set) of $M$ and homeomorphims $\phi_\alpha:U_\alpha \to \phi_\alpha(U_\alpha) \subseteq k^n$, such that the \defn{transition maps} $\phi_\alpha \circ \phi_\beta^{-1}$ are smooth (on $\phi_\beta(U_\alpha \cap U_\beta)\subseteq k^n$) for all $\alpha, \beta\in I$. Generally we set $k=\realnos$ and assume that our manifolds are smooth and \checkCorrect{without boundary}, unless otherwise specified. 
+
+\understandBetter{Note that every atlas uniquely gives rise to a maximal atlas, so it will generally be sufficient to define any convenient atlas on a given manifold.} Recall also the non-trivial fact that the dimension of a manifold is a topological invariant (in other words given two charts $\phi$, $\tilde{\phi}$ of $M$ with $\mathtt{im}(\phi)\subseteq \realnos^m$, $\mathtt{im}(\tilde{\phi})\subseteq \realnos^n$, we have $m=n$). \question{Is this true? In milnor seems to allow locally constant function as dimension, and terms this kind of vector bundle as a special case, i.e. an $R^n$-bundle!?} It is also easy to show that the coordinate maps $\phi_\alpha$ are not only homeomorphisms but also diffeomorphisms. \question{Do these statements also hold for complex manifolds/manifolds with boundary etc.?}
+
+\understandBetter{In certain cases, we will require our manifold to be a \defn{complex manifold} in which case $k=\complexnos$, and transition maps will be required to be \understandBetter{holomorphic}.}
+\explainFurther{Say more on this?}
+
+A manifold has a \defn{boundary} if some of its charts are \defn{boundary charts}. That is, a boundary chart $\phi:U\to \phi(U)\subseteq \mathbb{H}^n$ takes values in the closed upper half space $\mathbb{H}^n := \{(x_1, \ldots, x_n): x_i\geq 0, \forall i\}$ (so that $\partial \mathbb{H}^n \cap \phi(U)$ is non-empty, where $\partial \mathbb{H}^n := \{(x_1, \ldots, x_n): x_n=0\}$). Note that $\mathbb{H}^0 = \{0\}$ and $\partial \mathbb{H}^0 = \{\}$ by definition. The remaining charts $\phi:U\to \phi(U)\subseteq \realnos^n$ are called \defn{interior charts}. The \defn{interior} of a manifold $M$ are the points that come from an interior chart, $\texttt{Int} M := \{p\in M: \exists \textrm{interior chart } \phi:U\to \phi(U)\subseteq \realnos^n, p\in U \}$. The \defn{boundary} of $M$ are the points that come from a boundary chart, $\partial M:=\{p\in M: \exists \textrm{boundary chart } \phi:U\to \phi(U)\subseteq \mathbb{H}^n, p\in U \textrm{ and } \phi(p)\in \partial \mathbb{H}^n \}$. \checkCorrect{Confusingly, the boundary of a manifold is not the same as its topological boundary in general}. It is non-trivial to show that $M$ can be decomposed into a disjoint union of its interior and boundary, $M = \mathtt{Int} \ M \mathbin{\dot{\cup}} \partial M$, hence every point of $M$ is either an interior point or exclusively, a boundary point.
+
+\subsubsection{Examples: new manifolds from old.}
+
+Subsets of $R^n$?? Quotient spaces.
+topology on $T^2$, $S^n$...smooth manifolds.
+
+\subsubsection{Examples: Spheres}
+
+On the circle $S^1:=\{(x, y): x^2+y^2 = 1\}\subseteq \realnos^2$, we can define an atlas \question{What is this kind of projection called?} $\mathfrak{A}_1 :=\cup_{i=1}^4 U_i$ given by 
+\begin{align*}
+&& U_1 = S^1 \cap \{(x, y): x>0 \} \\
+\phi_1 & : U_1\to \realnos &
+\phi_1^{-1} & :(-1, 1)\to U_1 \\
+& (x,y) \xmapsto{\phi_1} x 
+& & x \xmapsto{\phi_1^{-1}} (x, \sqrt{1-x^2})
+\end{align*}
+\begin{align*}
+&& U_2 = S^1 \cap \{(x, y): x<0 \} \\
+\phi_2 & : U_2\to \realnos &
+\phi_2^{-1} & :(-1, 1)\to U_2 \\
+& (x,y) \xmapsto{\phi_2} x 
+& & x \xmapsto{\phi_2^{-1}} (x, - \sqrt{1-x^2})
+\end{align*}
+\begin{align*}
+&& U_3 = S^1 \cap \{(x, y): y>0 \} \\
+\phi_3 & : U_3\to \realnos &
+\phi_3^{-1} & :(-1, 1)\to U_3 \\
+& (x,y) \xmapsto{\phi_3} y
+& & y \xmapsto{\phi_3^{-1}} (\sqrt{1-y^2}, y)
+\end{align*}
+\begin{align*}
+&& U_4 = S^1 \cap \{(x, y): y<0 \} \\
+\phi_4 & : U_4\to \realnos &
+\phi_4^{-1} & :(-1, 1)\to U_4 \\
+& (x,y) \xmapsto{\phi_4} y
+& & y \xmapsto{\phi_4^{-1}} (- \sqrt{1-y^2}, y)
+\end{align*}
+and with transition functions given by (noting that $\phi_i(U_i\cap U_j) = (0, 1) \text{ or } (-1, 0)$), 
+\begin{align*}
+\phi_3 \circ \phi_1^{-1} & :\phi_1(U_1\cap U_3)\to \phi_3(U_1 \cap U_3) \\
+\phi_3 \circ \phi_1^{-1} & : (0,1) \to (0,1) \\
+& : x \xmapsto{\phi_1^{-1}} (x, \sqrt{1-x^2}) \xmapsto{\phi_3} \sqrt{1-x^2}
+\end{align*}
+\begin{align*}
+\phi_1 \circ \phi_3^{-1} & : (0,1) \to (0,1) \\
+& : y \xmapsto{\phi_1 \circ \phi_3^{-1}}  \sqrt{1-y^2}
+\end{align*}
+\begin{align*}
+\phi_1 \circ \phi_4^{-1} & : (-1,0) \to (0,1) \\
+& : y \mapsto -\sqrt{1-y^2}
+\end{align*}
+\begin{align*}
+\phi_4 \circ \phi_1^{-1} & : (0,1) \to (-1, 0) \\
+& : x \mapsto \sqrt{1-x^2}
+\end{align*}
+\begin{align*}
+\phi_2 \circ \phi_3^{-1} & : (0,1) \to (-1, 0) \\
+& : y \mapsto \sqrt{1-y^2}
+\end{align*}
+\begin{align*}
+\phi_3 \circ \phi_2^{-1} & : (-1,0) \to (0,1)\\
+& : x \mapsto -\sqrt{1-x^2}
+\end{align*}
+\begin{align*}
+\phi_2 \circ \phi_4^{-1} & : (-1,0) \to (-1,0)\\
+& : y \mapsto -\sqrt{1-y^2}
+\end{align*}
+\begin{align*}
+\phi_4 \circ \phi_2^{-1} & : (-1,0) \to (-1,0)\\
+& : x \mapsto -\sqrt{1-x^2}
+\end{align*}
+
+\subsubsection{Examples: Projective space.}
+
+\question{Is $\realnos^{n+1}\setminus \{0\}$ endowed with subspace topology of $\realnos^{n+1}$?}
+\defn{Real projective space} $\realnos P^n := \frac{\realnos^{n+1}\setminus \{0\}}{\sim}$ is the quotient space of $\realnos^{n+1}\setminus \{0\}$ under the relation $x\sim y \iff \exists \lambda \in \realnos \setminus \{0\} : \lambda x=y$. We write the equivalence class of $(x_1, \ldots, x_{n+1})\in \realnos^{n+1}$ as $[x_1, \ldots, x_{n+1}]\in \realnos P^n$. (In other words, under the quotient map $q:\realnos^{n+1}\setminus \{0\}\to \realnos P^n$, $[x_1, \ldots, x_{n+1}]:=q(x_1, \ldots, x_{n+1})$ and recall $U \subseteq \realnos P^n \textrm{ open} \iff q^{-1}(U) \subseteq \realnos^{n+1}\setminus \{0\} \textrm{ open}$.) This is an $n$-dimensional smooth manifold with atlas $\{(U_i, \phi_i)\}_{i=1, \ldots, n+1}$ given by $U_i=\{[x_1, \ldots, x_{n+1}]: x_i\neq 0\}$ and $\phi_i([x_1, \ldots, x_{n+1}])=(\frac{x_1}{x_i}, \ldots , \frac{x_{i-1}}{x_i}, \frac{x_{i+1}}{x_i}, \ldots, \frac{x_{n+1}}{x_i})\in \realnos^n$. \checkCorrect{Note that $q^{-1}(U_i)^C=\realnos^n$ is a closed hyperplane in $\realnos^{n+1}\setminus \{0\}$, hence the complement $q^{-1}(U_i)$ is the union of two hyperspaces $(\realnos^{n+1})^+$,$(\realnos^{n+1})^-$, which is open in $\realnos^{n+1}\setminus \{0\}$}, hence $U_i$ is open in $\realnos P^n$, and one can also show $\phi_i$ are indeed homeomorphisms. \finish{Appendix: show $\phi_i$ homeos?} Note it is easy to see that the inverse of $\phi_i$ is given by $\phi_i^{-1}(a_1, \ldots, a_n)=[a_1, \ldots, a_{i-1}, 1, a_{i}, \ldots, a_n]$ (since $[a_1, \ldots, a_{i-1}, 1, a_{i}, \ldots, a_n]=[\lambda a_1, \ldots, \lambda a_{i-1}, \lambda, \lambda a_{i}, \ldots, \lambda a_n]$, and can \checkCorrect{set $\lambda=x_i$ accordingly}). It is also easy to show that the transition maps $\phi_i\circ \phi_j^{-1}$ are smooth. \finish{appendix: show this}
+
+\finish{Note that $RP^1 \cong S^1$. check and explain.} \question{generalisation? do we get some similar isos to spheres for projective space over $\complexnos$ etc.?} (This is all the hopf fibrations...see in that section)
+
+ Recall the following division algebras: the complex numbers $\complexnos = \langle 1, i: i^2=-1 \rangle$, the quaternions $\mathbb{H} = \langle 1, i, j, k: i^2=j^2=k^2=-1, ij=k=-ji \rangle$ , and the octonions \checkCorrect{$\mathbb{O} = \mathbb{H}\times \mathbb{H}=\langle 1, i, j, k, l: i^2=j^2=k^2=l^2=-1 \rangle$}. \question{def of product $\mathbb{H}\times \mathbb{H}$?} As vector spaces, $\complexnos \simeq \realnos^2$, $\mathbb{H} \simeq \realnos^4$, $\mathbb{O} \simeq \realnos^8$. The \defn{projective spaces} $\complexnos P^n$, $\mathbb{H} P^n$, $\mathbb{O} P^n$ are defined similarly to $\realnos P^n$ (replacing $\realnos$ with the appropriate division algebra), and are also \question{are they all n-dimensional?} smooth manifolds with the \checkCorrect{atlas defined similarly}.
+\question{is quotient topology defined on $HP^n, OP^n$ in the same way? Are they second countable/hausdorff?}
+\question{Is $CP^n$ a complex manifold?}
+
+\subsubsection{Examples: Grassmanians \checkCorrect{[check spelling]}}
+
+
+\subsubsection{Examples: manifolds with boundaries.}
+\finish{Manifolds with boundaries (see Lee)}
+
+\subsubsection{Riemannian Manifolds}
+A \defn{Riemannian manifold} is a smooth manifold $M$ with a \checkCorrect{smooth map $g:p\mapsto g_p$, $p\in M$}, \question{is smooth over all of M or just an open subset?} called a \defn{Riemannian metric}, where $g_p:T_pM\times T_pM\to \realnos$ is an inner product (i.e.\ a symmetric, positive-definite, bilinear form).
+Note that it is always possible to find a Riemannian metric on any smooth manifold.
+
+Given a chart $(U, x^1, \ldots, x^n)$ of $M$, $g$ is smooth is \checkCorrect{equivalent} \question{[is it iff or only in one direction?]} to saying that $g_{ij}:=g(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j}):U\to \realnos$ is smooth $\forall i,j=1,\ldots, n$. Note $g_{ij}(p):=g_p(\frac{\partial}{\partial x^i}\vert_p, \frac{\partial}{\partial x^j}\vert_p) \in \realnos$ and we will make use of the shorthand notation $\partial_i:=\frac{\partial}{\partial x^i}$. We can now view $(g_{ij})$ as an $n^2$ matrix in $M_n(C^\infty (U))$, and since at each point $p$, $g_p$ is an inner product (so symmetric and positive definite) this also implies the matrix $(g_{ij})$ is symmetric and \checkCorrect{positive, and also in particular is non-degenerate, thus invertible.} \finish{Explain why the inverse exists more precisely!}
+
+Since $(g_{ij}(p))$ is an invertible matrix over $\realnos$, we write its inverse as $(g^{kl}(p))$, and recall matrix multiplication of a matrix with its inverse gives us the following \checkCorrect{\defn{`contraction'}}
+$\sum_j g_{ij}(p)g^{jk}(p)=\delta_i^k(p)$ (where $\delta_i^k\in C^\infty(U)$ such that $\delta_i^k(p)=1$ if $i=k$ or $0$ otherwise). In other words, as smooth functions over $U$ we have $\sum_j g_{ij}g^{jk}=\delta_i^k$. 
+
+Recall also that the vector space of bilinear forms on $V$ can be canonically identified with $V^\ast \otimes V^\ast$, by the map $\eta\otimes \psi \mapsto ((v,w)\mapsto \eta(v)\psi(w))$ \finish{PROVE}. Since $dx^i\vert_p\otimes dx^j\vert_p$, $i,j=1,\ldots, n$, is a basis of $T_pM^\ast \otimes T_pM^\ast$, we can write the bilinear form $g_p=\sum_{i,j} g_{ij}(p)dx^i\vert_p \otimes dx^j\vert_p$, for some $g_{ij}(p)\in \realnos$ as an element of $T_pM^\ast \otimes T_pM^\ast$ under the identification. \checkCorrect{Furthermore it is easy to show, that the coefficients $g_{ij}(p)\in \realnos$ in this expression agrees with the previous definition $g_{ij}(p)=g_p(\frac{\partial}{\partial x^i}\vert_p, \frac{\partial}{\partial x^j}\vert_p)$ under this identification \finish{SHOW}.} Further, this all makes sense if we forget the point dependency, and may write (within a local chart), $g=\sum_{i,j}g_{ij} dx^i\otimes dx^j$. \question{Does symmetry of bilinear form allow us to compress this further, using symmetric product of forms? See Lee, Riem Manifolds.} 
+\finish{Define norm, isometry}
+
+\subsubsection{Complex manifolds}
+\finish{[WRITE UP!!]}
+
+\section{Bundles and Sections}
+
+\subsubsection{Fibre Bundles}
+
+A \defn{fibre bundle} consists of three topological spaces $E, B, F$, and a continuous surjection $\pi:E\rightarrow B$ (called the \defn{projection}), such that \defn{`local trivialisations'} exist (i.e. for every $p\in B$, there exists a neighbourhood $U_p\subseteq B$ of $p$ and a homeomorphism $\psi: \pi^{-1}(U_p) \rightarrow U_p \times F$, such that $\pi \vert_{\pi^{-1}(U_p)} = \pi_1 \circ \psi$ where $\pi_1$ is the projection on to the first component). $E$ is called the \defn{total space}, $B$ the \defn{base space}, $F$ the \defn{typical fibre}, and $E_p:=\pi^{-1}(p)$ the \defn{fibre} over $p$. As a shorthand we may denote a fibre bundle as $F\hookrightarrow E\xrightarrow{\pi} B$.
+
+\finish{PUT IN A COMMUTATIVE DIAGRAM/PICTURE FOR LOCAL TRIVS? -- DO THIS FOR VECTOR BUNDLE CASE. SHOULD I MAKE OBSERVATION ABOUT LOCAL TRIVS AT A POINT, OR ONLY FOR VECTOR BUNDLES?}
+
+A continuous map $U:E\rightarrow E'$ is a \defn{\checkCorrect{(fibre)} bundle morphism} between two fibre bundles $E\xrightarrow{\pi} B$ and $E'\xrightarrow{\pi'} B'$ \checkCorrect{with the same typical fibre $F$}, if there exists a map $u:B\rightarrow B'$ such that $\pi' \circ U = u \circ \pi$
+
+\finish{PUT IN COMMUTATIVE DIAGRAM.}
+
+\checkCorrect{What is difference between fibre bundle morphism, vector bunlde morphism - (such that the restricted map $u\vert_{E_p}: E_p \rightarrow E_{f(p)}$ is linear for each $p\in B$??. Do I need to distinguish these??}
+
+\finish{Define Bundle iso. smooth bundle iso. etc. (see Lee.)}
+
+We will work with two types of fibre bundles, namely, vector bundles and principle $G$-bundles. Roughly speaking, in the case of vector bundles, each fibre is isomorphic to $\realnos^k$, whereas for $G$-bundles, the fibres are isomorphic to the Lie group $G$. The notion of a bundle morphism also generalises to both these structures, with some extra conditions to preserve the additional structure. Note that we will use the same terminology `bundle morphism' for morphisms betweeen vector bundles and morphisms between fibre bundles and this will have to be understood from the context. In the case of principle G-bundles, we will always specify `principle bundle morphism'.
+
+\subsection{Examples}
+We can view the torus $T^2=S^1\times S^1$ as a fibre bundle over the base manifold $S^1$. We define the projection $T^2 \xrightarrow{\pi} S^1$ as $\pi(x, y)=x$. Hence a fibre at $p\in S^1$ is $E_p := T^2_p = \pi^{-1}(p) = \{(p, y): y\in S^1\} = \{p\}\times S^1 \cong S^1$. Furthermore, we can define a global trivialisation on this space as follows. Given a point $p\in S^1$, $S^1$ is an open neighbourhood of $p$ \question{WHY? in subspace topology of $R^2$?? Answer: no, open in the base $S^1$ itself, which is endowed with subspace topology of $R^2$}, and $\psi:T^2=\pi^{-1}(\{p\}\times S^1)\to S^1 \times S^1$ given by $\psi(x, y)=(x, y)$. Hence $T^2 \xrightarrow{\pi} S^1$ is a trivial bundle $T^2\cong S^1\times S^1$. 
+\finish{draw a picture of the torus sitting over $S^1$.} \question{Is this an example of a hopf fibration? If yes, why and what is a hopf fibration formally? Answer: No...ignore.}
+\finish{move stuff on local and global trivialisations to fibre bundle section for more generality and for above example to make sense?}
+
+Mobius band (see sinha youtube + milnor ch2)
+
+Double twisted mobius band (see sinha youtube)
+
+Hopf line over $CP^1$. 
+Hopf line bundle. 
+line bundle on $RP^1$ isomorphic to $S^1$. 
+
+\subsection{Examples: Hopf fibrations.}
+\understandBetter{(Hopf invarient is invarient of homotopy group).}
+The 4 hopf fibrations from the division algebras R, C, H, O.
+double cover of $S^1$ (figure 8). 
+$\mathbb{Z}^2 = S^0 \to S^1 \xrightarrow{2:1} S^1$; note last $S^1$ comes from $RP^1$, middle one is boundary of mobius strip;; twisted fibration, so non trivial.
+$(S^1\to) S^3$ over $S^2$; ($S^2$ comes from $CP^1$. $S^3$ all lines in $C^2 - \{0\}$).
+(gives homotopy groups of spheres. (homotopy group is equivalence class of loops in a space -- throw a loop (sphere) into space and can you catch something with it))
+
+ Consider $E:=S^1=\{(x,y)\in \realnos^2:x^2+y^2=1\}$. We obtain a fibre bundle $S^1\xrightarrow{\pi} \realnos P^1$ with typical fibre $S^0$, and projection $\pi(x, y)=[x, y]$. \checkCorrect{We obtain a global trivialisation $\psi:S^1\to \realnos P^1\times S^0$ given by $p\mapsto ([p], p)$.} \finish{(show it is global triv (homeo), if it is.). (is this correct?? does a global triv exist? why send to $p$ instead of $-p$ in $S^0$? what if we sent to $-p$ instead?). Does this give the double cover vs figure 8 stuff? Need to understand properly.} \checkCorrect{Since we found a homeomorphism $S^1\overset{\psi}{\simeq} \realnos P^1\times S^0$, we can conclude that $\realnos P^1 \simeq \frac{S^1}{S^0}$ \question{why?? true?} (i.e. one dimensional real projective space is the same as the circle with antipodal points identified). \question{why?}} \question{where does the double cover stuff come in?}
+
+Consider $\frac{S^1}{\sim}$ with $p\sim -p \forall p\in S^1$ (i.e. the circle with antipodal points identified). \question{How to consider this as $\frac{S^1}{\mathbb{Z}}$?}
+
+
+Consider $S^3\xrightarrow{\pi} S^2$ with typical fibre $S^1$, where $\pi(x, y, z)=(x, y)$. \finish{We will see later that this is a principle G-bundle}
+
+\subsubsection{Vector Bundles}
+A $k$-dimensional (real, \checkCorrect{smooth}) \defn{vector bundle} is a fibre bundle with typical fibre $\realnos^k$, such that the projection map $E\xrightarrow{\pi} B$ is a smooth surjection of smooth manifolds, and the local trivialisations $\psi:\pi^{-1}(U_p) \rightarrow U_p \times \realnos^k$ are diffeomorphisms. Moreover, the fibres $E_p:=\pi^{-1}(p)$ are required to be $k$-dimensional vector spaces and restricting any local trivialisation $\psi_p:=\psi \vert_{E_p}$ should give a linear isomorphism $\psi_p:\pi^{-1}(p)\rightarrow \{p\} \times \realnos^k \canonicaliso \realnos^k$ at each point $p\in B$. \question{Do we require only a single local triv at each point $p, (U_p)$ in def of fibre bundle, for the notation in last statement to make sense? Or is it because when you restrict, you always get the same iso?...not sure if this is true...see transition functions. Perhaps the notation makes sense up to some transition function.}
+
+Consider two collections of local trivialisations $\{\psi_i \}_i$, $\{\tilde{\psi}_j\}_j$ (defined on $\pi^{-1}(U_i)$, $\pi^{-1}(\tilde{U}_j)$ respectively) 
+for a vector bundle $E\xrightarrow{\pi} B$. Assume $U_i \cap \tilde{U}_j\neq \phi$ and given a 
+point $p\in U_i \cap \tilde{U}_j$, the map $\psi_i \circ \tilde{\psi}_j^{-1}:=(\psi_i)_p \circ (\tilde{\psi}_j^{-1}\vert_{\{p\}\times \realnos^k})$ 
+is a linear isomorphism $\psi_i \circ \tilde{\psi}_j^{-1} : \realnos^k \rightarrow \realnos^k$, 
+which can be seen from the following diagram.
+[DRAW COMM DIAGRAM]
+Hence we can represent $\psi_i \circ \tilde{\psi}_j^{-1}$ by an invertible matrix $(g_{mn})$ \finish{[Write lin alg identification explicitly, \question{choosing standard basis?}]} which depends on the point $p$ (in other words, each entry is a smooth map $g_{mn}\in C^\infty(U_i\cap \tilde{U}_j)$). Whence we obtain a map, called a \defn{transition function}
+$g:U_i\cap \tilde{U}_j\rightarrow \mathrm{GL}_k(\realnos)$ such that $g:p\mapsto (g_{mn}(p))$. \question{How to extend domain of the map g to the whole manifold M, using the full collection of trivialisations? Or do we just do this on a single collection of trivialisations, so i should get rid of the i, j everywhere?} \checkCorrect{The image of $g$ which can be shown to be a subgroup of $\mathrm{GL}_k(\realnos)$ is called the \defn{structure group} of the transition function.} \question{When is it a Lie group? is it always a subgroup?, is it always the same subgroup no matter which trivialisations we choose. How to prove these results if true?} \question{Is it possible to define the structrue group in terms of sections instead of local trivialisations?}
+\question{...[Do this for fibre bundles instead?? make a point for complex vect bundles/euclidean vect bundles etc that $\realnos^k$ can be replaced by $\complexnos^k$ etc. if true]}
+\question{Is there alt def of vector bundles using the tranistion maps instead?}
+
+An \defn{orientation} of an $n$-dimensional \checkCorrect{real?? (does it hold for general v.spaces?)} vector space $V$ is an equivalence class of ordered bases $[e_1, \ldots, e_n]$ under the relation $(e_1, \ldots, e_n)\sim (e_1', \ldots, e_n')$ if and only if \checkCorrect{the change of basis matrix} $(a_{ij})$ (so $e_j=\sum_i a_{ji}e_i'$) has positive determinant $\mathrm{det}(a_{ij})>0$. So to any non-zero vector space we can have exactly two possible orientations $\pm 1$ (corresponding to the two equivalence classes corresponding to the strictly positive and negative determinants). \checkCorrect{Note given two orderings of a basis $\{e_i\}$, with $e_{\sigma(j)}=e_i$ for a permutation $\sigma\in S^n$, have the same orientation if and only if $\mathrm{sign}(\sigma)=1$.} Furthermore an orientation of $+1$ is associated to the standard ordered basis of $\realnos^k$.  
+A vector bundle $E\xrightarrow{\pi} M$ with local trivialisations $\psi_U:\pi^{-1}(U)\to U\times \realnos^k$ is \defn{oriented} if the fibres $\pi^{-1}(p)$ have the same orientation as $\realnos^k$ for every $p \in U$ (in other words the local trivialisations are orientation preserving).\explainFurther{We could equivalently say that a vector bundle is oriented if at each point $p\in U$ of \checkCorrect{any} local frame $s_1, \ldots, s_k\in \Gamma(U, E)$, the basis $s_1(p), \ldots, s_k(p)$ \checkCorrect{has the same} orientation.} 
+\finish{[MOVE ORIENTATION STUFF TO AFTER SECTIONS ETC]} \explainFurther{Note that the structure group of an oriented vector bundle can be restricted to the subgroup $\mathrm{GL}_k(\realnos)^+=\{A\in \mathrm{GL}_k(\realnos): \mathrm{det}(A)>0\}$.} \checkCorrect{check!} 
+
+A \defn{complex vector bundle} has typical fibre $\complexnos^k$. Hence the fibres $E_p$ are $k$-dimensional vector spaces over $\complexnos$. \finish{Note that complex vector bundles are canonically oriented vector bundles since...} Note also that we may have complex vector bundles where the \checkCorrect{total space and} base space are real manifolds \question{Example of this?}.
+
+[MOVE FOLLOWING TWO PARAS TO EXAMPLES-- NEW BUNDLES FROM OLD.]
+
+\question{How to construct a vector bundle in practice by gluing together some specific fibres to give the total space E, and then specifying local trivs or otherwise sections of E? What is the theory behind this?}
+
+Note that given a real vector space $V$ we can construct another real vector space $V^\complexnos := V\otimes_\realnos \complexnos$, \checkCorrect{where $\complexnos$ is considered as a real vector space}. $V^\complexnos$ can be made into a complex vector space by defining complex multiplication $\beta(v\otimes \alpha) = v\otimes (\beta \alpha)$ for $v\in V$, $\alpha, \beta \in \complexnos$. The \checkCorrect{complex} vector space $V^\complexnos$ is called the \defn{complexification} of $V$. Similarly we can obtain a complex vector bundle $E^\complexnos := E\otimes \complexnos$ from a real vector bundle $E$, by complexifying each fibre. \checkCorrect{Note that this is a special case of the tensor product of bundles. \question{How can $\complexnos$ be considered as a vector bundle?}} To be explicit, the fibres of $E^\complexnos$ are given by $(E\otimes \complexnos)_p := E_p\otimes \complexnos$ and \finish{local trivialisations/sections ??? Why is the new bundle a vector bundle?---SEE tensor product of bundles example and if this is just a special case...do the tensor product example first}
+
+Conversely we can obtain a real vector space from a complex vector space by \finish{restriction of scalars. We can obtan a real vector bundle from a complex vector bundle by restricting. (See Milnor for more general restrictions ---check if it specialises to this case)}
+
+\question{[DO ALL FOLLOWING DEFS/RESULTS on VECT BUNDLES HOLD IN SAME WAY on complex vect bundles etc?]}. (Do i need oriented, riemannian, hermitian vector bundle? -- salamon)
+
+Define euclidean vect bundles (and riem manifolds)? (milnor pg21-23)
+
+The \defn{tangent space} $T_p M$ at a point $p\in M$ is  the \explainFurther{algebra of point derivations of $C^\infty (M)$}. \finish{Is product in the algebra composition?}
+In particular a \defn{tangent vector} $X_p:C^\infty (M)\to \realnos \in T_p M$ satisfies the following Liebniz rule $X_p(fg)=f(p)X_p(g) + X_p(f)g(p)$, for $f,g\in C^\infty (M)$. Equivalently we can define a tangent vector at $p\in M$ \explainFurther{as the derivative to a curve $\gamma: (-\epsilon, \epsilon)\to M$ in the manifold with $p\in \gamma (-\epsilon, \epsilon)$}. 
+ \finish{Other def of tangent vectors?}
+
+Given a chart $(U, \phi)$ of $M$, we can write $\phi = (x^1, \ldots, x^n)$, where $x^i := \pi^i\circ \phi$, and $\pi^i:\realnos^n \to \realnos$ is the canonical projection. We obtain a basis $\{\frac{\partial}{\partial{x^i}} \vert_p\}_{i=1,\ldots, n}$ 
+of $T_p M$, where we define $\frac{\partial}{\partial{x^i}} \vert_p f := \frac{\partial}{\partial{\pi^i}}\vert_{\phi (p)} f\circ \phi^{-1}$. Note in particular that 
+$\mathtt{dim} (T_p M) = n$ where 
+$n$ is the dimension of $M$. \finish{Write coordinate formula for applying differential?}
+
+The \defn{tangent bundle} over an $n$-dimensional manifold $M$ is the $n$-dimensional vector bundle $TM:=\cup_p T_p M\xrightarrow{\pi} M$ with $\pi(X_p)=p$ for $X_p\in T_p M$. Note that given a chart $(U, \phi)$ of $M$ with coordinates $\phi =(x_1, \ldots, x_n)$, we obtain a local frame $\{\frac{\partial}{\partial{x^i}}\}_i$ for the tangent bundle, \explainFurther{and the corresponding local trivialisation}. \finish{MOVE TO lower section after global frames are discussed. Perhaps tangent bundle etc. should be an example.}
+
+Go into derivatives/jacobians etc??
+
+A \defn{section} of a vector bundle $E\xrightarrow{\pi} B$ is a smooth map $\sigma:B\rightarrow E$, such that $\pi \circ \sigma=\id_B$ (in other words, $\sigma(p)\in E_p, \forall p\in B$). The set of all sections of a vector bundle $E$ is denoted $\Gamma (E)$ and is a module over smooth functions $C^\infty(M)$. \question{true in complex case, functions into complex nos also?}
+
+Given an open subset $U\subseteq M$, we denote the \checkCorrect{$C^\infty (U)$}-module of sections on $U$ rather than on the whole base manifold, as $\Gamma (U, E)$. A \defn{local frame} for a vector bundle $E$ is a collection of local sections $s_1, s_2, \ldots, s_k\in \Gamma (U, E)$, such that for every $p\in U$, $s_1(p),\ldots, s_k(p)$ is a basis of the fibre $E_p$. \question{Do I need a collection of U that covers M? for a local frame?} Hence we can \understandBetter{smoothly} decompose any section $s\in \Gamma(U, E)$ in terms of a local frame $s(p)=\sum_{i=1}^k f_i(p)s_i(p)$, for some $f_i(p)\in \realnos$, giving us a local expression $s=\sum_{i=1}^k f_i s_i$ for $f_i\in C^\infty(U)$. 
+
+We can identify local trivialisations with local frames. Given a local frame $s_1, \ldots, s_k\in \Gamma(U, E)$, define a local trivialisation $\psi^{-1}:U\times \realnos^k \to \pi^{-1}(U)$ by
+$\psi^{-1}(p, a_1, \ldots, a_k) = \sum_{i=1}^k a_is_i(p)$. \finish{show this is indeed a local triv? - appendix?} Conversely, given a local trivialisation $\psi:\pi^{-1}(U) \to U\times \realnos^k$, define a local frame $s_1,\ldots , s_k\in \Gamma(U, E)$ by $s_i(p)=\psi^{-1} (p, e_i)$, where $e_i = (0, \ldots, 0, 1, 0, \ldots, 0)$ with the $1$ in the $i$'th position. \finish{show this is indeed a local frame? - appendix?}
+
+Furthermore a \defn{global frame} (i.e. a set of sections $s_1, \ldots s_k\in \Gamma(E)$ which form a basis at each point $p\in B$) corresponds to a \defn{global trivialisation} $\psi:E \to M\times \realnos^k$ \finish{[Milnor, T2.2]}. If such a global trivialisation exists, we write $E\cong M\times \realnos^k$ (noting that global trivialisations are diffeomorphisms) and say that $E$ is the \defn{trivial vector bundle} of dimension $k$. 
+Note that if in particular, we cannot find $k$ non-vanishing sections in a vector bundle (in which case we cannot find $k$ linearly independent vectors in $E_p$ at every point $p\in B$), then a global frame does not exist, hence the vector bundle is non-trivial.  
+
+\finish{[See later: G-bundles can have vanishing sections with corresponding global trivs --- true?? --check.].}
+
+A \defn{vector field} is a section of the tangent bundle $TM$. The $C^\infty (M)$ module of vector fields is denoted $\mathfrak{X}(M):=\Gamma(TM)$.
+\question{Q: is there a name for sections of general vector bundle. ANSWER: NO. (like is it called a tensor field or something)?} \question{Are there any results on conditions on the base manifold of a space for when the tangent bundle gives a global trivialisation? } ANSWER: yes, see parallelizable manifolds.
+
+\subsection{Complex Bundles}
+
+We will adopt the following notation throughout this section. Let $E\to M$ be a $\complexnos$-vector bundle over a smooth manifold of rank $r$.
+Let $f=(e_1,\ldots, e_r)$ be a local frame of the bundle over some open neighbourhood $U\subseteq M$. (Hence $e_j\in \Gamma(U, E)$ are linearly independent at each $p\in U$).
+
+\subsubsection{Local frames}
+A smooth map $g:U\to GL_r(\complexnos)$ is called a \defn{change of frame mapping}, since $fg$ is another local frame on $U$ given by 
+$$fg=(\sum_{k=1}^r g_{k1}e_k,\ldots, \sum_{k=1}^r g_{kr}e_k)$$
+noting that $g_{kj}\in \smoothCmaps$. We may also express this in terms of matrix multiplication as $(fg)(p):=f(x)g(x)$. Note if we wrote $f$ as a column vector instead of a row vector then we would write $gf$ instead of $fg$.
+
+One can show that given any two local frames $f, f'$ of $E$ over $U$, there always exists a change of frame mapping $g:U\to GL_r(\complexnos)$ such that $f'=fg$. 
+
+\subsubsection{Local representation of sections}
+Given a local frame $f=(e_1,\ldots, e_r)$ we may express a section $s\in \Gamma(U, E)$ locally as
+$$s=\sum_{i=1}^r s^i(f)e_i$$
+for some unique $s^i(f)\in \smoothCmaps$ ($i=1,\ldots, r$), and we define 
+$$s(f):= \begin{pmatrix}s^1(f) \\ \vdots \\ s^r(f)\end{pmatrix} \in \smoothCmaps^r$$
+Hence locally we have shown that $\Gamma(E, U) \simeq \smoothCmaps^r$.
+
+We can view this same fact in terms of local trivialisations.  Let $\psi: E\vert_U \to U\times \complexnos^r$ be a local trivialisation (which we can assume is associated with the frame $f$,  but the following holds in more generality also).  Then we may write
+\begin{align*}
+\Gamma(E, U) & \simeq \smoothCmaps^r \\
+s & \mapsto \psi\circ s = (s^1, \ldots,  s^r)
+\end{align*}
+for $s^i\in \smoothCmaps$.  
+The last equality holds since $\psi\circ s$ is a section of $U\times \complexnos^r$,
+\explainFurther{WHY?} 
+\checkCorrect{ARE we saying that the bundles are essentially $\psi$-related, which is why composition is also a section?}
+and $\Gamma(U\times \complexnos^r)$ are essentially smooth maps $U\to \complexnos^r$ [GO OVER WHY], which by taking components is the same as $r$ smooth maps,  i.e.  $\smoothCmaps^r$.  
+
+Suppose $g:U\to GL_r(\complexnos)$ is a change of frame mapping, so that $f'=fg$ is another local frame. Then we obtain the following transformation law $s(f')=s(fg)=g^{-1}s(f)$, or in other words
+$$gs(f')=s(f)$$
+which follows from direct computation since $s^i(fg)=\sum_{j=1}^r g_{ij}^{-1} s^j(f)$.
+
+\subsubsection{Hermitian Vector bundles}
+On a complex vector space $V$, a \defn{Hermitian inner product} is a map $(\cdot, \cdot):V\times V\to \complexnos$ such that for all $u,v\in V$
+\begin{align*}
+& (u,v)=\overline{(v, u)} \\
+& (\lambda u + v, w) = \lambda (u, w) + (v, w) \\
+& (u, v)\geq 0 \\
+& (u,v)=0, \forall v \implies u=0
+\end{align*}
+Or in other words $(\cdot, \cdot)$ is a conjugate-symmetric, sesquilinear, positive, non-degenerate map. 
+
+For example on $V=\complexnos^n$, $(x, y)=\sum_i x_i\overline{y_i}$, $\forall x,y\in \complexnos^n$, is a Hermitian inner product. Note in this case we have that for a matrix $A\in M_n(\complexnos)$ we have $(Au, v)=(u, \overline{A}^Tv)$.
+
+A \defn{Hermitian vector bundle} assigns a Hermitian inner product to each fibre $E_p$ of the vector bundle. More formally, for every open neighbourhood $U\subseteq M$, and for every pair of sections $s, \gamma \in \Gamma(U, E)$, \defn{a Hermitian metric} $h$ on $E$ is a map $h(s, \gamma):=\langle s, \gamma \rangle:U\to \complexnos$ such that $\langle s, \gamma \rangle(p)=\langle s(p), \gamma (p) \rangle$ is a Herimitian inner product on $E_p$, and $\langle s, \gamma \rangle$ is smooth. 
+
+One may show that it is possible to construct a Hermitian metric on any complex vector bundle (the construction of which involves a partitions of unity). 
+
+\subsubsection{Hermitian metric local representation}
+Given a local frame $f=(e_1, \ldots, e_r)$ over $U$, define 
+$$h(f)_{ij}=\langle e_i, e_j \rangle \ (:U\to \complexnos)$$
+Whence $h(f)\in M_r(\smoothCmaps)$ is a positive definite, Hermitian, symmetric matrix, that represents $h$ locally with respect to the frame $f$. 
+
+Recall given $s, \gamma\in \Gamma(U, E)$, we can write $s(f)=(s^1(f), \ldots, s^r(f))^T$, $\gamma(f)=(\gamma^1(f), \ldots, \gamma^r(f))^T$ locally with respect to the frame $f$. Then one may show that 
+$$\langle s, \gamma \rangle = \overline{\gamma(f)^T}h(f)s(f)$$
+(where the product here is matrix multipilicaiton).
+
+Furthermore, if $g:U\to GL_r(\complexnos)$ is a change of frame mapping with $f'=fg$. Then we get the transformation law
+$$h(f')=\overline{g^T}h(f)g$$
+for the local representation of $h$ with respect to the frames $f, f'$.
+
+\subsubsection{Multilinear algebra}
+We state here some isomorphisms of vector spaces without much justification, to review concepts from multi-linear algebra, which will be useful to us. Let $V, W$ be finite dimensional vector spaces over a field, say the real numbers for simplicity. 
+
+Some notation:
+$$T^{(r,s)}:=\underbrace{V^*\otimes \cdots \otimes V^*}_{s \text{ times}} \otimes \underbrace{V \otimes \cdots \otimes V}_{r \text{ times}} $$
+$$\Hom(V_1, \ldots V_n; \realnos):= \{\text{Multilinear maps } V_1\times \cdots \times V_n \to \realnos\}$$
+$$\Hom(V_1, \ldots V_n; W):= \{\text{Multilinear maps } V_1\times \cdots \times V_n \to W\}$$
+
+Some isomorphisms:
+\begin{align*}
+V^*\otimes W & \simeq \Hom_\realnos(V, W) \\
+V^*\otimes V & \simeq \Hom_\realnos(V, V) = \text{End}_\realnos (V) 
+\end{align*}
+Note in particular that the dimension of $V^*\otimes W$ is $\text{dim}(V)\text{dim}(W)=\text{dim}(\Hom(V, W))$.
+
+\begin{align*}
+V_1^* \otimes V_2^* \otimes \cdots \otimes V_n^* & \simeq (V_1\otimes \cdots \otimes V_n)^* \\
+& \simeq \Hom_\realnos (V_1, \ldots, V_n; \realnos) 
+\end{align*}
+
+\begin{align*}
+V_1^* \otimes V_2^* \otimes \cdots \otimes V_n^* \otimes W & \simeq \Hom_\realnos((V_1\otimes \cdots \otimes V_n), W) \\
+& \simeq \Hom_\realnos (V_1, \ldots, V_n; W) 
+\end{align*}
+
+Note that linear maps $V_1\otimes \cdots \otimes V_n\to \realnos$ are the same as multilinear maps $V_1\times \cdots \times V_n \to \realnos$.
+
+\subsubsection{Tensoriality}
+Let $\pi_E:E\to M, \pi_F:F\to M$ be two (complex) vector bundles over $M$, ($p\in M$).
+
+\finish{Write more bundles: symmetric product etc? See Huybrechts or any other ref for useful bundles}
+
+Suppose $(\pi_E, E, M)$, $(\pi_F, F, M)$ are two (complex) vector bundles over the same (smooth) base manifold $M$. A \defn{bundle morphism} is a smooth map $\phi:E\to F$ that satisfies
+\begin{enumerate}
+    \item $\pi_F\circ \phi = \pi_E$ \finish{[DRAW DIAGRAM!]}
+    \item $\phi \vert_{E_p}=:\phi_p:E_p\to F_p$ is linear, $\forall p\in M$
+\end{enumerate}
+Note that the first property in particular implies that $\phi(E_p)\subseteq F_p$ at every $p\in M$ (and so the codomain in the second property makes sense).  
+
+\finish{WHAT IF ISOMORPHISM OF BUNDLES: GIVES ISO?}
+
+We denote the set of all bundle morphisms from $E$ to $F$ as \defn{Hom($\mathbf{E, F}$)}. One can also multiply a bundle morphism $\phi \in \text{Hom}(E, F)$ by a smooth function $f\in C^\infty (M)$ to produce another bundle morphism $f \phi :E\to F$,
+\understandBetter{given by $v\mapsto f(p)\phi(v)$ for all $v\in E_p$.} \finish{PROVE this is indeed a morphism}. 
+\checkCorrect{This makes $\text{Hom}(E, F)$ into a $C^\infty(M)$-module.} 
+
+A useful and important fact is that if $\phi:E\to F$ is a bundle morphism, then 
+\begin{align*}
+\tilde{\phi}:\ & \Gamma(E)\to \Gamma(F) \\
+& s \mapsto \phi \circ s
+\end{align*}
+is a homomorphism of $C^\infty(M)$-modules. (In other words, $\tilde{\phi}(fs)=f\tilde{\phi}(s)$ for all $f\in C^\infty (M), s\in \Gamma(E)$.) \checkCorrect{Note that at each point $p\in M$, $(\phi\circ s)(p)=\phi(p)s(p)$.}
+
+Moreover, this induces a \checkCorrect{module} isomorphism 
+\begin{align*}
+\text{Hom}(E, F) & \simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), \Gamma(F)) \\
+\phi & \mapsto \tilde{\phi} 
+\end{align*}
+
+Conversely if a map $L:\Gamma(E)\to \Gamma(F)$ is $C^\infty(M)$-linear (i.e. $L_p(fs)=fL_p(s)$ for all $f\in C^\infty (M), s\in \Gamma(E), p\in M$), then there exists a unique bundle morphism $\phi:E\to F$ such that $L=\tilde{\phi}$, in which case we say that $L$ is \defn{tensorial}. 
+
+As an example, we show that 1-forms are tensorial. Consider $\omega\in \Omega(M) = \Gamma(TM^*)$. So $\omega:\Gamma(TM)\to \smooth (M)\simeq \Gamma(M\times \realnos)$. By definition, note that for $x\in M$, $X\in \Gamma(TM)$, we have $\omega(X)_x = \omega_x(X_x)\in \realnos$. Now for $f\in \smooth(M)$, we have $\omega(fX)_x = \omega_x((fX)_x)= \omega(f(x)X_x) = f(x)\omega_x(X_x)$, hence $\omega(fX)=f \omega(X)$. So $\omega$ is tensorial and comes from a bundle morphism $TM\to M\times \realnos$ over the base manifold $M$. In particular $\omega_p:T_p(M)\to \{p\} \times \realnos \simeq \realnos$ is linear.  
+
+We can generalise this definition of tensoriality to say that a $\smooth(M)$-multilinear map $\phi:\Gamma(E_1)\times \Gamma(E_2)\times \ldots \times \Gamma(E_k)\to \Gamma(F)$ is tensorial, (where $E_i, F$ are bundles over $M$). Or in other words, $\phi$ is tensorial as a $\smooth(M)$-linear map $\Gamma(E_1)\otimes_{\smooth(M)} \cdots \otimes_{\smooth(M)} \Gamma(E_k)\to \Gamma(F)$. Note that $\Gamma(E_1)\otimes_{\smooth(M)} \cdots \otimes_{\smooth(M)} \Gamma(E_k)\simeq \Gamma(E_1\otimes \cdots \otimes E_k)$, hence if $\phi$ is tensorial, it comes from a bundle morphism $E_1\otimes \cdots \otimes E_k\to F$.
+
+As an example of this consider tensor fields, namely 
+\begin{align*}
+T & \in \Gamma(T^*M\otimes \cdots \otimes T^*M \otimes TM) = \Gamma(T^{(1, k)}(TM)) \\
+& \ \ \simeq \text{Hom}_{\smooth(M)}(\Gamma(TM), \Gamma(TM), \ldots, \Gamma(TM); \Gamma(TM)) \\
+& \ \ = \text{Hom}_{\smooth(M)}(\mathfrak{X}(M), \mathfrak{X}(M), \ldots, \mathfrak{X}(M); \mathfrak{X}(M))
+\end{align*}
+which are $\smooth(M)$-multilinear, which is seen from the last isomorphism (which is just a generalisation of $\Gamma(E^*\otimes F)\simeq \Hom_{\smooth (M)}(E, F)$). Hence every tensor field  $T:\mathfrak{X}(M)\times \mathfrak{X}(M) \ldots \times \mathfrak{X}(M)\to \mathfrak{X}(M)$, comes from a bundle morphism $TM\otimes \cdots \otimes TM\to TM$.
+
+As an example, we will see that \checkCorrect{Riemannian} curvature $R:\Gamma(TM)\times \Gamma(TM) \times \Gamma(E)\to \Gamma(E)$ is $\smooth(M)$-trilinear (i.e. is tensorial), and hence comes from a bundle morphism $TM\otimes TM\otimes E\to E$. Furthermore torsion $T:\Gamma(TM)\times \Gamma(TM)\to \Gamma(TM)$ is $\smooth (M)$-bilinear, and hence comes from a bundle morphism $TM\otimes TM\to TM$.
+
+\understandBetter{Another example of a tensorial/not tensorial map are composition of vector fields?? But Lie bracket is tensorial?? [true?]....}
+
+Note that if $L$ is not tensorial, then it does not in general give rise to a bundle morphism. We will see that some non-examples include the connection operator (which is of the form $L_p(fs)=fL_p(s)+X f\cdot s$, where we have added an extra term due to a Liebniz rule), \checkCorrect{and the Lie bracket of vector spaces}. However we will also see that any two connections differ by a tensorial map, i.e. that $\nabla^1-\nabla^2$ is tensorial for connections $\nabla^1, \nabla^2$, which will allow us to express connections locally in terms of this operator.
+
+
+\subsubsection{Isomorphisms and bundle morphisms}
+\checkCorrect{The technicalities of viewing bundles in a variety of ways will become useful in later exposition. We also observe here that constructions relating to vector spaces (local constructions) can be generalised into global statements relating spaces of smooth sections with bundle morphisms.}
+
+Let $\pi_E:E\to M, \pi_F:F\to M$ be two (complex) vector bundles over $M$, ($p\in M$).
+
+The \defn{dual bundle} of $E$ is $\pi_{E^\ast}:E^\ast \to M$ with fibres $(E^*)_p = (E_p)^*$.
+
+The \defn{tensor product} of $E$ and $F$ is a bundle $\pi_{E\otimes F}:(E\otimes F) \to M$ with fibres $(E\otimes F)_p:=(E_p \otimes F_p)$. Furthermore given sections $s_E\in \Gamma(E), s_F\in \Gamma(F)$ then define $s_E\otimes s_F\in \Gamma(E\otimes F)$ as $(s_E\otimes s_F)(p)=s_E(p)\otimes s_F(p)$ for all $p\in M$. Lastly note that if $\{s^1, \ldots, s^k\}$ is a local frame for $E$, and $\{\sigma^1,\ldots , \sigma^t\}$ is a local frame for $F$, then $\{s^i\otimes s^j : i=1,\ldots, k, j=1,\ldots , t\}$ is a local frame for $E\otimes F$, (since $s^i(p)\otimes s^j(p)$ gives a basis of $E_p\otimes F_p$).  
+
+We now wite another useful $C^\infty(M)$-module isomorphism. Let $\pi_{E^\ast}:E^\ast \to M$ be the dual bundle of $\pi_E:E \to M$. Then 
+\begin{align*}
+\Gamma(E^\ast) & \simeq \text{Hom}(E, M\times \complexnos) \\
+s & \xmapsto{\simeq} (v_p\mapsto (p, s_p(v_p))
+\end{align*}
+for all $v_p\in E_p$, $p\in M$. Note this makes sense as for $s\in \Gamma(E^*)$, $p\in M$, then $s_p:E_p\to \complexnos$ is a linear map (i.e. an element of $(E_p)^*$).
+Note also that $M\times \complexnos$ is the trivial line bundle. \checkCorrect{Is this really true globally, or do we need to do this in a chart and have a local trivialisation?? (Effects next para too in this case)}
+
+As a corollary of the previous two isomorphisms we have 
+$$\Gamma(E^\ast)\simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), C^\infty (M))$$
+since $\Gamma(E^\ast) \simeq \text{Hom}(E, M\times \complexnos) \simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), \Gamma(M\times \complexnos))\simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), C^\infty (M))$. The last equality holds since we have a one-dimensional global trivialisation $M\times \complexnos$, and we saw that we can write a section locally as smooth functions given a local trivialisation (i.e. $\Gamma(U\times \complexnos^r)\simeq C^\infty (M)^r$, with $r=1, U=M)$.
+
+As an application, if we set $E=TM$ to be the tangent bundle on $M$ in this isomorphism, then $\Gamma(TM^*) = \Omega^1(M) \simeq \text{Hom}_{C^\infty (M)}(\Gamma(TM), C^\infty (M))$. So given any one-form $\omega\in \Omega^1(M)$ and vector field $X\in TM$, we have that $\omega(X)\in C^\infty(M)$ is a smooth function.
+
+\checkCorrect{
+It is easy to see that we can generalise the previous two isomorphisms as follows
+\begin{align*}
+\Gamma(\otimes^r E^\ast) & \simeq \text{Hom}(E, M\times \complexnos^r) \\
+ & \simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), C^\infty (M)^r)
+\end{align*}
+} \checkCorrect{IS THIS TRUE/CORRECT?? JUST MADE A GUESS.}
+
+Let us investigate another bundle, namely $E^*\otimes F$ which has fibres 
+$$(E^*\otimes F)_p=E_p^*\otimes F_p\simeq \text{Hom}_\complexnos (E_p, F_p)$$
+where the last isomorphism is a fact from linear algebra. To be explicit, given vector spaces $V, W,$ recall the vector space isomorphism
+\begin{align*}
+V^*\otimes W & \simeq \text{Hom}(V, W) \\
+\mu \otimes w & \xmapsto{\simeq} (v \mapsto \mu(v)\cdot w)
+\end{align*}
+which can be applied pointwise at each fibre of $E^*\otimes F$. This can be made into a global statement as follows  \understandBetter{WHY?}
+$$\Gamma(E^*\otimes F)\simeq \text{Hom}(E,F)$$
+Using that $\text{Hom}(E,F)\simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), \Gamma(F))$ (as seen previously), we get
+\begin{align*}
+\Gamma(E^*\otimes F) & \simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), \Gamma(F)) \\
+\epsilon \otimes \eta & \xmapsto{\simeq} (\sigma \mapsto \epsilon(\sigma) \eta)
+\end{align*}
+where $\sigma\in \Gamma(E)$, and note that $\epsilon(\sigma)\in C^\infty (M)$. \checkCorrect{To understand why $\epsilon \otimes \eta\in \Gamma(E^*\otimes F)$ here, think of $(\epsilon \otimes \eta)_p=\epsilon_p \otimes \eta_p, \forall p\in M$ giving a section of $E^*\otimes F$; or more formally, note the canonical $C^\infty(M)$-module isomorphisms}
+\begin{align*}
+\Gamma(E\otimes F) & \simeq \Gamma(E)\otimes_{C^\infty (M)} \Gamma(F) \\
+\Gamma(E^*) & \simeq \Gamma(E)^* 
+\end{align*}
+
+\section{Differential Forms}
+
+\subsubsection{Differential forms}
+\finish{[WRITE UP]}
+
+\subsubsection{Differential forms with vector coefficients}
+Define $\bigwedge^p_\complexnos(T^\ast M):=\bigwedge^p (T^\ast M)\otimes \complexnos$, i.e.\ the complexification of $\bigwedge^p_\realnos(T^\ast M)$. Note that we can express the elements of $\Omega^p_\complexnos(M)=\Gamma(\bigwedge^p_\complexnos(T^\ast M))$ as $\omega+i\eta \in \Omega^p_\complexnos(M)$ for $\omega, \eta \in \bigwedge^p_\realnos(T^\ast M)$, and $i$ the imaginary unit. 
+
+We define the differential $p$-forms with coefficients in $E$ as 
+\begin{align*}
+\Omega^p(M, E) & :=\Gamma(M, \bigwedge {}^p_\complexnos(T^\ast M) \otimes_\complexnos E) \\
+& \simeq \Hom(\bigwedge {}^p_\realnos (TM), E)
+\end{align*}
+\understandBetter{UNDERSTAND THE ISO PROPERLY! Check $R$ vs $C$}
+In other words the elements $\omega\in \Omega^p(M, E)$ at a point $x\in M$ are skew-symmetric multilinear forms 
+$$\omega_x:\underbrace{T_xM\times T_xM\times \ldots T_xM}_{p \text{ times}} \to E_x$$
+assigning a vector in the fibre $E_x$ to the $p$-tuples of tangent vectors at $x$. 
+
+Note in particular that 
+$$\Omega^0(M, E) = \Gamma(E)$$
+$$\Omega^1(M, E) = \Gamma(T^\ast M \otimes E) \simeq \Hom(TM, E)$$
+
+Note that locally (over $U$),  $0$-forms with coefficients in $E$ are local sections $s\in \Gamma(E, U)$ and hence can be expressed as an $r$-tuple of smooth maps $s=s(f)\in \smoothCmaps^r$ once a frame $f$ is fixed (or alternatively a local trivialisation is chosen),  as seen previously.  
+
+Moreover,  $1$-forms with coefficients in $E$ can be expressed locally (over $U$) as an $r$-tuple of one forms.  \explainFurther{Let us explain this formally. }
+
+\section{Connections}
+
+\subsubsection{Definitions of Connection}
+
+There are a few different equivalent ways to view connections.
+We can define a \defn{connection} to be a bilinear map 
+\begin{align*}
+\nabla: & \Gamma(TM)\times \Gamma(E)\to \Gamma(E) \\
+& (X, s)\mapsto \nabla_X s
+\end{align*}
+such that for all $f\in \smooth (M)$ we have
+\begin{align*}
+& \nabla_{fX}s=f\nabla_X s \\
+& \nabla_X(fs)=(Xf)s + f\nabla_X s 
+\end{align*}
+Recall that $Xf\in \smooth(M)$ where $(Xf)(p)=X_p(f)\in \realnos$ for $p\in M$. (Note that the order here matters, as $fX\in \Gamma(TM)$ (as $\Gamma(TM)$ module over $\smooth(M)$) and $(fX)(p) = f(p)X(p)$, $p\in M$.) Note that if we fix 
+$X\in \mathfrak{X}(M)$, we can think of the connection as an operator $\nabla_X:\Gamma(E)\to \Gamma(E)$.
+
+We have an \defn{affine (or linear) connection} if $E=TM$ in the above definition.
+
+We can also define a \defn{connection} as a $\complexnos$-linear map $\nabla : \Gamma(E)\to \Gamma(T^\ast M\otimes E)$ such that 
+$$\nabla(fs)=df \otimes s + f\nabla s$$ 
+for all $f\in C^\infty(M), s\in \Gamma(E)$.   
+
+Note that $\Gamma(T^*M\otimes E)\simeq \Hom(TM, E)\simeq \Hom_{\smooth(M)}(\Gamma(TM), \Gamma(E)) = \Hom_{\smooth(M)}(\mathfrak{X}(M), \Gamma(E))$. Hence due to the last isomorphism, we can write for $s\in \Gamma(E), X\in \mathfrak(M)$, that $\nabla s(X)\in \Gamma(E)$. Moreover $\nabla s$ is $\smooth(M)$-linear, i.e. $\nabla s(fX)=f(\nabla s (X))$ for $f\in \smooth (M)$.
+
+To show that these two definitions of a connection are equivalent, let us write $\nabla^1$ for the definition $\nabla^1:\Gamma(E)\to \Gamma(T^*M\otimes E)$ and $\nabla^2$ for the definition $\nabla^2:\Gamma(TM)\times \Gamma(E)\to \Gamma(E)$. If we are given $\nabla^1$, we can define $\nabla^2_X s:=\nabla^1 s(X)$, and it is easy to check the axioms of $\nabla^2$ are satisfied, namely $\complexnos$-bilinearity, the Liebniz rule, and that it is $\smooth(M)$-linear in the first argument. Conversely given $\nabla^2$, we can define $\nabla^1 s(X):=\nabla^2_X s$ and show that the axioms for $\nabla^1$ to be a connection are satisfied. 
+
+Notice that we could have equivalently expressed the connection as $\nabla:\Omega^0(M, E)\to \Omega^1(M, E)$ in the language of differential $p$-forms with coefficients in $E$ (since we showed previously that $\Omega^0(M, E)=\Gamma(E)$, $\Omega^1(M, E)=\Gamma(T^*M\otimes E)$ by definition).  \checkCorrect{This view is helpful to generalise differentiation to higher order forms.}
+
+\subsubsection{Trivial connection on trivial line bundle}
+As an example consider the trivial vector bundle of rank 1 (trivial line bundle)
+$\pi:E\to M$, with $E=M\times \realnos$.
+Note in this case a section on $E$ is a smooth function $\Gamma(E)=\Gamma(M\times \realnos)\simeq \smooth(M)$, since $s(p)\in \{p\}\times \realnos \simeq \realnos$ for $s\in \Gamma(E)$, $\forall p\in M$.
+We claim that $\nabla: \Gamma(TM)\times \smooth(M)\to \smooth(M)$ such that $\nabla_X f := Xf$ is a connection on this bundle (called the \defn{trivial connection}). For this we need to show, it is $\realnos$-bilinear, and satisfies the two properties of a connection. 
+
+$\nabla$ is $\realnos$-linear in the first argument since $\nabla_{X+Y}f=(X+Y)f=Xf+Yf=\nabla_Xf + \nabla_Yf$. Note that it is enough to consider $\nabla_{X+Y}$ instead of $\nabla_{aX+bY}$, $a,b\in \realnos$, since real numbers can be treated as constant functions and set $a=b=1$, and use the property $\nabla_{fX}s=f\nabla_X s$ of connections (we are yet to show). Also note that the equality $(X+Y)f=Xf+Yf$ follows from the fact that at every $p\in M$,
+$((X+Y)f)(p)=(X+Y)_pf=(X_p+Y_p)f=X_pf+Y_pf=(Xf)(p)+(Yf)(p)=(Xf+Yf)(p)$.
+
+To show that $\nabla$ is $\realnos$-linear in the second argument, we have $\nabla_X(af_bg)=X(af+bg)=aXf+bXg=a\nabla_Xf + b\nabla_X g$, ($f, g \in \smooth (M), a,b\in \realnos$) where $X(af+bg)=aXf+bXg$ is due to the $\realnos$-linearity of the space of point derivations. 
+
+Further $\nabla_{fX}g=(fX)g=f(Xg)=f\nabla_X g$, and to make explicit the middle equality, for $p\in M$, $((fX)g)(p)=(fX)_p(g)=(f(p)X_p)(g)=f(p)X_p(g)=f(p)(Xg)(p)$.
+
+Finally we see that $\nabla_X(fs)=X(fs)=fX(s)+X(f)s=f\nabla_Xs + (Xf)s$ where we have used the Liebniz rule on the product of two functions (since $s\in \Gamma(E)\simeq \smooth(M)$.
+
+Hence we have shown that $\nabla$ is indeed a connection on the trivial line bundle. 
+
+Let us also view this connection in terms of the definition $\nabla:\Gamma(E)\to \Gamma(T^*M\otimes E)$. Recall since $E=M\times \realnos$ in this case, then $\Gamma(E)\simeq \smooth (M)$. Now $\Gamma(T^*M\otimes E)\simeq \Hom_{\smooth(M)}(\Gamma(TM), \Gamma(E)) = \Hom_{\smooth(M)}(\Gamma(TM), \smooth(M)) \simeq \Gamma(TM)^* \simeq \Gamma(T^*M)=\Omega^1(M)$. So we have shown $\nabla:\smooth(M)\to \Omega^1(M)$ (or in other words $\nabla:\Omega^0(M)\to \Omega^1(M)$) on the trivial line bundle. Defining $(\nabla f)X=Xf$ for $f\in \smooth(M)$ as above, we observe this is simply the definition of the exterior derivative $d:\Omega^0(M)\to \Omega^1(M)$ (since $df(X)=Xf$ by definition). So we have that the trivial connection on the trivial line bundle is the exterior derivative (acting on smooth functions $\nabla f=df \in \Omega^1(M)$). 
+
+\subsubsection{Trivial connection on trivial bundle}
+We now consider the trivial rank $k$ vector bundle, $E=M\times \realnos^k$ on $M$. In this case we notice that $\Gamma(E)=\Gamma(M\times \realnos^k)\simeq \smooth (M)^k$ since for a section $s\in \Gamma(E)$ and for $p\in M$ we have $s(p)\in E_p=\{p\}\times \realnos^k\simeq \realnos^k$, hence we can write $s(p)=(s^1(p),\ldots, s^k(p))\in \realnos^k$, and $s^i\in \smooth(M)$. Note that $s^i$ is smooth since it is a composition of smooth maps $s^i=\pi_i\circ s$, where $\pi_i$ is the $i$'th projection. Note also that $fs=(fs^1, \ldots, fs^k)$ for $f\in \smooth(M)$. Now we claim that $\nabla:\Gamma(TM)\times \smooth(M)^k\to \smooth(M)^k$ such that $\nabla_X s = (Xs^1, Xs^2, \ldots, Xs^k)$, where $s=(s^1, \ldots, s^k)\in \smooth (M)^k$ and $X\in \Gamma(TM)$ is a connection on the trivial bundle. The proof follows similarly to that of the trivial connection on the trivial line bundle. We call this connection the \defn{standard trivial connection} on the trivial $k$-bundle. 
+
+Let us also view this connection in the definition $\nabla:\Gamma(E)\to \Gamma(T^*M\otimes E)$. Now $\Gamma(E)\simeq \smooth(M)^k$ on the trivial bundle. So  $\Gamma(T^*M\otimes E)\simeq \Hom_{\smooth(M)}(\Gamma(TM), \smooth(M)^k)\simeq \Gamma(TM^*)^k \simeq \Omega^1(M)^k$. Note that we have used the fact here that if $M$ is a module over a commutative ring $R$, then 
+$$\Hom(M, R^k)\simeq \underbrace{M^*\oplus \cdots \oplus M^*}_{k \text{ times}} \simeq (M^*)^{k}$$
+So we have shown that $\nabla:\smooth(M)^k\to \Omega^1(M)^k$. As before, for $f=(f^1, \ldots, f^k)\in \smooth(M)^k, X\in \Gamma(TM)$, let us define $(\nabla f)(X)=(Xf^1, \ldots, Xf^k)=(df^1(X), \ldots, df^k(X))=(df^1, \ldots, df^k)(X)$, noting that $(df^1, \ldots, df^k)\in \Omega^1(M)^k$.
+
+\subsubsection{Affine connection on $\realnos^n$}
+Consider $M=\realnos^n$, $T_pM=\realnos^n$ for all $p\in M$.
+The atlas consisting of a single chart $\text{id}=(u^1, \ldots, u^n)$ on $\realnos^n$, gives us a global frame $\{\frac{\partial}{\partial u^i}\}_i$ on $\realnos^n$. Hence we can write any sections $X, Y\in \Gamma(TM)$ as $X=\sum_{i=1}^n x_i \frac{\partial}{\partial u^i}$, $Y=\sum_{i=1}^n y_i \frac{\partial}{\partial u^i}$, for $x_i, y_i \in \smooth(M)$. We define an affine connection $\nabla:\Gamma(TM)\times \Gamma(TM)\to \Gamma(TM)$ such that 
+\begin{align*}
+\nabla_X Y & := \sum_{i=1}^n X(y_i) \frac{\partial}{\partial u^i} \\
+& = \sum_{i, j} x_j\frac{\partial}{\partial u^j}(y_i)\frac{\partial}{\partial u^i}
+\end{align*}
+called the \defn{standard connection} on the tangent bundle to $\realnos^n$. It is straight forward to show that the axioms for a connection hold. \understandBetter{In fact this is an example of a Levi-Civita connection.}
+
+\subsubsection{Levi-Civita connection}
+Let $(M, g)$ be a Riemannian manifold. There exists a unique affine connection $\nabla:\mathfrak{X}(M)\times \mathfrak{X}(M)\to \mathfrak{X}(M)$ with the properties, for $X,Y,Z\in \mathfrak{X}(M)$,
+$Xg(Y,Z)=g(\nabla_XY, Z)+g(Y, \nabla_XZ) (\in C^\infty(U))$ (compatibility with the metric) and $[X,Y]=\nabla_XY-\nabla_YX$ (torsion-free), called the \defn{Levi-Civita connection}. \checkCorrect{The uniqueness of the connection can be seen from the second christoffel [CORRECT SPELLING] formula (below).} \finish{GO OVER different formulation of compatibility with metric, and recall lie bracket def/or in local coord. SEE also questions in handwritten notes}.
+
+Note that given a chart $(U, x^1, \ldots, x^n)$ of $M$, any affine connection $\nabla:\mathfrak{X}(M)\times \mathfrak{X}(M)\to \mathfrak{X}(M)$ is completely determined by $n^3$ coefficients $\Gamma^k_{ij}\in C^\infty (U)$ where
+$$\nabla_{\partial_i}\partial_j=\sum_{k=1}^n \Gamma^k_{ij} \partial_k \in \mathfrak{X}(U)$$
+Note that this fully determines the affine connection since any vector field can be written as $X=\sum_{i=1}^n \alpha_i \partial_i\in \mathfrak{X}(U)$ where $\alpha_i\in C^\infty (U)$, and since \checkCorrect{affine connections are $C^\infty(U)$-bilinear}. In the case that $\nabla$ is a Levi-Civita connection, the $\Gamma^k_{ij}$ are called \checkCorrect{\defn{Christoffel symbols} (CHECK spelling)}.
+
+Let $\nabla$ be a Levi-Civita connection. Let us rewrite the compatiblity with a metric and torsion-free conditions in terms of local coordinates, with respect to the local frame $\{\partial_i\}_{i=1}^n$ of $TU$. Firstly, that $\nabla$ is compatible with the metric:
+\begin{align*}
+    \partial_i g(\partial_j, \partial_k) & = g(\nabla_{\partial_i}\partial_j, \partial_k) + g(\partial_j, \nabla_{\partial_i}\partial_k) \\
+    & = g(\sum_s \Gamma^s_{ij}\partial_s, \partial_k)+g(\partial_j, \sum_s \Gamma^s_{ik}\partial_s)\\
+    &= \sum_s (\Gamma^s_{ij}g(\partial_s, \partial_k)+\Gamma^s_{ik}g(\partial_j, \partial_s)) \\ & \textrm{\checkCorrect{(since $g$ is $C^\infty(U)$ bilinear and $\Gamma^s_{ij}\in C^\infty(U)$)}}
+\end{align*}
+In short $\partial_i g_{jk} = \sum_s (\Gamma^s_{ij}g_{sk}+\Gamma^s_{ik}g_{js})$. Now we find the torsion-free condition:
+\begin{align*}
+    [\partial_i, \partial_j] & = \nabla_{\partial_i}\partial_j - \nabla_{\partial_j}\partial_i \\
+    & = \sum_s (\Gamma^s_{ij} - \Gamma^s_{ji})\partial_s
+\end{align*}
+and noting that the lie bracket $[\partial_i, \partial_j]=0$ for all $i,j$ \checkCorrect{[WHY? TRUEE??]}, we get $(\Gamma^s_{ij} - \Gamma^s_{ji})=0$, i.e. $\Gamma^s_{ij}=\Gamma^s_{ji}$.
+
+Our goal now is to obtain a formula for the Christoffel symbols of a Levi-Civita connection, called the second Christoffel identity. We will first derive the first Christoffel identity to help us in this end:
+\begin{align*}
+    & \partial_i g_{jk} + \partial_j g_{ik} - \partial_k g_{ij} \\
+    & = \sum_s [(\Gamma^s_{ij}g_{sk}+\Gamma^s_{ik}g_{js})+
+    (\Gamma^s_{ji}g_{sk}+\Gamma^s_{jk}g_{is})-
+    (\Gamma^s_{ki}g_{sj}+\Gamma^s_{kj}g_{is})] \\
+    & = \sum_s 2\Gamma^s_{ij}g_{sk}
+\end{align*}
+where we used compatibility with the metric in the first step, and torsion-free and symmetry of the metric in the second step. Now to get the second Christorffel identity, we can contract with the inverse $(g^{tk})$ of the metric $g_{ij}$. Applying the contraction to the right hand side of the first Christoffel identity, we get
+\begin{align*}
+    \sum_k g^{tk}(2\sum_s \Gamma^s_{ij}g_{sk}) 
+    & = 2\sum_s \Gamma^s_{ij}\sum_k g_{sk}g^{kt} \\
+    & = 2 \sum_s \Gamma^s_{ij}\delta^t_s \\
+    & = 2\Gamma^t_{ij}
+\end{align*}
+Whence we obtain the second Christoffel identity,
+$$\Gamma^t_{ij} = \frac{1}{2}\sum_k g^{tk}(\partial_i g_{jk} + \partial_j g_{ik} - \partial_k g_{ij})$$
+
+Note that an invarient formulation (not depending on a local chart) of the second Christoffel identity also exists called the Koszul formula (stated below), which is also easy to derive from the properties of the Levi-Civita connection.
+\begin{align*}
+2g(\nabla_XY, Z) = & X(g(Y,Z))+Y(g(X,Z))-Z(g(X,Y)) \\
+& -g([Y,X],Z)-g([X,Z],Y)-g([Y,Z],X)    
+\end{align*}
+
+\subsubsection{Levi-Civita connection on $S^2$}
+\finish{WRITE UP}
+
+\finish{WRITE MORE EXAMPLES OF CONNECTIONS ON BUNDLES, PROJECTIVE SPACE, SPHERES ETC}
+
+\subsubsection{Local expression of Connections}
+Let $E\to M$ be a vector bundle with a connection $\nabla$.  Let $f=(e_1, \ldots, e_r)$ be a frame over $U$.  We can write the connection locally with respect to the frame as
+$$\nabla e_j = \sum_{i=1}^r A_{ij}(\nabla, f)\cdot e_i \in \Gamma(T^*M\otimes U)$$
+for some $A_{ij}:=A_{ij}(\nabla, f) \in \Omega_\complexnos^1(U)$.  Hence $A\in M_r(\Omega_\complexnos^1(U))$ is a matrix of complex-valued one forms on $U$. 
+\checkCorrect{[GO OVER AND UNDERSTAND THE CODOMAINS THESE LIE IN!]}
+
+Let us use this expression to find a local formula for $\nabla s$,  for an arbitrary section $s\in \Gamma(E, U)$.
+Recall we can write $s$ locally as $s=(s^1, \ldots,  s^r)$,  for $s^i\in \smoothCmaps$,  with respect to the local frame $f=(e_1, \ldots e_r)$ (or equivalently a local trivialisation $\psi$).  Then
+\begin{align*}
+\nabla s & = \nabla (\sum_{i=1}^r s^i e_i) \\
+& = \sum_{i=1}^r (d s^i \otimes e_i + s^i \nabla e_i) \\
+& = \sum_{i=1}^r (d s^i \otimes e_i + s^i (\sum_{k=1}^r A_{ki}\cdot e_k )) \\
+& = \sum_{i=1}^r (d s^i + \sum_{j=1}^r s^j A_{ij})\cdot e_i 
+\end{align*}
+\checkCorrect{[SHOULD I USE otimes notation OR dot notation? -- understand/ go over]}
+whence we have (in terms of matrix multiplication) that 
+$\nabla s = \sum_{i=1}^r (d s(f) + As(f))\cdot e_i$
+or in other words
+\begin{align*}
+\nabla s & = ds + As \\ 
+& = \begin{pmatrix}ds^1 \\ \vdots \\ ds^r\end{pmatrix} + \finish{[WRITE,  A,  MATRIX TIMES,  s]}
+\end{align*}
+or in short we write
+$$\nabla = d + A$$
+\explainFurther{(and think of this as an op acting on vector valued functions) - rewrite}
+
+[REWRITE SECTION WITH IVAN PERSPECTIVE ALSO]
+
+\section*{References}
+\begin{enumerate}
+\item Wells
+\item Huybrechts
+\item Nakahara
+\item Tu
+\item J.M.Lee; \textit{Introduction to Smooth Manifolds, 2nd ed.} Springer (2012)
+\item I.Madsen, J.Tornehave; \textit{From Calculus to Cohomology, De Rham Cohomology and characteristic classes.} Cambridge University Press (1997)
+\item P.B.Gilkey, R.Ivanova, S.Nik{\u c}evi\'c; \textit{Characteristic classes.} Elsevier Ltd (2006)
+\end{enumerate}
+\end{document}
