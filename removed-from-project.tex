@@ -39,6 +39,70 @@
 \date{2023}
 \maketitle
 
+\subsection{Manifolds}
 
+\subsubsection{Examples: new manifolds from old.}
+
+Subsets of $R^n$?? Quotient spaces.
+topology on $T^2$, $S^n$...smooth manifolds.
+
+\finish{Note that $RP^1 \cong S^1$. check and explain.} \question{generalisation? do we get some similar isos to spheres for projective space over $\complexnos$ etc.?} (This is all the hopf fibrations...see in that section)
+
+Recall the following division algebras: the complex numbers $\complexnos = \langle 1, i: i^2=-1 \rangle$, the quaternions $\mathbb{H} = \langle 1, i, j, k: i^2=j^2=k^2=-1, ij=k=-ji \rangle$ , and the octonions $\mathbb{O}$.
+
+\subsubsection{Example: Stereographic projection on $S^n$}
+\finish{We give another useful atlas on $S^n$. This atlas is particularly helpful as it requires only two charts.}
+
+\subsubsection{Example: Complex tori}
+\finish{HUYBRECHTS, pg 57}
+
+\subsubsection{Examples: Grassmanians }
+\checkCorrect{[check spelling]}
+
+\subsubsection{Examples: manifolds with boundaries.}
+\finish{Manifolds with boundaries (see Lee)}
+
+\subsection{Fibre bundles}
+Mobius band (see sinha youtube + milnor ch2)
+
+Double twisted mobius band (see sinha youtube)
+
+Hopf line over $CP^1$. 
+Hopf line bundle. 
+line bundle on $RP^1$ isomorphic to $S^1$. 
+
+
+Note that we will use the same terminology `bundle morphism' for morphisms betweeen vector bundles and morphisms between fibre bundles and this will have to be understood from the context. In the case of principle G-bundles, we will always specify `principle bundle morphism'.
+
+
+\checkCorrect{What is difference between fibre bundle morphism, vector bunlde morphism - (such that the restricted map $u\vert_{E_p}: E_p \rightarrow E_{f(p)}$ is linear for each $p\in B$??. Do I need to distinguish these??}
+
+\finish{Define Bundle iso. smooth bundle iso. etc. (see Lee.)}
+
+
+Define euclidean vect bundles (and riem manifolds)? (milnor pg21-23)
+
+\subsubsection{Example: Hopf fibrations.}
+
+\understandBetter{(Hopf invarient is invarient of homotopy group).}
+The 4 hopf fibrations from the division algebras R, C, H, O.
+double cover of $S^1$ (figure 8). 
+$\mathbb{Z}^2 = S^0 \to S^1 \xrightarrow{2:1} S^1$; note last $S^1$ comes from $RP^1$, middle one is boundary of mobius strip;; twisted fibration, so non trivial.
+$(S^1\to) S^3$ over $S^2$; ($S^2$ comes from $CP^1$. $S^3$ all lines in $C^2 - \{0\}$).
+(gives homotopy groups of spheres. (homotopy group is equivalence class of loops in a space -- throw a loop (sphere) into space and can you catch something with it))
+
+ Consider $E:=S^1=\{(x,y)\in \realnos^2:x^2+y^2=1\}$. We obtain a fibre bundle $S^1\xrightarrow{\pi} \realnos P^1$ with typical fibre $S^0$, and projection $\pi(x, y)=[x, y]$. \checkCorrect{We obtain a global trivialisation $\psi:S^1\to \realnos P^1\times S^0$ given by $p\mapsto ([p], p)$.} \finish{(show it is global triv (homeo), if it is.). (is this correct?? does a global triv exist? why send to $p$ instead of $-p$ in $S^0$? what if we sent to $-p$ instead?). Does this give the double cover vs figure 8 stuff? Need to understand properly.} \checkCorrect{Since we found a homeomorphism $S^1\overset{\psi}{\simeq} \realnos P^1\times S^0$, we can conclude that $\realnos P^1 \simeq \frac{S^1}{S^0}$ \question{why?? true?} (i.e. one dimensional real projective space is the same as the circle with antipodal points identified). \question{why?}} \question{where does the double cover stuff come in?}
+
+Consider $\frac{S^1}{\sim}$ with $p\sim -p \forall p\in S^1$ (i.e. the circle with antipodal points identified). \question{How to consider this as $\frac{S^1}{\mathbb{Z}}$?}
+
+
+Consider $S^3\xrightarrow{\pi} S^2$ with typical fibre $S^1$, where $\pi(x, y, z)=(x, y)$. \finish{We will see later that this is a principle G-bundle}
+
+\subsection{Vector bundles}
+\question{(On local trivs). Do we require only a single local triv at each point $p, (U_p)$ in def of fibre bundle, for the notation in last statement to make sense? Or is it because when you restrict, you always get the same iso?...not sure if this is true...see transition functions. Perhaps the notation makes sense up to some transition function.}
+
+The image of $g$ which can be shown to be a subgroup of $\mathrm{GL}_k(\realnos)$ is called the \defn{structure group} of the transition function. \question{When is it a Lie group? is it always a subgroup?, is it always the same subgroup no matter which trivialisations we choose. How to prove these results if true?} \question{Is it possible to define the structrue group in terms of sections instead of local trivialisations?}
+\question{...[Do this for fibre bundles instead?? make a point for complex vect bundles/euclidean vect bundles etc that $\realnos^k$ can be replaced by $\complexnos^k$ etc. if true]}
+\question{Is there alt def of vector bundles using the tranistion maps instead?}
 
 \end{document}
