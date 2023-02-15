@@ -3,6 +3,7 @@
 \usepackage{amsthm, amsmath, latexsym, amssymb}
 \usepackage{mathtools}
 \usepackage{bbm}
+\usepackage{stmaryrd}
 \usepackage{verbatim}
 \usepackage[dvipsnames]{xcolor}
 
@@ -30,6 +31,7 @@
 \newcommand{\End}{\text{End}}
 \newcommand{\tr}{\text{tr}}
 \newcommand{\smooth}{C^\infty}
+\newcommand{\projCspace}{\complexnos P^n}
 
 
 \begin{document}
@@ -46,19 +48,19 @@ A literature review on the theory of Chern classes from the perspective of diffe
 
 \section{Introduction}
 
-We are interested in learning about topological invariants of vector bundles on manifolds. Namely those properties that are the `same' for isomorphic vector bundles. A particular type of global invariant on vector bundles is known as Characteristic classes. Loosely speaking, Characteristic classes \understandBetter{measure the difference between a global product structure and a local product structure on a manifold.} \finish{[OBSTRUCTION to defining independent sections on the bundle?? -- or is this just Stiefal-whitney?]}
+We are interested in learning about topological invariants of vector bundles on manifolds. Namely those properties that are the `same' for isomorphic vector bundles. A particular type of global invariant on vector bundles is known as Characteristic Classes. Loosely speaking, characteristic classes measure the difference between a global product structure and a local product structure on a manifold, and are the primary obstruction to being able to admit global independent sections on a bundle. 
 
-There are four different types of Characteristic classes: Stiefal-Whitney classes, Pontryagin classes, \checkCorrect{Euler classes} and Chern classes. Stiefal-Whitney classes are defined as characteristic classes of real vector bundles. \understandBetter{Pontryagin classes are characteristic classes of .... Euler classes.....}
+There are four different types of characteristic classes: Stiefel-Whitney classes, Pontryagin classes, Euler classes and Chern classes. Stiefel-Whitney and Pontryagin classes are characteristic classes of real vector bundles. Euler classes  characterise oriented real vector bundles.
 Chern classes characterise complex vector bundles. 
-Note that one can consider Chern classes of complex vector bundles over smooth (real) manifolds, and also of K{\"a}hler manifolds (the latter of which we do not discuss in detail). Note further that the theory of Chern classes can be applied equally if we replace vector bundles with principle $G$-bundles (with fibres the Lie group $G$), since these structures are equivalent. 
+Note that one can consider Chern classes of complex vector bundles over smooth (real) manifolds, and also of K{\"a}hler manifolds (the latter of which we do not discuss in detail). Note further that the theory of Chern classes can be applied equally if we replace vector bundles with principle $G$-bundles (with fibres the Lie group $G$), since these structures are `equivalent'. 
 
-The theory of Characteristic classes is a cohomology theory, and thus requires techniques from algebraic topology to compute these in general. However in the case of Chern classes of complex vector bundles, one can use techniques from complex differential geometry to compute these. This makes computing Chern classes comparatively more explicit than computing the other characteristic classes. In particular the Chern classes (which are elements in cohomology classes) can be defined in terms of an invariant polynomial of its curvature form. The curvature of a manifold is associated to a connection on a vector bundle. We will find that in fact the choice of connection does not impact the Chern class, \checkCorrect{so it is indeed an invariant.}
+The theory of characteristic classes is a cohomology theory, and thus requires techniques from algebraic topology to compute these in general. However in the case of Chern classes of complex vector bundles, one can use techniques from complex differential geometry to compute these. This makes computing Chern classes comparatively more explicit than computing the other characteristic classes. In particular the Chern classes (which are elements in cohomology classes) can be defined in terms of an invariant polynomial of its curvature form. The curvature of a manifold is associated to a connection on a vector bundle. We will find that in fact the choice of connection does not impact the Chern class, so it is indeed an invariant.
 
 Hence we spend a large portion of the thesis  reproducing important facts and examples from the theory of manifolds, vector bundles, connections on manifolds and the associated curvature. We then go on to define Chern classes and their properties. We compute all of the theory with a focus on complex projective space, whilst alluding to various other simple examples throughout the exposition. We also do not hesitate to recall theory relating to smooth and Riemannian manifolds, due to their familiarity and similarity in many respects to the respective theory on complex manifolds.
 
-Complex projective space happens to be a particularly important example in the theory of Chern classes, since one can show.... \finish{[SEE HUYBRECHTS]}.
+Complex projective space happens to be a particularly useful example to study in the theory of Chern classes, since it has many interesting complex manifolds that can be embedded into projective space and it also has the advantage of being able to apply linear algebraic methods on this space. 
 
-The theory of Characteristic classes have applications for example in Topological Quantum computing. Chern classes are an example of `primary' characteristic class. One may also define `secondary' characteristic classes \finish{[HOW ROUGHLY?]} leading to what is known as Chern-Simons theory. Chern-Simons theory is a topological quantum field theory. \checkCorrect{In the simplest case, $SU(2)$-Chern-Simons theory (which is known to physicists as the Yang-Lee-Fibonnaci model) gives rise to non-abelian anyons describing a model for Topological Quantum computing.} \checkCorrect{The main theoretical advantage of topological quantum computing over other quantum computing models is in physical error correction.} A formal treatment of Chern-Simons theory is out of the scope of this exposition, \checkCorrect{however it is defined in terms of the Chern-Weil homomorphism which we do discuss.} 
+The theory of characteristic classes have applications for example in topological quantum computing. Chern classes are an example of `primary' characteristic class. One may also define `secondary' characteristic classes (which arise when the first Chern class vanishes) leading to what is known as Chern-Simons theory. Chern-Simons theory is a topological quantum field theory. In the simplest case, $SU(2)$-Chern-Simons theory (which is known to physicists as the Yang-Lee-Fibonnaci model) gives rise to non-abelian anyons describing a model for topological quantum computing. The main theoretical advantage of topological quantum computing over other quantum computing models is in physical error correction. A formal treatment of Chern-Simons theory is out of the scope of this exposition, however it is defined in terms of the Chern-Weil homomorphism which we do discuss.
 
 \section{Manifolds}
 
@@ -105,35 +107,35 @@ and with transition functions given by (noting that $\phi_i(U_i\cap U_j) = (0, 1
 \begin{align*}
 \phi_3 \circ \phi_1^{-1} & :\phi_1(U_1\cap U_3)\to \phi_3(U_1 \cap U_3) \\
 \phi_3 \circ \phi_1^{-1} & : (0,1) \to (0,1) \\
-& : x \xmapsto{\phi_1^{-1}} (x, \sqrt{1-x^2}) \xmapsto{\phi_3} \sqrt{1-x^2}
+& x \xmapsto{\phi_1^{-1}} (x, \sqrt{1-x^2}) \xmapsto{\phi_3} \sqrt{1-x^2}
 \end{align*}
 \begin{align*}
 \phi_1 \circ \phi_3^{-1} & : (0,1) \to (0,1) \\
-& : y \xmapsto{\phi_1 \circ \phi_3^{-1}}  \sqrt{1-y^2}
+& y \xmapsto{\phi_1 \circ \phi_3^{-1}}  \sqrt{1-y^2}
 \end{align*}
 \begin{align*}
 \phi_1 \circ \phi_4^{-1} & : (-1,0) \to (0,1) \\
-& : y \mapsto -\sqrt{1-y^2}
+& y \mapsto -\sqrt{1-y^2}
 \end{align*}
 \begin{align*}
 \phi_4 \circ \phi_1^{-1} & : (0,1) \to (-1, 0) \\
-& : x \mapsto \sqrt{1-x^2}
+& x \mapsto \sqrt{1-x^2}
 \end{align*}
 \begin{align*}
 \phi_2 \circ \phi_3^{-1} & : (0,1) \to (-1, 0) \\
-& : y \mapsto \sqrt{1-y^2}
+& y \mapsto \sqrt{1-y^2}
 \end{align*}
 \begin{align*}
 \phi_3 \circ \phi_2^{-1} & : (-1,0) \to (0,1)\\
-& : x \mapsto -\sqrt{1-x^2}
+& x \mapsto -\sqrt{1-x^2}
 \end{align*}
 \begin{align*}
 \phi_2 \circ \phi_4^{-1} & : (-1,0) \to (-1,0)\\
-& : y \mapsto -\sqrt{1-y^2}
+& y \mapsto -\sqrt{1-y^2}
 \end{align*}
 \begin{align*}
 \phi_4 \circ \phi_2^{-1} & : (-1,0) \to (-1,0)\\
-& : x \mapsto -\sqrt{1-x^2}
+& x \mapsto -\sqrt{1-x^2}
 \end{align*}
 which are all smooth maps, hence $S^1$ is a smooth $2$-dimensional manifold. This atlas can easily be generalised to the $n$-sphere $S^n$.
 
@@ -177,7 +179,16 @@ The following statement highlights a key difference between complex manifolds an
 
 Note that we can define more projective spaces in a similar fashion to real projective space, if we replace $\realnos$ in the definition by any of the division algebras $\complexnos, \mathbb{H}, \mathbb{O}$ (complex numbers, quaternions, octonians). As vector spaces, $\complexnos \simeq \realnos^2$, $\mathbb{H} \simeq \realnos^4$, $\mathbb{O} \simeq \realnos^8$, hence as smooth manifolds $\complexnos P^n$, $\mathbb{H}P^n$, $\mathbb{O}P^n$, have the corresponding real dimension $2n, 4n, 8n$ respectively.
 
-In particular complex projective space $\complexnos P^n$ can be considered as a complex manifold of complex dimension $n=\text{dim}_\complexnos \complexnos P^n$. \finish{EXPLAIN MORE WHY ITS A COMPLEX MANIFOLD!!}
+In particular complex projective space $\complexnos P^n$ can be considered as a complex manifold of complex dimension $n=\text{dim}_\complexnos \complexnos P^n$. 
+
+Let us write the atlas on complex projective space for completeness. Define an open covering $U_i:=\{(z_0:\ldots :z_n)| z_i\neq 0\}\subseteq \projCspace$ (for $i=0,\ldots, n$, and $(z_0:\ldots :z_n)$ standard homogeneous coordinates). Then we have charts
+\begin{align*}
+\phi_i & :U_i \to \complexnos^n \\
+& \ (z_0:\ldots : z_n) \xmapsto{\phi_i} \left( \frac{z_0}{z_i}, \ldots, \frac{z_{i-1}}{z_i}, \frac{z_{i+1}}{z_i}, \ldots, \frac{z_n}{z_i} \right)
+\end{align*}
+From this we obtain transition functions $\psi_{ij}:=\psi_i\circ \psi_j^{-1}:\psi_j(U_i\cap U_j)\to \psi_i(U_i\cap U_j)$ given by
+$$\psi_{ij}(w_1, \ldots, w_n) = \left( \frac{w_1}{w_i}, \ldots, \frac{w_{i-1}}{w_i}, \frac{w_{i+1}}{w_i}, \ldots, \frac{w_{j-1}}{w_i}, \frac{1}{w_i}, \frac{w_j}{w_i}, \ldots, \frac{w_n}{w_i} \right)$$
+which are clearly bijective and holomorphic.
 
 \section{Bundles and Sections}
 
@@ -222,23 +233,36 @@ Note that the structure group of an oriented vector bundle can be restricted to 
 
 \subsubsection{Complex vector bundles}
 
-A \defn{complex vector bundle} has typical fibre $\complexnos^k$. Hence the fibres $E_p$ are $k$-dimensional vector spaces over $\complexnos$. \finish{Note that complex vector bundles are canonically oriented vector bundles since...} 
+A \defn{complex vector bundle} follows the definition of a real vector bundle, however has typical fibre $\complexnos^k$. Hence the fibres $E_p$ are $k$-dimensional vector spaces over $\complexnos$. 
 
-\finish{SAY MORE!!!}
-
-Note that the base space of a complex vector bundles is not neccessarily a complex manifold. For example we can have a complex vector bundle over a smooth real manifold - (say for example attaching as fibres copies of $\complexnos$ at each point on the circle $S^1$ in a smooth way. 
+Note that complex vector bundles are canonically oriented vector bundles. Note that the base space of a complex vector bundles is not neccessarily a complex manifold. For example we can have a complex vector bundle over a smooth real manifold - (say for example attaching as fibres copies of $\complexnos$ at each point on the circle $S^1$ in a smooth way. 
 
 For most of this exposition - since we are interested in discussing Chern classes - we will generally consider \emph{vector bundles} to mean \emph{complex vector bundles} unless otherwise specified, or unless it is clearly not a complex vector bundle from the context. We will be a little loose with notation, for example sometimes writing $C^\infty (M)$ to mean both smooth real functions or smooth complex functions, which should be obvious from the context, and similarly for example with  sections $\Gamma(M)$, and forms $\Omega(M)$ to denote either the real or complex case. 
 
 \subsubsection{Holomorphic vector bundles}
-\finish{SAY SOMETHING on the theory!}
+\defn{A holomorphic vector bundle} (of rank $r$) is a fibre bundle where the base manifold $M$ and total space $E$ are complex manifolds. Furthermore the projection map $\pi:E\to M$ is required to be holomorphic, and the fibres are complex vector spaces. Finally the trivialisations $\phi_i:E|_U \to U\times \complexnos^r$ are required to be biholomorphic, and are $\complexnos$-linear when restricted to a point $p\in U$. By \defn{biholomorphic} we mean that $\phi_i$ is injective, holomorphic and has a holomorphic inverse, and further the image of $\phi_i$ is open in $U\times \complexnos^r$. 
 
-\subsubsection{Example: Holomorphic line bundle}
-\finish{SAY SOMETHING! This example is needed as used later as example of hermitian metric. probably defined in huybrechts.}
+Note that every holomorphic vector bundle is also a smooth manifold. A holomorphic vector bundle is not to be confused with a complex vector bundle. A complex vector bundle does not always admit a holomorphic structure. 
 
-\subsubsection{Example: Tautological bundle on $\complexnos P^n$ }
-\finish{IS THIS A TANGENT BUNDLE?? SAY SOMETHING!}
+A \defn{holomorphic line bundle} is a holomorphic vector bundle of rank $1$.
 
+\subsubsection{Example: Tautological line bundle $\mathcal{O}(-1)$ on $\complexnos P^n$ }
+Note that we can define $\projCspace$ as the lines through $0$ in $\complexnos^{n+1}$, with a surjective map $p:\complexnos^{n+1}\setminus \{0\}\to \projCspace$ such that $v\xmapsto{p} \complexnos v$. 
+
+Note we can do this due to the following correspondence 
+\begin{align*}
+    \{\text{lines through $0$ in $\complexnos^{n+1}$}\} & \rightleftarrows \frac{\complexnos^{n+1}\setminus \{0\}}{\complexnos^\times} \\
+    l & \mapsto [v], \text{ for any } v\in l\setminus \{0\} \\
+    \complexnos v & \mapsfrom [v]
+\end{align*}
+
+Now consider the trivial vector bundle $\projCspace \times \complexnos^{n+1}$ of rank $n+1$ over $\projCspace$. We define
+$$\mathcal{O}(-1) := \{(l, w)\in \projCspace \times \complexnos^{n+1} : w\in l\}$$
+(Note in particular that $(l, 0)\in \mathcal{O}(-1)$).
+
+Consider the composition $\mathcal{O}(-1) \xhookrightarrow{i} \projCspace \times \complexnos^{n+1} \xrightarrow{p_1} \projCspace$ where $p_1$ is projection onto the first factor and $\xhookrightarrow{i}$ denotes the inclusion map. Then this composition gives a holomorphic vector bundle $\pi := p_1 \circ i: \mathcal{O}(-1) \to \projCspace$ called the \defn{tautological line bundle on $\complexnos P^n$}. 
+
+Now we define `coordinates' for this bundle. Consider $v_p\in \mathcal{O}(-1)_p$. Now a point $p\in \complexnos P^n$ corresponds to a line $l\in \complexnos^{n+1}$. So for $v_p = (p, v)\in l$, we have $v_p = (v^0_p, \ldots, v^n_p) \in \complexnos^{n+1}$. Hence we obtain coordinates defined by $z_i(v_p)=v_p^i \in \complexnos$, and furthermore $z_i\in \Gamma(\mathcal{O}(-1)^*) = \Gamma(\mathcal{O}(1))$, where $\mathcal{O}(1)$ is the dual holomorphic line bundle of $\mathcal{O}(-1)$. We call $z_0, \ldots, z_n$ the standard homogeneous linear coordinates on $\projCspace$ as sections of $\Gamma(\mathcal{O}(1))$.
 
 \subsubsection{Tangent bundles}
 
@@ -251,18 +275,15 @@ $n$ is the dimension of $M$.
 
 The \defn{tangent bundle} over an $n$-dimensional manifold $M$ is the $n$-dimensional vector bundle $TM:=\cup_p T_p M\xrightarrow{\pi} M$ with $\pi(X_p)=p$ for $X_p\in T_p M$. Note that given a chart $(U, \phi)$ of $M$ with coordinates $\phi =(x_1, \ldots, x_n)$, we obtain a local frame $\{\frac{\partial}{\partial{x^i}}\}_i$ for the tangent bundle, which corresponds to a local trivialisation. 
 
-\finish{Explain briefly derivative + jacobian. Explain briefly the derivative will be extended when we discuss differential forms.}
-
 \subsubsection{Holomorphic tangent bundle}
-\finish{IS PREVIOUS REAL TANGENT BUNDLE? HOW TO DENOTE HOLOMORPHIC TANGENT BUNDLE? WHAT ARE THE MAIN DIFFERENCES?}
+Let $(\phi, U)$ be a chart of a complex manifold $M$, with coordinates $(z^1, \ldots, z^n)$ over $U$. Then we can define the \defn{holomorphic tangent bundle} locally over $U$ as the $\smooth(U)$-linear span of $\{ \frac{\partial}{\partial z^1}, \ldots,  \frac{\partial}{\partial z^n}\}$. 
 
-\subsubsection{Example: Tangent bundle on $\complexnos P^n$}
+This local definition glues together nicely to give a global definition of the holomorphic tangent bundle, by considering the transition functions $\phi_{ij}:=\phi_i\circ \phi_j^{-1}$ of the charts $(\phi_i, U_i), (\phi_j, U_j)$, and applying the transformation given by the Jacobian
+$$J(\phi_{ij})(\phi_j(z)):=\left( \frac{\phi_{ij}^k}{\partial z^l} (\phi_j(z)) \right)_{k, l}$$
 
-\finish{WRITE SOME STUFF. SHOULD THIS BE AS HOLOMORPHIC TANGENT BUNDLE?? EXPLAIN DIFFERENCE BETWEEN TANGENT BUNDLE AND HOLOMORPHIC TANGENT BUNDLE??}
-
+Note we can also define the \defn{holomorphic cotangent bundle} as the dual of the holomorphic tangent bundle. (Hence we can define $p$-forms $\Omega^p(M)$ etc. for complex manifolds $M$).
 
 \subsubsection{Sections and vector fields}
-
 A \defn{section} of a vector bundle $E\xrightarrow{\pi} B$ is a smooth map $\sigma:B\rightarrow E$, such that $\pi \circ \sigma=\id_B$ (in other words, $\sigma(p)\in E_p, \forall p\in B$). The set of all sections of a vector bundle $E$ is denoted $\Gamma (E)$ and is a module over smooth functions $C^\infty(M)$.
 
 A \defn{vector field} is a section of the tangent bundle $TM$. The $C^\infty (M)$ module of vector fields is denoted $\mathfrak{X}(M):=\Gamma(TM)$. Note that if there exists a global trivialisation from the tangent bundle, then the base manifold is said to be \defn{parallelizable}. 
@@ -336,14 +357,17 @@ Furthermore, if $g:U\to GL_r(\complexnos)$ is a change of frame mapping with $f'
 $$h(f')=\overline{g^T}h(f)g$$
 for the local representation of $h$ with respect to the frames $f, f'$.
 
-\subsubsection{Hermitian metric on holomorphic line bundle}
-\finish{UNDERSTAND THIS SECTION BETTER and rewrite!}
+\subsubsection{Constant hermitian structure on the trivial bundle}
+Consider the trivial bundle $E=M\times \complexnos^r$. Recall the trivial bundle gives a global trivialisation hence a global frame, thus any sections $s, \sigma \in \Gamma(E)$ can be written as  $s=(s^1, \ldots, s^r)$, $\sigma=(\sigma^1, \ldots, \sigma^r)$ over the frame, where $s^i, \sigma^i \in \smooth_\complexnos (M)$. Now we can consider the \defn{constant hermitian structure} defined on the trivial bundle as
+$$h(s, \sigma)=s^1\bar{\sigma^1} + \ldots s^r\bar{\sigma^r}$$
+(This is `constant' in the sense that if we take the hermitian inner product of two vectors at a point, and `the same' two vectors at another point, it will give you some constant complex number). 
 
-Let $E$ be a holomorphic line bundle, with global holomorphic sections $s^1, \ldots, s^r$, \question{[Is this in fact a global holomorphic frame??]} and let $\psi:E|_U\to U\times \complexnos^r$ be a local trivialisation over $U$ (so that for $p\in U$, $\psi_p:E_p\to \{p\}\times \complexnos^r \simeq \complexnos^r$). Then $\forall p\in U$ define
+\subsubsection{Hermitian metric on a holomorphic line bundle}
+Let $E$ be a holomorphic line bundle, with global holomorphic sections $s^1, \ldots, s^r$ of $E$, so that at every point at least one of the sections is non-zero. Let $\psi:E|_U\to U\times \complexnos^r$ be a local trivialisation over $U$ (so that for $p\in U$, $\psi_p:E_p\to \{p\}\times \complexnos^r \simeq \complexnos^r$). Then $\forall p\in U$ define
 $$h(v_p):=\frac{|\psi_p(v_p)|^2}{\sum_{i=1}^r |\psi_p (s^i_p)|^2}$$
 for $v_p\in E_p$. This is a Hermitian inner product at $p$, and hence gives a hermitian metric on $E$. Note by an abuse of language, this can be written in shorthand as $h(v_p)=(\sum_i |s^i|^2)^{-1}$.
 
-\understandBetter{In particular, the line bundle on $\complexnos P^n$ (with its standard globally generating sections $s^1, \dots, s^r$) has this Hermitian metric.}
+In particular, $\mathcal{O}(1)$, the dual of the tautological line bundle on $\complexnos P^n$ (with the standard globally generating sections $s^1, \dots, s^r\in \Gamma(\mathcal{O}(1))$) has this Hermitian metric.
 
 \subsubsection{Fubini-Study metric on tangent bundle of $\complexnos P^n$}
 Let $(U_j, \phi_j)$ be the standard atlas of $\complexnos P^n$, where we recall that $\phi_j:U_j\simeq \complexnos$ such that $\phi_j((z_0 : \ldots : z_n))=(\frac{z_0}{z_j}, \ldots, \frac{z_{j-1}}{z_j}, \frac{z_{j+1}}{z_j}, \ldots, \frac{z_n}{z_j})\sim (1, w^1, \ldots, w^n)$. This gives a local frame for the holomorphic tangent bundle of $\complexnos P^n$, namely $\{\partial_1, \ldots, \partial_n\}$, where $\partial_i=\frac{\partial}{\partial w^i}$ over $U_j$. 
@@ -372,18 +396,15 @@ One can show that $\omega_{FS}$ is a closed, real, positive definite $(1,1)$-for
 \end{align*}
 
 \subsubsection{New bundles from old}
-\finish{POSSIBLY COMBINE WITH HERMITIAN METRICS SECTION BELOW.}
-
 Let $\pi_E:E\to M, \pi_F:F\to M$ be two (complex) vector bundles over $M$, ($p\in M$).
 
 The \defn{dual bundle} of $E$ is $\pi_{E^\ast}:E^\ast \to M$ with fibres $(E^*)_p = (E_p)^*$.
 
 The \defn{tensor product} of $E$ and $F$ is a bundle $\pi_{E\otimes F}:(E\otimes F) \to M$ with fibres $(E\otimes F)_p:=(E_p \otimes F_p)$. Furthermore given sections $s_E\in \Gamma(E), s_F\in \Gamma(F)$ then define $s_E\otimes s_F\in \Gamma(E\otimes F)$ as $(s_E\otimes s_F)(p)=s_E(p)\otimes s_F(p)$ for all $p\in M$. Lastly note that if $\{s^1, \ldots, s^k\}$ is a local frame for $E$, and $\{\sigma^1,\ldots , \sigma^t\}$ is a local frame for $F$, then $\{s^i\otimes s^j : i=1,\ldots, k, j=1,\ldots , t\}$ is a local frame for $E\otimes F$, (since $s^i(p)\otimes s^j(p)$ gives a basis of $E_p\otimes F_p$).  
 
+We can also define a bundle \defn{$\Hom(E,F)$} over $M$, with fibres $\Hom(E,F)_p = \Hom(E_p, F_p)$. Then this gives us another bundle namely $\defn{\End}(E):=\Hom(E,E)$. 
 
-\finish{Also define End(E) bundle}
-\finish{Write more bundles: symmetric product, Hom,  $Hom(E,F)_p = Hom(E_p, F_p)$ (over reals)
-PULL-BACK BUNDLE etc? See Huybrechts or any other ref for useful bundles}
+Suppose $f:M\to N$ is a function of manifolds, and $E$ is a vector bundle on $N$. Then we obtain a vector bundle $f^* E$ on $M$ called the \defn{pull-back bundle} with fibres given by $(f^*E)_p=E_{f(p)}$.
 
 Note that given a real vector space $V$ we can construct another real vector space $V^\complexnos := V\otimes_\realnos \complexnos$, where $\complexnos$ is considered as a real vector space. $V^\complexnos$ can be made into a complex vector space by defining complex multiplication $\beta(v\otimes \alpha) = v\otimes (\beta \alpha)$ for $v\in V$, $\alpha, \beta \in \complexnos$. The complex vector space $V^\complexnos$ is called the \defn{complexification} of $V$. Similarly we can obtain a complex vector bundle $E^\complexnos := E\otimes \complexnos$ from a real vector bundle $E$, by complexifying each fibre. To be explicit, the fibres of $E^\complexnos$ are given by $(E\otimes \complexnos)_p := E_p\otimes \complexnos$.
 Conversely one may also obtain a a real vector space from a complex vector space by restricting scalars, and at a global level we can obtain a real vector bundle from a complex vector bundle. 
@@ -539,7 +560,7 @@ This induces a vector bundle with projection
 $$\pi^{p,q}:\Omega^k_\complexnos (M)\to \Omega^{p, q}_\complexnos(M)$$
 
 \subsubsection{Dolbeault operators}
-\checkCorrect{The usual exterior derivative $d:\Omega^r \to \Omega^{r+1}$} gives \understandBetter{$d(\Omega^{p,q}_\complexnos)\subseteq_{r+s=p+q+1} \Omega^{r, s}$}. Hence we define the following operators
+The usual exterior derivative $d:\Omega^r \to \Omega^{r+1}$ gives $d(\Omega^{p,q}_\complexnos)\subseteq_{r+s=p+q+1} \Omega^{r, s}$. Hence we define the following operators
 $$\partial := \pi^{p+1, q}\circ d:\Omega^{p,q}\to \Omega^{p+1, q}$$
 $$\bar{\partial} := \pi^{p, q+1}\circ d:\Omega^{p,q}\to \Omega^{p, q+1}$$
 called \defn{Dolbeault operators}, where $\pi^{p, q}:\Omega^k_\complexnos (M)\to \Omega^{p, q}_\complexnos(M)$ is the projection map defined previously. 
@@ -922,9 +943,11 @@ Let $E, F$ be vector bundles over $M$, with connections $\nabla^E, \nabla^F$ res
 For $s\in \Gamma(E), \sigma \in \Gamma(F)$ define \defn{a connection $\nabla$ on $E\oplus F$} as
 $$\nabla(s\oplus \sigma)=\nabla^E(s)\oplus \nabla^F(s)$$
 
-\finish{On $\Hom(E, F)$ - GO OVER AND WRITE UP. see your huybrecths notes} 
+We can define a \defn{connection $\nabla$ on $\Hom(E, F)$} locally as
+$$\nabla(f)(s)=\nabla^F(f(s))-f(\nabla^E(s))$$
+where $f\in \Hom(E, F)|_U$ ($f$ local over $U$), and $s\in \Gamma(U, E)$. Note that $f(s)\in \Gamma(U, F)$, so we can apply $\nabla^F$ to this. To understand $f(\nabla^E(s))$ in this formula, we note that $\Hom(E, F)\simeq \Gamma(E^*\otimes F) \simeq \Omega^1(E)\otimes \Gamma(F)$ and define $f(\alpha\otimes t)=\alpha \otimes f(t)$ for $\alpha \in \Omega^1(E)$ and $t\in \Gamma(F)$.
 
-\finish{On pull back bundle - GO OVER AND WRITE UP. in huybrechts?}. If $\nabla = d+A$ is a connection on $U\subseteq N$ locally and $f:M\to N$ is smooth map of manifolds, then the \defn{pull back connection} is a connection on $M$ locally given by $f^*\nabla |_{f^-1(U)}=d+f^*A$.
+If $\nabla = d+A$ is a connection on $U\subseteq N$ locally and $f:M\to N$ is smooth map of manifolds, then the \defn{pull back connection} is a connection on $M$ locally given by $f^*\nabla |_{f^-1(U)}=d+f^*A$.
 
 \section{Curvature}
 
@@ -1003,7 +1026,9 @@ F_\nabla & = dA + (A\wedge A) \\
 where the last equality holds by comparing types.
 
 \subsubsection{Bianchi identity}
-\finish{WRITE UP BIANCHI IDENTITY}
+Suppose $F_\nabla\in \Omega^2(\End(E), M)$ is the curvature associated to a connection $\nabla$ on a vector bundle $E$. Suppose that $\tilde{\nabla}$ is the natural connection on $\End(E)$ induced from $\nabla$. Then the Bianchi identity states   
+$$\tilde{\nabla}(F_\nabla)=0$$
+and note that $\tilde{\nabla}(F_\nabla)\in \Omega^3(\End(E), M)$.
 
 Note that for the Chern connection on a holomorphic hermitian bundle, the Bianchi identity allows us to define a cohomology theory with cohomology classes $[F_\nabla]$ belonging to a Dolbeault cohomology class. One can further show that this does not depend on the choice of connection, i.e. $[F_\nabla]=[F_{\nabla+a}]$, where $\nabla, \nabla+a$ are Chern connections with respect to the hermitian metric. 
 
@@ -1022,13 +1047,6 @@ $$F_{\nabla^*}=-F_{\nabla}^T$$
 On the pull back connection $f^*\nabla$ (where $f:M\to N$ is a smooth map of manifolds), we get
 $$F_{f^* \nabla} = f^* F_\nabla$$
 
-\subsubsection{Curvature of trivial bundle with constant hermitian structure}
-We state without proof that if $\nabla$ is a hermitian connection on a hermitian vector bundle $(E, h)$, then $F_\nabla$ satisfies $h(F_\nabla s, \sigma)+h(s, F_\nabla \sigma)=0$. In other words $F_\nabla\in \Omega^2(\End(E), M)$.
-
-Consider the trivial bundle $E=M\times \complexnos^r$, with constant hermitian structure \checkCorrect{$h_p(s_p, \sigma_p)=1$ for all $p\in M$, for $s, \sigma\in \Gamma(M\times \complexnos^r)$}. \checkCorrect{Then we have a hermitian connection is $\nabla=d+A$ with $\bar{A}^T=-A$}. Then the \checkCorrect{curvature} is given by $d(A+\bar{A}^T)+(A\wedge A +\overline{(A\wedge A)}^T)=0$ by the result mentioned above. Hence in particular when $r=1$, the real part of $A$
- is constant. 
- \checkCorrect{[DO NOT UNDERSTAND. UNDERSTAND, CHECK CORRCET AND REWRITE]}
-
 \subsubsection{Example: Cuvature associated with Chern connection on $T (\complexnos P^n)$}
 
 Recall the Chern connection on $\complexnos P^n$ with hermitian structure $H$ given by the fubini-study metric, is given locally by $\nabla = d+\bar{H}^{-1}\partial(\bar{H})$. Let $A=\bar{H}^{-1}\partial(\bar{H})$, then the curvature associated to this Chern connection is locally 
@@ -1040,8 +1058,10 @@ Recall the Chern connection on $\complexnos P^n$ with hermitian structure $H$ gi
 \end{align*}
 where the last equality holds, by comparing types. More precisely recall that $A$ is a matrix of $(1, 0)$ forms, so $\partial A$ is a $(2,0)$-form, and $A\wedge A$ is a $(2,0)$-form, and so are zero as curvature on a holomorphic bundle with hermitian structure, is a $(1,1)$ form.
 
-\subsubsection{Curvature of line bundle on $\complexnos P^n$}
-Let $(z^0, \ldots, z^n) \checkCorrect{\sim (1: w^1: \ldots : w^n)}$ standard coordinates on the chart $U_k\subseteq \complexnos P^n$ \understandBetter{as sections of the holomorphic line bundle}. Recall we have a hermitian metric \checkCorrect{$h=(\sum_i |z^i|^2)^{-1}=(\sum_i 1+|w^i|^2)^{-1}$} on this bundle. Then one can show that the associated curvature to the Chern connection $\nabla$ on this bundle is
+\subsubsection{Curvature of tautological line bundle on $\complexnos P^n$}
+Consider the standard coordinates $(z^0, \ldots, z^n)\in \Gamma(\mathcal{O}(1))$ as sections of the dual bundle $\mathcal{O}(1)$ to the tautological line bundle $\mathcal{O}(-1)$ on $M:=\complexnos P^n$. 
+
+ Recall we have a hermitian metric $h=(\sum_i |z^i|^2)^{-1}=(\sum_i 1+|w^i|^2)^{-1}$ on this bundle. Then one can show that the associated curvature to the Chern connection $\nabla$ on this bundle is
 $$F_\nabla = \frac{2\pi}{i} \omega_{FS} $$
 where $\omega_{FS}$ is the Fubini-study form. Recall the connection matrix $A$ on a holomorphic line bundle with hermitian structure is given by $A = \partial \text{log}(h)$, where $h$ is the hermitian metric (and a positive real function on the line bundle). Hence locally we have that the curvature form is given by 
 \begin{align*}
@@ -1052,6 +1072,23 @@ F_\nabla = \bar{\partial}A & =  \bar{\partial}\partial \text{log}(h) \\
 Note that this can be generalised to any holomorphic line bundle on any complex manifold $M$ using the pull-back of $\phi:M\to \complexnos P^n$ to give
 $$\frac{i}{2\pi}F_\nabla = \phi^* \omega_{FS}$$
 where $\omega_{FS}$ is the Fubini-study form on $\complexnos P^n$.
+
+\subsubsection{Example: Connection matrix of the trivial line bundle is a closed real form}
+We state without proof that if $\nabla$ is a hermitian connection on a hermitian vector bundle $(E, h)$, then $F_\nabla$ satisfies $h(F_\nabla s, \sigma)+h(s, F_\nabla \sigma)=0$. In other words $F_\nabla\in \Omega^2(\End(E), M)$.
+
+Recall that locally a hermitian connection $\nabla=d+A$ has the property $\bar{A}^T=-A$ for its connection matrix. Then the associated curvature is locally $F_\nabla = dA+A\wedge A$ and we have $\bar{F_\nabla}^T = d\bar{A}^T + \overline{(A\wedge A)}^T$. Then by the result above one can see that $F_\nabla + \bar{F_\nabla}^T = 0$.
+
+Consider the trivial line bundle $E=M\times \complexnos$, endowed with the constant hermitian structure. Let $\nabla=d+\omega$ be a connection on $E$, for some $\omega \in \Omega^1(M)$. Now for any one form $\omega$ we have that $\omega \wedge \omega =0$ (note which does not hold for forms of higher degree). Using this and the fact that $\bar{\omega}^T = \bar{\omega}$, since $\omega$ is considered a $1\times 1$ matrix, we get that
+\begin{align*}
+F_\nabla + \bar{F_\nabla}^T & = d(\omega + \bar{\omega}^T) + (\omega\wedge \omega) + (\bar{\omega}^T \wedge \bar{\omega}^T) \\
+& = d(\omega + \bar{\omega}^T) \\
+& = d(\omega + \bar{\omega}) \\
+& = d(2\text{Re}(\omega)) \\
+& = 0
+\end{align*}
+Hence we have shown that $\text{Re}(\omega)=\omega + \bar{\omega}^T$ is closed. 
+
+So in particular we have that $\nabla = d+\omega$ (and $F_\nabla = d\omega + \omega\wedge \omega$), where $\text{Re}(\omega)$ is closed.
 
 \section{Chern classes}
 Let $E\to M$ be a (complex) vector bundle of rank $k$ (over $\complexnos$). The $i$'th Chern class is an element of de Rham cohomology
@@ -1092,10 +1129,6 @@ Using this we find that if we took another generator $h'\in H^{2}_{dR}(\complexn
 To summarise we have shown that for any top form $\omega'\in \Omega^{2n}(\complexnos P^n)$, we can obtain a generator $h^k$ for the cohomology classes $H^{2k}_{dR}(\complexnos P^n)$ specified by 
 $$\int \omega' \in \realnos$$
 where $[\omega ']=h^{2n}\in H^{2n}_{dR}(\complexnos P^n)$ is a ($1$-dimensional) basis for the top cohomology class.
-
-\subsubsection{Pioncar{\' e} duality}
-
-\finish{WRITE ABOUT PIONCARE DUALITY ALSO}
 
 \subsubsection{Invariant polynomials}
 
@@ -1253,7 +1286,20 @@ It is also possible to define Chern classes axiomatically. Denote the set of (co
 where $c_i(E)\in H^{2i}_{dR}(M)$, with the properties of triviality, naturality, Whitney sum, and normailsation (defined above). Then one can show that these axioms uniquely define a Chern class and the axiomatic definition is equivalent to our previous definition in terms of Chern-Weil theory. 
 
 \subsubsection{Chern classes on induced bundles}
-\finish{[WRITE UP from huybrechts]}
+Suppose $E, E'$ are complex bundles with respective connections $\nabla_E, \nabla_{E'}$ and associated curvature forms $F_{\nabla_E}, F_{\nabla_{E'}}$ respectively.
+
+If $B=E \oplus E'$, then recall the curvature form on $B$ is given by $F_\nabla = F_{\nabla_E} \oplus F_{\nabla_{E'}}$. 
+Now since $\det((I_E + \frac{i}{2\pi}F_{\nabla_E})\oplus (I_{E'} + \frac{i}{2\pi}F_{\nabla_{E'}})) = \det(I_E + \frac{i}{2\pi}F_{\nabla_E})\cdot  \det(I_{E'} + \frac{i}{2\pi}F_{\nabla_{E'}})$, we obtain that the Chern form of $B$ is
+$$c(B, \nabla) = c(E, \nabla_E)\cdot c(E', \nabla_{E'})$$
+called the \defn{Whitney product formula}. This also translates to the Chern classes of $B$ (see properties of Chern classes section). 
+
+Suppose $L$ is a line bundle, and $B = E\otimes L$. Then one can show the first Chern class is given by $$c_1(E\otimes L) = c_1(E) + \text{rank}(E)c_1(L)$$
+
+If $\nabla^*$ is the associated connection on the dual bundle $E^*$ of $E$. Then recall that $F_{\nabla^*} = -(F_\nabla)^T$. Hence $\det(I + \frac{i}{2\pi}F_{\nabla_{E^*}}) = \det(I - \frac{i}{2\pi}F_{\nabla_E}^T)=\det(I - \frac{i}{2\pi}F_{\nabla_E})$. From this we get the Chern forms 
+$$c_k(E^*, \nabla^*)=(-1)^k c_k(E, \nabla)$$
+
+Consider the pull-back bundle $f^*E$ (for a smooth map $f:M\to N$ of manifolds, with a bundle $E$ over $N$). Then we know that $F_{f^*\nabla}=f^* F_\nabla$, from which we obtain
+$$c_k(f^*E, f^*\nabla)= f^* c_k(E, \nabla)$$
 
 \subsubsection{Chern characters}
 We now use a different invarient homogeneous polynomial to define Chern characters. 
