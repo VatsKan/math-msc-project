@@ -105,4 +105,85 @@ The image of $g$ which can be shown to be a subgroup of $\mathrm{GL}_k(\realnos)
 \question{...[Do this for fibre bundles instead?? make a point for complex vect bundles/euclidean vect bundles etc that $\realnos^k$ can be replaced by $\complexnos^k$ etc. if true]}
 \question{Is there alt def of vector bundles using the tranistion maps instead?}
 
+\subsection{Differential forms}
+
+\subsubsection{Real differential forms}
+\finish{[WRITE UP OR REMOVE]}
+
+\subsection{Connections}
+
+\subsubsection{Levi-Civita connection on $S^2$}
+\finish{WRITE UP}
+
+\finish{WRITE MORE EXAMPLES OF CONNECTIONS ON BUNDLES, PROJECTIVE SPACE, SPHERES ETC}
+
+\subsubsection{Some proof regarding Chern connections}
+
+$$\nabla ' = \partial + A^{1,0}$$
+$$\nabla '' = \bar{\partial} + A^{0,1} \checkCorrect{= A^{0,1}}$$
+where $A^{0,1}$, $A^{1, 0}$ \finish{[HOW TO DEFINE??]}. \checkCorrect{Note here the last equality holds since  $\bar{\partial}s=0$ for any holomorphic section $s$. Note further that if $s$ is a holomorphic section of $E$ then $\nabla '' s =0$. [REPEATED FACT!!??]}
+
+\subsubsection{Chern connection on the complex torus}
+\finish{[SEE your notes on HUYBRETCHS AND WRITE]}
+
+
+\subsection{Torsion}
+\subsubsection{Torsion definition}
+Given an affine connection $\nabla:\mathfrak{X}(M) \times \mathfrak{X}(M)\to \mathfrak{X}(M)$, the \defn{torsion} is defined
+\begin{align*}
+T_\nabla & : \mathfrak{X}(M)\times \mathfrak{X}(M)\to \mathfrak{X}(M)\\
+& (X, Y)\mapsto \nabla_X Y - \nabla_Y X - [X, Y]
+\end{align*}
+and it is easy to check that $T_\nabla$ is $\smooth (M)$-bilinear.
+
+Note that we can express $T_\nabla$ as a $\smooth (M)$-linear map $\Gamma(TM\otimes TM)\to \Gamma(TM)$ and show that it is tensorial. 
+
+\subsubsection{Torsion of Levi-Civita connection on $\realnos^n$}
+\finish{WRITE UP - see exposition notes (towards end), and for local formula of lie bracket}
+
+\section{de Rham Cohomology}
+\subsubsection{Pioncare duality}
+
+\section{Chern classes}
+
+
+\subsubsection{Chern-Weil theorem}
+
+\understandBetter{UNDERSTAND BETTER BELOW
+DEF OF INVARIENT POLY EXTENDED TO $\Omega^p(End(E), M)$.}
+Note that the Lie algebra $\mathfrak{gl}_r(\complexnos)\simeq M_r(\complexnos)$. Recall that a $k$-multilinear symmetric map $\tilde{P}:V\times \cdots \times V\to \complexnos$ over a vector space $V$ corresponds to an element $P\in S^k(V)^*$. Now such a symmetric $k$-multilinear map $\tilde{P}: \mathfrak{gl}_r(\complexnos)\times \cdots \times \mathfrak{gl}_r(\complexnos)\to \complexnos$ is invarient if and only if 
+$$\sum_j P(A_1, \ldots, A_j, [A, A_j], A_{j+1}, \ldots, A_k)=0$$
+(where $[A, A_j]$ is the Lie bracket in $\mathfrak{gl}_r(\complexnos)$). 
+
+Now given an invarient symmetric multilinear map $\tilde{P}$, it induces a $k$-linear map
+\begin{align*}
+    \tilde{P} : & \left( \bigwedge {}^{i_1}M\otimes \End(E) \right) \times \ldots \times \left( \bigwedge {}^{i_k}M\otimes \End(E) \right)  \to \bigwedge {}^m_\complexnos M \\
+    & (\alpha_1\otimes \gamma_1, \ldots, \alpha_k\otimes \gamma_k) \mapsto (\alpha_1\wedge \cdots \wedge \alpha_k)P(\gamma_1. \ldots, \gamma_k)
+\end{align*}
+where $i_1+\ldots +i_k=m$ is an arbitrary partition and $E$ any vector bundle. On the level of global sections this becomes a $k$-multilinear map 
+$$\tilde{P}:\Omega^{i_1}(M, \End(E))\times \ldots \times \Omega^{i_k}(M, \End(E))\to \Omega^m_\complexnos(M)$$
+If we restrict $\tilde{P}$ to only even froms, it stays a $k$-multilinear symmetric map, in particular if we restrict $\tilde{P}$ to $\Omega^{2}(M, \End(E))\times \ldots \times \Omega^{2}(M, \End(E))$
+then it can be recovered from the polarized form $P(\alpha\otimes \gamma)=\tilde{P}(\alpha\otimes\gamma, \ldots, \alpha\otimes\gamma)$.
+
+If $\nabla$ is a connection on $E$, and $\tilde{\nabla}$ the induced connection on $\End(E)$, then 
+$$dP(\gamma_1, \ldots, \gamma_k)=\sum_{j=1}^k (-1)^{2(j-1)}P(\gamma_1, \ldots, \checkCorrect{\tilde{\nabla}}(\gamma_j), \ldots, \gamma_k)$$
+for forms $\gamma_i\in \Omega^2(M, \End(E))$. \checkCorrect{DO I NEED THIS IN FULL GENERALITY?--IN HUYBRECTHS, OR IS DEG 2 FORMS ENOUGH?}
+\understandBetter{[CHECK AND UNDERSTAND PREVIOUS PARAS BETTER]}
+
+
+Let $P$ be an invarient k-multilinear symmetric polynomial on $\mathfrak{gl}(r, \complexnos)$. Then one can show the induced $2k$-form 
+$$\tilde{P}(F_\nabla)\in \Omega^{2k}_\complexnos(M)$$
+is closed. Hence we can define cohomology classes
+$$[\tilde{P}(F_\nabla)]\in H^{2k}(M, \complexnos)$$
+which one can show is independent of the chosen connection $\nabla$, i.e.
+$$[\tilde{P}(F_\nabla)]=[\tilde{P}(F_{\tilde{\nabla}} )]$$
+for any connections $\nabla, \tilde{\nabla}$. 
+
+\section{Chern classes}
+\subsubsection{Example: Chern class of $\complexnos P^n$}
+\finish{[LOOK UP and write up!!!]}
+
+\section{Conclusion}
+\finish{WRITE UP}
+
 \end{document}

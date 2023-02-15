@@ -147,7 +147,7 @@ This is an $n$-dimensional smooth manifold with atlas $\{(U_i, \phi_i)\}_{i=1, \
 A \defn{Riemannian manifold} is a smooth manifold $M$ with a smooth map $g:p\mapsto g_p$, $p\in M$, called a \defn{Riemannian metric}, where $g_p:T_pM\times T_pM\to \realnos$ is an inner product (i.e.\ a symmetric, positive-definite, bilinear form).
 Note that it is always possible to find a Riemannian metric on any smooth manifold.
 
-Given a chart $(U, x^1, \ldots, x^n)$ of $M$, $g$ is smooth \checkCorrect{if and only if}  $g_{ij}:=g(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j}):U\to \realnos$ is smooth for all $i,j=1,\ldots, n$. Note $g_{ij}(p):=g_p(\frac{\partial}{\partial x^i}\vert_p, \frac{\partial}{\partial x^j}\vert_p) \in \realnos$ and we will make use of the shorthand notation $\partial_i:=\frac{\partial}{\partial x^i}$. We can now view $(g_{ij})$ as an $n^2$ matrix in $M_n(C^\infty (U))$, and since at each point $p$, $g_p$ is an inner product (so symmetric and positive definite) this also implies the matrix $(g_{ij})$ is symmetric and positive, and also in particular is non-degenerate, thus invertible.
+Given a chart $(U, x^1, \ldots, x^n)$ of $M$, $g$ is smooth if and only if $g_{ij}:=g(\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j}):U\to \realnos$ is smooth for all $i,j=1,\ldots, n$. Note $g_{ij}(p):=g_p(\frac{\partial}{\partial x^i}\vert_p, \frac{\partial}{\partial x^j}\vert_p) \in \realnos$ and we will make use of the shorthand notation $\partial_i:=\frac{\partial}{\partial x^i}$. We can now view $(g_{ij})$ as an $n^2$ matrix in $M_n(C^\infty (U))$, and since at each point $p$, $g_p$ is an inner product (so symmetric and positive definite) this also implies the matrix $(g_{ij})$ is symmetric and positive, and also in particular is non-degenerate, thus invertible.
 
 Since $(g_{ij}(p))$ is an invertible matrix over $\realnos$, we write its inverse as $(g^{kl}(p))$, and recall matrix multiplication of a matrix with its inverse gives us the following \defn{`contraction'},
 $\sum_j g_{ij}(p)g^{jk}(p)=\delta_i^k(p)$ (where $\delta_i^k\in C^\infty(U)$ such that $\delta_i^k(p)=1$ if $i=k$ or $0$ otherwise). In other words, as smooth functions over $U$ we have $\sum_j g_{ij}g^{jk}=\delta_i^k$. 
@@ -158,7 +158,7 @@ Recall also that the vector space of bilinear forms on $V$ can be canonically id
 
 A \defn{complex manifold} follows the definition of a smooth manifold, with two key differences. Namely, the charts $(\phi_\alpha, U_\alpha)$ take values in complex tuples $\phi_\alpha(U_\alpha)\subseteq \complexnos^n$, and the transition maps $\phi_\alpha\circ \phi_\beta^{-1}$ are required to be holomorphic $\forall \alpha, \beta$. Note if the complex dimension is $n$, then forgetting the holomorphic structure gives a smooth manifold with real dimension $2n$.
 
-On an open subset $U$ of a complex manifold $M$, we can define local coordinates $z^1,\ldots, z^n\in \smooth_\complexnos (U)$, where the transition functions between different `patches' $U, V\subseteq M$ of the manifold are holomorphic functions of these variables. Then we can write $z^k=x^k+iy^k, k=1,\ldots, n$, where $n=\text{dim}_\complexnos M$, and $x^k, y^k$ are \checkCorrect{smooth real functions on $U$}. 
+On an open subset $U$ of a complex manifold $M$, we can define local coordinates $z^1,\ldots, z^n\in \smooth_\complexnos (U)$, where the transition functions between different `patches' $U, V\subseteq M$ of the manifold are holomorphic functions of these variables. Then we can write $z^k=x^k+iy^k, k=1,\ldots, n$, where $n=\text{dim}_\complexnos M$, and $x^k, y^k$ are smooth real functions on $U$. 
 
 Note that a holomorphic function $f:U\to \complexnos$, $U\subseteq \complexnos$ can be written as $f(z)=f(x, y)=u(x,y)+iv(x,y)$ as a function of two real variables $x, y$, and $u$ and $v$ are the real and imaginary parts of $f$ respectively. 
 Note that if we write $z=x+iy$, for real variables $x, y$, we can define the following operators
@@ -185,7 +185,7 @@ In particular complex projective space $\complexnos P^n$ can be considered as a 
 
 A \defn{fibre bundle} consists of three topological spaces $E, B, F$, and a continuous surjection $\pi:E\rightarrow B$ (called the \defn{projection}), such that \defn{`local trivialisations'} exist (i.e. for every $p\in B$, there exists a neighbourhood $U\subseteq B$ of $p$ and a homeomorphism $\psi: \pi^{-1}(U) \rightarrow U \times F$, such that $\pi \vert_{\pi^{-1}(U)} = \pi_1 \circ \psi$ where $\pi_1$ is the projection on to the first component). $E$ is called the \defn{total space}, $B$ the \defn{base space}, $F$ the \defn{typical fibre}, and $E_p:=\pi^{-1}(p)$ the \defn{fibre} over $p$. As a shorthand we may denote a fibre bundle as $F\hookrightarrow E\xrightarrow{\pi} B$.
 
-A continuous map $U:E\rightarrow E'$ is a \defn{(fibre) bundle morphism} between two fibre bundles $E\xrightarrow{\pi} B$ and $E'\xrightarrow{\pi'} B'$ \checkCorrect{with the same typical fibre $F$}, if there exists a map $u:B\rightarrow B'$ such that $\pi' \circ U = u \circ \pi$
+A continuous map $U:E\rightarrow E'$ is a \defn{(fibre) bundle morphism} between two fibre bundles $E\xrightarrow{\pi} B$ and $E'\xrightarrow{\pi'} B'$ with the same typical fibre $F$, if there exists a map $u:B\rightarrow B'$ such that $\pi' \circ U = u \circ \pi$
 
 In the theory of Chern classes, there are two important types of fibre bundles to consider: vector bundles and principle $G$-bundles. Roughly speaking, in the case of vector bundles, each fibre is isomorphic to $\realnos^k$, whereas for $G$-bundles, the fibres are isomorphic to the Lie group $G$. The notion of a bundle morphism also generalises to both these structures, with some extra conditions to preserve the additional structure. 
 
@@ -203,7 +203,7 @@ Thus we have that $\pi$ is a fibre bundle with total space $S^{2m-1}$, base spac
 
 \subsubsection{Real vector bundles}
 
-A $k$-dimensional \checkCorrect{smooth} \defn{real vector bundle} is a fibre bundle with typical fibre $\realnos^k$, such that the projection map $E\xrightarrow{\pi} B$ is a smooth surjection of smooth manifolds, and the local trivialisations $\psi:\pi^{-1}(U_\alpha) \rightarrow U_\alpha \times \realnos^k$ are diffeomorphisms (for some open cover $\{U_\alpha\}$ of $B$). Moreover, the fibres $E_p:=\pi^{-1}(p)$ are required to be $k$-dimensional vector spaces and restricting any local trivialisation $\psi_p:=\psi \vert_{E_p}$ should give a linear isomorphism $\psi_p:\pi^{-1}(p)\rightarrow \{p\} \times \realnos^k \canonicaliso \realnos^k$ at each point $p\in B$.
+A $k$-dimensional smooth \defn{real vector bundle} is a fibre bundle with typical fibre $\realnos^k$, such that the projection map $E\xrightarrow{\pi} B$ is a smooth surjection of smooth manifolds, and the local trivialisations $\psi:\pi^{-1}(U_\alpha) \rightarrow U_\alpha \times \realnos^k$ are diffeomorphisms (for some open cover $\{U_\alpha\}$ of $B$). Moreover, the fibres $E_p:=\pi^{-1}(p)$ are required to be $k$-dimensional vector spaces and restricting any local trivialisation $\psi_p:=\psi \vert_{E_p}$ should give a linear isomorphism $\psi_p:\pi^{-1}(p)\rightarrow \{p\} \times \realnos^k \canonicaliso \realnos^k$ at each point $p\in B$.
 
 Suppose $\psi$, $\tilde{\psi}$ are two local trivialisations, defined on $\pi^{-1}(U)$, $\pi^{-1}(\tilde{U})$ respectively,
 for a vector bundle $E\xrightarrow{\pi} B$. Assume $U \cap \tilde{U}\neq \phi$ and given a 
@@ -228,7 +228,7 @@ A \defn{complex vector bundle} has typical fibre $\complexnos^k$. Hence the fibr
 
 Note that the base space of a complex vector bundles is not neccessarily a complex manifold. For example we can have a complex vector bundle over a smooth real manifold - (say for example attaching as fibres copies of $\complexnos$ at each point on the circle $S^1$ in a smooth way. 
 
-\checkCorrect{For the rest of this exposition we will generally consider vector bundles to mean complex vector bundles unless otherwise specified, or if it is clearly not a complex vector bundle from the context. We will be a little loose with notation, for example sometimes writing $C^\infty (M)$ to mean both smooth real functions or smooth complex functions, which should be obvious from the context, or $\Gamma(M)$ for both real and complex sections (see definition later).}
+For most of this exposition - since we are interested in discussing Chern classes - we will generally consider \emph{vector bundles} to mean \emph{complex vector bundles} unless otherwise specified, or unless it is clearly not a complex vector bundle from the context. We will be a little loose with notation, for example sometimes writing $C^\infty (M)$ to mean both smooth real functions or smooth complex functions, which should be obvious from the context, and similarly for example with  sections $\Gamma(M)$, and forms $\Omega(M)$ to denote either the real or complex case. 
 
 \subsubsection{Holomorphic vector bundles}
 \finish{SAY SOMETHING on the theory!}
@@ -345,27 +345,51 @@ for $v_p\in E_p$. This is a Hermitian inner product at $p$, and hence gives a he
 
 \understandBetter{In particular, the line bundle on $\complexnos P^n$ (with its standard globally generating sections $s^1, \dots, s^r$) has this Hermitian metric.}
 
-\subsubsection{Induced bundles}
-\finish{UPDATE AND REWRITE SECTION. POSSIBLY COMBINE WITH HERMITIAN METRICS SECTION BELOW.}
+\subsubsection{Fubini-Study metric on tangent bundle of $\complexnos P^n$}
+Let $(U_j, \phi_j)$ be the standard atlas of $\complexnos P^n$, where we recall that $\phi_j:U_j\simeq \complexnos$ such that $\phi_j((z_0 : \ldots : z_n))=(\frac{z_0}{z_j}, \ldots, \frac{z_{j-1}}{z_j}, \frac{z_{j+1}}{z_j}, \ldots, \frac{z_n}{z_j})\sim (1, w^1, \ldots, w^n)$. This gives a local frame for the holomorphic tangent bundle of $\complexnos P^n$, namely $\{\partial_1, \ldots, \partial_n\}$, where $\partial_i=\frac{\partial}{\partial w^i}$ over $U_j$. 
+
+We define a hermitian metric on the tangent bundle for $\complexnos P^n$ as follows. On $U_j$ let
+$$h_{i\bar{j}}:=h(\partial_i,\bar{\partial}_j):=\frac{((1+|w|^2))\delta_{ij}-\bar{w}
+_i w_j}{(1+|w|^2)^2}$$
+where $\delta_{ij}$ is the Kronecker delta and $|w|^2 = |w^1|^2 + \ldots + |w^n|^2$. Note that $h_{i\bar{j}}$ is a positive definite hermitian matrix, and defines the \defn{Fubini-study metric}. 
+
+We define the \defn{Fubini-study form} locally over $U_j$
+\begin{align*}
+    \omega_{FS} & := \frac{i}{2\pi} \sum_{i, j} h_{i\bar{j}} dw^i \wedge d\bar{w}^j \\
+ & = \frac{i}{2\pi} \partial \bar{\partial} \text{log} \left( 1 + \sum_{i=1}^k |w_k|^2  \right) \in \Omega^{1,1}(U_j)
+\end{align*}
+
+
+Note one can show that in fact $\omega_{FS}$ can be defined as a global form in $\Omega^{1,1}(M)$ since it is compatible over all intersections $U_i\cap U_j$. 
+
+One can show that $\omega_{FS}$ is a closed, real, positive definite $(1,1)$-form. Since $\omega_{FS}$ it is a top form over $1$-dimensional projective space, we can integrate and show that $\int_{\complexnos P^1} \omega_{FS}=1$. This is since
+\begin{align*}
+  \int_{\complexnos P^1} \omega_{FS} & = \int_\complexnos \frac{i}{2\pi}\frac{1}{(1+|z|^2)^2}dz\wedge d\bar{z}\\
+  & = \frac{1}{\pi}\int_{\realnos^2}\frac{1}{(1+||(x,y)||^2)^2}dx\wedge dy \\
+  & = 2 \int_0^\infty \frac{rdr}{(1+r^2)^2} \\
+  & = 2 \left( \frac{1}{2} \int_1^\infty \frac{du}{u^2 }\right) \\
+  & = \int_1^\infty \frac{du}{u^2}  = \left[ - \frac{1}{u} \right]_1^\infty = 1
+\end{align*}
+
+\subsubsection{New bundles from old}
+\finish{POSSIBLY COMBINE WITH HERMITIAN METRICS SECTION BELOW.}
 
 Let $\pi_E:E\to M, \pi_F:F\to M$ be two (complex) vector bundles over $M$, ($p\in M$).
-
-\finish{Write more bundles: symmetric product, End(E), Hom, PULL-BACK BUNDLE etc? See Huybrechts or any other ref for useful bundles}
 
 The \defn{dual bundle} of $E$ is $\pi_{E^\ast}:E^\ast \to M$ with fibres $(E^*)_p = (E_p)^*$.
 
 The \defn{tensor product} of $E$ and $F$ is a bundle $\pi_{E\otimes F}:(E\otimes F) \to M$ with fibres $(E\otimes F)_p:=(E_p \otimes F_p)$. Furthermore given sections $s_E\in \Gamma(E), s_F\in \Gamma(F)$ then define $s_E\otimes s_F\in \Gamma(E\otimes F)$ as $(s_E\otimes s_F)(p)=s_E(p)\otimes s_F(p)$ for all $p\in M$. Lastly note that if $\{s^1, \ldots, s^k\}$ is a local frame for $E$, and $\{\sigma^1,\ldots , \sigma^t\}$ is a local frame for $F$, then $\{s^i\otimes s^j : i=1,\ldots, k, j=1,\ldots , t\}$ is a local frame for $E\otimes F$, (since $s^i(p)\otimes s^j(p)$ gives a basis of $E_p\otimes F_p$).  
 
-\question{How to construct a vector bundle in practice by gluing together some specific fibres to give the total space E, and then specifying local trivs or otherwise sections of E? What is the theory behind this?}
-
-Note that given a real vector space $V$ we can construct another real vector space $V^\complexnos := V\otimes_\realnos \complexnos$, \checkCorrect{where $\complexnos$ is considered as a real vector space}. $V^\complexnos$ can be made into a complex vector space by defining complex multiplication $\beta(v\otimes \alpha) = v\otimes (\beta \alpha)$ for $v\in V$, $\alpha, \beta \in \complexnos$. The \checkCorrect{complex} vector space $V^\complexnos$ is called the \defn{complexification} of $V$. Similarly we can obtain a complex vector bundle $E^\complexnos := E\otimes \complexnos$ from a real vector bundle $E$, by complexifying each fibre. \checkCorrect{Note that this is a special case of the tensor product of bundles. \question{How can $\complexnos$ be considered as a vector bundle?}} To be explicit, the fibres of $E^\complexnos$ are given by $(E\otimes \complexnos)_p := E_p\otimes \complexnos$ and \finish{local trivialisations/sections ??? Why is the new bundle a vector bundle?---SEE tensor product of bundles example and if this is just a special case...do the tensor product example first}
-
-Conversely we can obtain a real vector space from a complex vector space by \finish{restriction of scalars. We can obtan a real vector bundle from a complex vector bundle by restricting. (See Milnor for more general restrictions ---check if it specialises to this case)}
 
 \finish{Also define End(E) bundle}
+\finish{Write more bundles: symmetric product, Hom,  $Hom(E,F)_p = Hom(E_p, F_p)$ (over reals)
+PULL-BACK BUNDLE etc? See Huybrechts or any other ref for useful bundles}
+
+Note that given a real vector space $V$ we can construct another real vector space $V^\complexnos := V\otimes_\realnos \complexnos$, where $\complexnos$ is considered as a real vector space. $V^\complexnos$ can be made into a complex vector space by defining complex multiplication $\beta(v\otimes \alpha) = v\otimes (\beta \alpha)$ for $v\in V$, $\alpha, \beta \in \complexnos$. The complex vector space $V^\complexnos$ is called the \defn{complexification} of $V$. Similarly we can obtain a complex vector bundle $E^\complexnos := E\otimes \complexnos$ from a real vector bundle $E$, by complexifying each fibre. To be explicit, the fibres of $E^\complexnos$ are given by $(E\otimes \complexnos)_p := E_p\otimes \complexnos$.
+Conversely one may also obtain a a real vector space from a complex vector space by restricting scalars, and at a global level we can obtain a real vector bundle from a complex vector bundle. 
 
 \subsubsection{Induced hermitian metrics}
-Suppose the bundles $E, F$ are endowed with hermitian structures. Then one can naturally define hermitian structures on $E\oplus F$, $E\otimes F$, $\Hom(E, F)$, and moreover if $(M, g)$ is a Hermitian manifold then $TM$, $TM^*$, and more generally $\bigwedge^{p,q} M$ all have Hermitian structures.
+Suppose the bundles $E, F$ are endowed with hermitian structures. Then one can naturally define hermitian structures on $E^*$, $E\oplus F$, $E\otimes F$, $\Hom(E, F)$, and moreover if $(M, g)$ is a Hermitian manifold then $TM$, $TM^*$, and more generally $\bigwedge^{p,q} M$ all have Hermitian structures.
 
 Suppose $f:M\to N$ smooth map between manifolds, and $E$ is a bundle on $N$, and $N$ has a hermitian structure $h$. Then the pull back bundle $f^*E$ has a hermitian structure given by the hermitian inner product
 $$(f^*h)_p:=h_{f(p)}$$
@@ -414,7 +438,7 @@ A useful and important fact is that if $\phi:E\to F$ is a bundle morphism, then
 \tilde{\phi}:\ & \Gamma(E)\to \Gamma(F) \\
 & s \mapsto \phi \circ s
 \end{align*}
-is a homomorphism of $C^\infty(M)$-modules. (In other words, $\tilde{\phi}(fs)=f\tilde{\phi}(s)$ for all $f\in C^\infty (M), s\in \Gamma(E)$.) \checkCorrect{Note that at each point $p\in M$, $(\phi\circ s)(p)=\phi(p)s(p)$.}
+is a homomorphism of $C^\infty(M)$-modules. (In other words, $\tilde{\phi}(fs)=f\tilde{\phi}(s)$ for all $f\in C^\infty (M), s\in \Gamma(E)$.)
 
 Moreover, this induces a module isomorphism 
 \begin{align*}
@@ -452,7 +476,7 @@ Consider the following useful $C^\infty(M)$-module isomorphism. Let $\pi_{E^\ast
 s & \xmapsto{\simeq} (v_p\mapsto (p, s_p(v_p))
 \end{align*}
 for all $v_p\in E_p$, $p\in M$. Note this makes sense as for $s\in \Gamma(E^*)$, $p\in M$, then $s_p:E_p\to \complexnos$ is a linear map (i.e. an element of $(E_p)^*$).
-Note also that $M\times \complexnos$ is the trivial line bundle. \checkCorrect{Is this really true globally, or do we need to do this in a chart and have a local trivialisation?? (Effects next para too in this case)}
+Note also that $M\times \complexnos$ is the trivial line bundle. 
 
 As a corollary of the previous two isomorphisms we have 
 $$\Gamma(E^\ast)\simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), C^\infty (M))$$
@@ -460,13 +484,11 @@ since $\Gamma(E^\ast) \simeq \text{Hom}(E, M\times \complexnos) \simeq \text{Hom
 
 As an application, if we set $E=TM$ to be the tangent bundle on $M$ in this isomorphism, then $\Gamma(TM^*) = \Omega^1(M) \simeq \text{Hom}_{C^\infty (M)}(\Gamma(TM), C^\infty (M))$. So given any one-form $\omega\in \Omega^1(M)$ and vector field $X\in TM$, we have that $\omega(X)\in C^\infty(M)$ is a smooth function.
 
-\checkCorrect{
 It is easy to see that we can generalise the previous two isomorphisms as follows
 \begin{align*}
-\Gamma(\otimes^r E^\ast) & \simeq \text{Hom}(E, M\times \complexnos^r) \\
+\Gamma(\oplus^r E^\ast) & \simeq \text{Hom}(E, M\times \complexnos^r) \\
  & \simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), C^\infty (M)^r)
-\end{align*}
-} \checkCorrect{IS THIS TRUE/CORRECT?? JUST MADE A GUESS.}
+\end{align*} 
 
 Let us investigate another bundle, namely $E^*\otimes F$ which has fibres 
 $$(E^*\otimes F)_p=E_p^*\otimes F_p\simeq \text{Hom}_\complexnos (E_p, F_p)$$
@@ -475,14 +497,14 @@ where the last isomorphism is a fact from linear algebra. To be explicit, given 
 V^*\otimes W & \simeq \text{Hom}(V, W) \\
 \mu \otimes w & \xmapsto{\simeq} (v \mapsto \mu(v)\cdot w)
 \end{align*}
-which can be applied pointwise at each fibre of $E^*\otimes F$. This can be made into a global statement as follows  \understandBetter{WHY?}
+which can be applied pointwise at each fibre of $E^*\otimes F$. This can be made into a global statement as follows 
 $$\Gamma(E^*\otimes F)\simeq \text{Hom}(E,F)$$
 Using that $\text{Hom}(E,F)\simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), \Gamma(F))$ (as seen previously), we get
 \begin{align*}
 \Gamma(E^*\otimes F) & \simeq \text{Hom}_{C^\infty (M)}(\Gamma(E), \Gamma(F)) \\
 \epsilon \otimes \eta & \xmapsto{\simeq} (\sigma \mapsto \epsilon(\sigma) \eta)
 \end{align*}
-where $\sigma\in \Gamma(E)$, and note that $\epsilon(\sigma)\in C^\infty (M)$. \checkCorrect{To understand why $\epsilon \otimes \eta\in \Gamma(E^*\otimes F)$ here, think of $(\epsilon \otimes \eta)_p=\epsilon_p \otimes \eta_p, \forall p\in M$ giving a section of $E^*\otimes F$; or more formally, note the canonical $C^\infty(M)$-module isomorphisms}
+where $\sigma\in \Gamma(E)$, and note that $\epsilon(\sigma)\in C^\infty (M)$. To understand why $\epsilon \otimes \eta\in \Gamma(E^*\otimes F)$ here, think of $(\epsilon \otimes \eta)_p=\epsilon_p \otimes \eta_p, \forall p\in M$ giving a section of $E^*\otimes F$; or more formally, note the canonical $C^\infty(M)$-module isomorphisms
 \begin{align*}
 \Gamma(E\otimes F) & \simeq \Gamma(E)\otimes_{C^\infty (M)} \Gamma(F) \\
 \Gamma(E^*) & \simeq \Gamma(E)^* 
@@ -490,29 +512,25 @@ where $\sigma\in \Gamma(E)$, and note that $\epsilon(\sigma)\in C^\infty (M)$. \
 
 \section{Differential Forms}
 
-\subsubsection{Differential forms}
-\finish{[WRITE UP]}
-
 \subsubsection{Complex differential forms}
 Complex differential forms on a manifold are essentially differential forms which are allowed to take complex coefficients. We can write any complex $k$-form as a $(p,q)$-form. Let us make this more precise.
+
+Define $\bigwedge^p_\complexnos(T^\ast M):=\bigwedge^p (T^\ast M)\otimes \complexnos$, i.e.\ the complexification of $\bigwedge^p_\realnos(T^\ast M)$. Note that we can express the elements of $\Omega^p_\complexnos(M)=\Gamma(\bigwedge^p_\complexnos(T^\ast M))$ as $\omega+i\eta \in \Omega^p_\complexnos(M)$ for $\omega, \eta \in \Omega_\realnos ^p(M) = \Gamma(\bigwedge^p_\realnos(T^\ast M))$, and $i$ the imaginary unit.
 
 Let $M$ be a complex manifold, with local coordinates $z^1, \ldots, z^n$ over $U$, and $z^k=x^k+iy^k$. We note the following two complex one-forms defined as
 $$dz^k := dx^k + i dy^k \in \Omega^1_\complexnos (M)$$
 $$d\bar{z}^k := dx^k - i dy^k \in \Omega^1_\complexnos (M)$$
-Then any complex one-form $\omega\in \Omega^1_\complexnos (M)$ can be written uniquely as 
+Then any complex one-form $\omega\in \Omega^1_\complexnos (M)$ can be written uniquely for $f_k, g_k \in C_\complexnos ^\infty(M)$ as 
 $$\omega = \sum_{k=1}^n (f_kdz^k + g_kd\bar{z}^k)$$
-
-\finish{We define $\Omega^k_\complexnos(M)$ as....??}
 
 We define $\Omega^{1, 0}(M)$ to be the forms generated by $dz^k, k=1, \ldots, n$. In other words $\Omega^{1, 0}(M)$ are all possible $\smooth(M)$-linear combinations of the $dz^k$. Define $\Omega^{0, 1}(M)$ to be the forms generated by $d\bar{z}^k, k=1, \ldots, n$. 
 Then we define 
 $$\Omega^{p, q}_\complexnos (M) := \underbrace{\Omega^{1, 0} \wedge \Omega^{1, 0} \wedge \cdots \wedge \Omega^{1, 0}}_{p \text{ times}} \wedge \underbrace{\Omega^{0, 1} \wedge \Omega^{0, 1} \cdots \wedge \Omega^{0, 1}}_{q \text{ times}}$$
-\understandBetter{(Note that one can show these forms transform tensorially - under a change of holomorphic coordinates - hence give rise to complex vector bundles).} An element $\alpha\in \Omega^{p,q}_\complexnos(U)$ can be written locally as 
+(Note that one can show these forms transform tensorially - under a change of holomorphic coordinates - hence give rise to complex vector bundles). An element $\alpha\in \Omega^{p,q}_\complexnos(U)$ can be written locally as 
 $$\alpha := \sum_{|I|=p, |J|=q} f_{I,J} dz^I \wedge d\bar{z}^J \in \Omega^{p,q}_\complexnos(U)$$
 where $f_{I, J}\in \smooth_\complexnos(U)$, and $I, J$ represent the appropriate multi-indices. 
-\understandBetter{UNDERSTAND LOCAL formula better.}
 
-Now one can then show that \checkCorrect{OR is it by definition??}
+Now one can show that
 \begin{align*}
 \Omega^k_\complexnos(M) & =\bigoplus_{k=p+q} \Omega^{p, q}_\complexnos (M) \\
 & = \Omega^{k, 0}\oplus\Omega^{k-1, 1}\oplus \cdots \oplus \Omega^{1, k-1}\oplus \Omega^{0, k}
@@ -537,14 +555,11 @@ Note the second property $\bar{\partial}^2=0$ gives rise to a cohomology theory 
 $$H^{p,q}_\complexnos (M) := \frac{\text{ker}(\bar{\partial}:\Omega^{p,q}\to \Omega^{p, q+1})}{\text{im}(\bar{\partial}:\Omega^{p,q-1}\to \Omega^{p, q})}$$
 
 \subsubsection{Differential forms with vector coefficients}
-Define $\bigwedge^p_\complexnos(T^\ast M):=\bigwedge^p (T^\ast M)\otimes \complexnos$, i.e.\ the complexification of $\bigwedge^p_\realnos(T^\ast M)$. Note that we can express the elements of $\Omega^p_\complexnos(M)=\Gamma(\bigwedge^p_\complexnos(T^\ast M))$ as $\omega+i\eta \in \Omega^p_\complexnos(M)$ for $\omega, \eta \in \bigwedge^p_\realnos(T^\ast M)$, and $i$ the imaginary unit. 
-
-We define the differential $p$-forms with coefficients in $E$ as 
+We define the differential $p$-forms with coefficients in (a complex vector bundle) $E$ as 
 \begin{align*}
-\Omega^p(M, E) & :=\Gamma(M, \bigwedge {}^p_\complexnos(T^\ast M) \otimes_\complexnos E) \\
-& \simeq \Hom(\bigwedge {}^p_\realnos (TM), E)
+\Omega^p(M, E) & :=\Gamma(M, \bigwedge {}^p(T^\ast M) \otimes E) \\
+& \simeq \Hom(\bigwedge {}^p (TM), E)
 \end{align*}
-\understandBetter{UNDERSTAND THE ISO PROPERLY! Check $R$ vs $C$}
 In other words the elements $\omega\in \Omega^p(M, E)$ at a point $x\in M$ are skew-symmetric multilinear forms 
 $$\omega_x:\underbrace{T_xM\times T_xM\times \ldots T_xM}_{p \text{ times}} \to E_x$$
 assigning a vector in the fibre $E_x$ to the $p$-tuples of tangent vectors at $x$. 
@@ -555,7 +570,18 @@ $$\Omega^1(M, E) = \Gamma(T^\ast M \otimes E) \simeq \Hom(TM, E)$$
 
 Note that locally (over $U$),  $0$-forms with coefficients in $E$ are local sections $s\in \Gamma(E, U)$ and hence can be expressed as an $r$-tuple of smooth maps $s=s(f)\in \smoothCmaps^r$ once a frame $f$ is fixed (or alternatively a local trivialisation is chosen),  as seen previously.  
 
-Moreover,  $1$-forms with coefficients in $E$ can be expressed locally (over $U$) as an $r$-tuple of one forms.  \explainFurther{Let us explain this formally. }
+Moreover,  $1$-forms with coefficients in $E$ can be expressed locally (over $U$) as an $r$-tuple of one forms.
+
+\subsubsection{Covarient derivative of differential forms with vector coefficients}
+We define the \defn{covarient derivative} $D:\Omega^k(E, M)\to \Omega^{k+1}(E, M)$ such that for $\alpha\in \Omega^k(M)$, $s\in \Gamma(E, U)$,
+$$D(\alpha \otimes s)=d\alpha \otimes s + (-1)^k \alpha \wedge Ds$$
+
+We note that for any $f\in \smooth(U)$,
+$$D(\alpha \otimes fs) = D (f\alpha \otimes s)$$
+
+Furthermore we obtain a general Liebniz rule
+$$D(\alpha \wedge \gamma)=d\alpha \wedge \gamma + (-1)^k \alpha \wedge D\gamma$$
+for $\alpha \in \Omega^k(M)$, $\gamma\in \Omega^l(E, M)$. 
 
 \section{Connections}
 
@@ -585,7 +611,7 @@ Note that $\Gamma(T^*M\otimes E)\simeq \Hom(TM, E)\simeq \Hom_{\smooth(M)}(\Gamm
 
 To show that these two definitions of a connection are equivalent, let us write $\nabla^1$ for the definition $\nabla^1:\Gamma(E)\to \Gamma(T^*M\otimes E)$ and $\nabla^2$ for the definition $\nabla^2:\Gamma(TM)\times \Gamma(E)\to \Gamma(E)$. If we are given $\nabla^1$, we can define $\nabla^2_X s:=\nabla^1 s(X)$, and it is easy to check the axioms of $\nabla^2$ are satisfied, namely $\complexnos$-bilinearity, the Liebniz rule, and that it is $\smooth(M)$-linear in the first argument. Conversely given $\nabla^2$, we can define $\nabla^1 s(X):=\nabla^2_X s$ and show that the axioms for $\nabla^1$ to be a connection are satisfied. 
 
-Notice that we could have equivalently expressed the connection as $\nabla:\Omega^0(M, E)\to \Omega^1(M, E)$ in the language of differential $p$-forms with coefficients in $E$ (since we showed previously that $\Omega^0(M, E)=\Gamma(E)$, $\Omega^1(M, E)=\Gamma(T^*M\otimes E)$ by definition).  \checkCorrect{This view is helpful to generalise differentiation to higher order forms.}
+Notice that we could have equivalently expressed the connection as $\nabla:\Omega^0(M, E)\to \Omega^1(M, E)$ in the language of differential $p$-forms with coefficients in $E$ (since we showed previously that $\Omega^0(M, E)=\Gamma(E)$, $\Omega^1(M, E)=\Gamma(T^*M\otimes E)$ by definition). This view agrees with the generalised definition of the exterior derivative.
 
 \subsubsection{Trivial connection on trivial line bundle}
 As an example consider the trivial vector bundle of rank 1 (trivial line bundle)
@@ -620,28 +646,28 @@ The atlas consisting of a single chart $\text{id}=(u^1, \ldots, u^n)$ on $\realn
 \nabla_X Y & := \sum_{i=1}^n X(y_i) \frac{\partial}{\partial u^i} \\
 & = \sum_{i, j} x_j\frac{\partial}{\partial u^j}(y_i)\frac{\partial}{\partial u^i}
 \end{align*}
-called the \defn{standard connection} on the tangent bundle to $\realnos^n$. It is straight forward to show that the axioms for a connection hold. \understandBetter{In fact this is an example of a Levi-Civita connection.}
+called the \defn{standard connection} on the tangent bundle to $\realnos^n$. It is straight forward to show that the axioms for a connection hold. In fact this is an example of a Levi-Civita connection.
 
 \subsubsection{Levi-Civita connection}
 Let $(M, g)$ be a Riemannian manifold. There exists a unique affine connection $\nabla:\mathfrak{X}(M)\times \mathfrak{X}(M)\to \mathfrak{X}(M)$ with the properties, for $X,Y,Z\in \mathfrak{X}(M)$,
-$Xg(Y,Z)=g(\nabla_XY, Z)+g(Y, \nabla_XZ) (\in C^\infty(U))$ (compatibility with the metric) and $[X,Y]=\nabla_XY-\nabla_YX$ (torsion-free), called the \defn{Levi-Civita connection}. \checkCorrect{The uniqueness of the connection can be seen from the second christoffel [CORRECT SPELLING] formula (below).} \finish{GO OVER different formulation of compatibility with metric, and recall lie bracket def/or in local coord. SEE also questions in handwritten notes}.
+$Xg(Y,Z)=g(\nabla_XY, Z)+g(Y, \nabla_XZ) (\in C^\infty(U))$ (compatibility with the metric) and $[X,Y]=\nabla_XY-\nabla_YX$ (torsion-free), called the \defn{Levi-Civita connection}. The uniqueness of the connection can be seen from the second Christoffel formula (derived below). 
 
 Note that given a chart $(U, x^1, \ldots, x^n)$ of $M$, any affine connection $\nabla:\mathfrak{X}(M)\times \mathfrak{X}(M)\to \mathfrak{X}(M)$ is completely determined by $n^3$ coefficients $\Gamma^k_{ij}\in C^\infty (U)$ where
 $$\nabla_{\partial_i}\partial_j=\sum_{k=1}^n \Gamma^k_{ij} \partial_k \in \mathfrak{X}(U)$$
-Note that this fully determines the affine connection since any vector field can be written as $X=\sum_{i=1}^n \alpha_i \partial_i\in \mathfrak{X}(U)$ where $\alpha_i\in C^\infty (U)$, and since \checkCorrect{affine connections are $C^\infty(U)$-bilinear}. In the case that $\nabla$ is a Levi-Civita connection, the $\Gamma^k_{ij}$ are called \checkCorrect{\defn{Christoffel symbols} (CHECK spelling)}.
+Note that this fully determines the affine connection since any vector field can be written as $X=\sum_{i=1}^n \alpha_i \partial_i\in \mathfrak{X}(U)$ where $\alpha_i\in C^\infty (U)$, and since we know how to apply a function to each component of the connection (either by using Liebniz rule or that connections are affine connections are $C^\infty(U)$-linear in the first argument). In the case that $\nabla$ is a Levi-Civita connection, the $\Gamma^k_{ij}$ are called \defn{Christoffel symbols}.
 
 Let $\nabla$ be a Levi-Civita connection. Let us rewrite the compatiblity with a metric and torsion-free conditions in terms of local coordinates, with respect to the local frame $\{\partial_i\}_{i=1}^n$ of $TU$. Firstly, that $\nabla$ is compatible with the metric:
 \begin{align*}
     \partial_i g(\partial_j, \partial_k) & = g(\nabla_{\partial_i}\partial_j, \partial_k) + g(\partial_j, \nabla_{\partial_i}\partial_k) \\
     & = g(\sum_s \Gamma^s_{ij}\partial_s, \partial_k)+g(\partial_j, \sum_s \Gamma^s_{ik}\partial_s)\\
-    &= \sum_s (\Gamma^s_{ij}g(\partial_s, \partial_k)+\Gamma^s_{ik}g(\partial_j, \partial_s)) \\ & \textrm{\checkCorrect{(since $g$ is $C^\infty(U)$ bilinear and $\Gamma^s_{ij}\in C^\infty(U)$)}}
+    &= \sum_s (\Gamma^s_{ij}g(\partial_s, \partial_k)+\Gamma^s_{ik}g(\partial_j, \partial_s)) \\ & \textrm{(since $g$ is $C^\infty(U)$ bilinear and $\Gamma^s_{ij}\in C^\infty(U)$)}
 \end{align*}
 In short $\partial_i g_{jk} = \sum_s (\Gamma^s_{ij}g_{sk}+\Gamma^s_{ik}g_{js})$. Now we find the torsion-free condition:
 \begin{align*}
     [\partial_i, \partial_j] & = \nabla_{\partial_i}\partial_j - \nabla_{\partial_j}\partial_i \\
     & = \sum_s (\Gamma^s_{ij} - \Gamma^s_{ji})\partial_s
 \end{align*}
-and noting that the lie bracket $[\partial_i, \partial_j]=0$ for all $i,j$ \checkCorrect{[WHY? TRUEE??]}, we get $(\Gamma^s_{ij} - \Gamma^s_{ji})=0$, i.e. $\Gamma^s_{ij}=\Gamma^s_{ji}$.
+and noting that the lie bracket $[\partial_i, \partial_j]=0$ for all $i,j$, we get $(\Gamma^s_{ij} - \Gamma^s_{ji})=0$, i.e. $\Gamma^s_{ij}=\Gamma^s_{ji}$.
 
 Our goal now is to obtain a formula for the Christoffel symbols of a Levi-Civita connection, called the second Christoffel identity. We will first derive the first Christoffel identity to help us in this end:
 \begin{align*}
@@ -667,11 +693,6 @@ Note that an invarient formulation (not depending on a local chart) of the secon
 & -g([Y,X],Z)-g([X,Z],Y)-g([Y,Z],X)    
 \end{align*}
 
-\subsubsection{Levi-Civita connection on $S^2$}
-\finish{WRITE UP}
-
-\finish{WRITE MORE EXAMPLES OF CONNECTIONS ON BUNDLES, PROJECTIVE SPACE, SPHERES ETC}
-
 \subsubsection{Is a connection tensorial?}
 We ask does the connection $\nabla:\Gamma(E)\to \Gamma(T^*M\otimes E)$ come from a bundle morphism $E\to T^*M\otimes E$? For it to be tensorial, we would require $\nabla(fs)=f\nabla s$. However in general (by the axiom for connections), $\nabla(fs)=f\nabla s + df\otimes s$, and $df\otimes s \neq 0$ in general, hence a connection is not tensorial.
 
@@ -696,7 +717,6 @@ Now note that
 & = \Gamma(T^*M \otimes \text{End}(E)) \\
 & = \Omega^1(M, \text{End}(E))
 \end{align*}
-\understandBetter{is $End(E)$ a bundle itself?? How is it defined?}
 so $(\nabla^1-\nabla^2)_p\in T^*_pM\otimes \Hom(E_p, E_p)$ at $p\in M$. Or we can write $A:=\nabla^1-\nabla^2 \in \Omega^1(M, \text{End}(E))$, so that 
 $A_p:T_p(M)\to \text{End}(E_p)$ for all $p\in M$. Or in other words for $s\in \Gamma(E), X\in \mathfrak{X}(M)$,
 \begin{align*}
@@ -788,112 +808,72 @@ As an example let us consider an arbitrary connection $\nabla$ on the trivial bu
 
 Recall that the exterior derivative $d$ is a connection on $M\times \complexnos$, and hence $\nabla - d$ is tensorial, and comes from a bundle morphism $M\times \complexnos\to T^*M\otimes E \simeq T^*M\otimes (M\times \complexnos)\simeq T^* M$, where the last isomorphism is a globally analogous to the linear isomorphism $V\otimes \complexnos\simeq V$ (where $V$ is a $\complexnos$-vector space). 
 Now $\Hom(M\times \complexnos, T^*M)\simeq \Gamma((M\times \complexnos)^*\otimes T^*M)\simeq \Gamma((M\times \complexnos)\otimes T^*M) \simeq \Gamma(T^*M) = \Omega^1(M)$, (where we have used $M\times \complexnos \simeq (M\times \complexnos)^*$). So we have shown that $\nabla - d\in \Omega^1(M)$. To conclude,
-$$\nabla = \omega + d$$
-for $\omega \in \Omega^1(M)$, \understandBetter{where $\omega(f)=f\omega$, for $f\in \smooth(M)$.} 
+$$\nabla = d + \omega$$
+for $\omega \in \Omega^1(M)$, where $\omega(f)=f\omega \in \Omega^1(M)$, for $f\in \Gamma(E)=\smooth(M)$.
 
 \subsubsection{Local expression for connection on the trivial rank $r$-bundle}
-\finish{TO DO}
+In a similar fashion to the example above for a line bundle, one can show that for the trivial rank $r$ bundle, we have any connection $\nabla$ satisfies $\nabla - d\in \Omega^1(M)^r$, hence we can write
+$$\nabla = d + A$$
+for a matrix of $1$-forms $A\in \Omega^1(M)^r$.
 
 \subsubsection{Hermitian connection}
-Given a Hermitian vector bundle $(E, h)$, a connection $\nabla$ is a \defn{hermitian connection} with respect to $h$ if
-$$d(h(s, \sigma))=h(\nabla s, \sigma)+h(s,\nabla\sigma)$$
-for $s, \sigma\in \Gamma(E, U)$. Note that $h(s, \sigma)\in \smooth_\complexnos (U)$, and $d:\smooth_\complexnos (U)\to \Omega_\complexnos^1(U)$ is the exterior differential map.
+Given a Hermitian vector bundle $(E, h)$, a connection $\nabla$ is a \defn{hermitian connection} with respect to $h$ if for any $X\in \Gamma(TM)$,
+$$X(h(s, \sigma))=h(\nabla_X s, \sigma)+h(s,\nabla_X \sigma)$$
+for $s, \sigma\in \Gamma(E, U)$ and noting that $h(s, \sigma)\in \smooth_\complexnos (U)$.
 
-\understandBetter{UNDERSTAND BETTER AND REWRITE PARAGRAPH. THINK INCORRECT. SEE PG 176 HUYBRECTHS}
-Note that if $\alpha \in \Omega_\complexnos^1(U)=\Gamma(TU)\checkCorrect{\simeq \smooth(U)^r}$, $s\in \Gamma(U, E)\simeq \smooth_\complexnos (U)^r$, then $\alpha\otimes s\in \Omega_\complexnos^1(U) \otimes \smooth(U)^r \checkCorrect{\simeq \smooth(U)^r \otimes \smooth(U)^r \simeq \smooth(U)^r \simeq \Gamma(E, U)}$. Then we define 
+Equivalently, one could write this compatability condition as 
+$$d(h(s, \sigma))=h(\nabla s, \sigma)+h(s,\nabla\sigma)$$
+for $s, \sigma\in \Gamma(E, U)$, and $d:\smooth_\complexnos (U)\to \Omega_\complexnos^1(U)$ is the exterior differential map. Here to understand $h(\nabla s, \sigma)$ where $\nabla s\in \Gamma(T^* M\otimes E)\simeq \Gamma(T^*M)\otimes \Gamma(E)=\Omega^1_\complexnos(M)\otimes \Gamma(E)$, we need to extend the definition of $h$ as follows:
 $$h(\alpha \otimes s, \sigma):=\alpha h(s, \sigma)$$
-$$h(s, \alpha \otimes \sigma) = \bar{\alpha}h(s, \sigma)$$
-\question{HOW IS $\bar{\alpha}$ defined??}
+$$h(s, \alpha \otimes \sigma) := \bar{\alpha}h(s, \sigma)$$
+for $\alpha \in \Omega_\complexnos^1(M)$ and $s, \sigma\in \Gamma(E)$.
 
 For a hermitian connection $\nabla$ and $A\in \Omega^1(M, \End(E))$ we know $\nabla ' := \nabla + A$ is a connection (recall tensoriality discussion). Now $\nabla'$ is a hermitian connection if and only if
 $$h(As, \sigma)+h(s, A\sigma)= 0$$
 for all sections $s, \sigma \in \Gamma(E, U)$. (One can show from this that $A$ is contained in the Lie algebra of skew-hermitian matrices at each point, after  diagonalisation of $h$).
 
 \subsubsection{Chern connection}
-\finish{DEFINE holomorphic vector bundle, what it means for $h$ to be compatible. Does existance/uniquencess not hold if not holomorphic? }
-
-On a holomorphic vector bundle $E$ \checkCorrect{over a complex manifold $M$}, wih hermitian structure $h$, there exists a unique hermitian connection $\nabla$ compatible with the holomorphic bundle, called the \defn{Chern connection}. 
+On a holomorphic vector bundle $E$ over a complex manifold $M$, with hermitian structure $h$, there exists a unique hermitian connection $\nabla$ compatible with the holomorphic bundle, called the \defn{Chern connection}. 
 
 Note the Chern connection $\nabla:\Omega^0(E, M)\to \Omega^1(E, M)=\Omega^{1,0}(E, M) \oplus \Omega^{0,1}(E, M)$ splits as
 $\nabla = \nabla' + \nabla''$ where
 $$\nabla ': \Omega^0(E, M)\to \Omega^{1,0}(E, M)$$
 $$\nabla '': \Omega^0(E, M)\to \Omega^{0,1}(E, M)$$
-Locally over a holomorphic frame $f$, we have that if $\nabla=d+A$, then 
-$$\nabla ' = \partial + A^{1,0}$$
-$$\nabla '' = \bar{\partial} + A^{0,1} \checkCorrect{= A^{0,1}}$$
-where $A^{0,1}$, $A^{1, 0}$ \finish{[HOW TO DEFINE??]}. \checkCorrect{Note here the last equality holds since  $\bar{\partial}s=0$ for any holomorphic section $s$. Note further that if $s$ is a holomorphic section of $E$ then $\nabla '' s =0$. [REPEATED FACT!!??]}
-
-\understandBetter{SHOULD WE HAVE
+Then locally over a holomorphic frame $f$, we have that $\nabla=d+A$ splits as  
 $$\nabla ' = \partial + A$$
 $$\nabla '' = \bar{\partial}$$
-AND IS CHERN CONNECTION JUST DEFINED AS 
-$\nabla ''$. Seems to be a typo in WELLS???
-}
 
-Further, the condition that $\nabla$ is compatible with the metric $h$ can be written locally as 
-$$dh = hA + \bar{A}^Th$$
+Further, the condition that $\nabla$ is compatible with the metric $h$ can be written locally as $dh = hA + \bar{A}^Th$
 which can in turn gives 
-$$\partial h = h A$$
-$$\bar{\partial} h = \bar{A}^T h$$
-by comparing types. From this we get that
+$\partial h = h A$ and
+$\bar{\partial} h = \bar{A}^T h$ by comparing types. From this we get that
 $$A= h^{-1}\partial h$$
+So to summarise we have shown that 
+\begin{align*}
+    \nabla & = d + A \\
+    & = (\partial + \bar{\partial}) + h^{-1}\partial h
+\end{align*}
 
 Finally we state without proof that if $A$ is the connection matrix of $\nabla$ then
 $$\partial A= -A \wedge A$$
-\understandBetter{UNDERSTAND BETTER. WELLS PROP 2.2}
 
-\checkCorrect{CHECK previous few paras correct and understand better. 
-[REF:WELLS PG 78]. Is it in relation to chern connection or hermitian connection?} 
+Note that the Chern connection (a connection conpatible with the holmorphic structure), is not the same as a holomorhpic connection, which has a more restrictive definition. We remark without further explanation that on the tangent bundle of a Kahler manifold, the Chern connection coincides with the Levi-civita connection of the underlying Riemannian metric.  
 
-Note that the Chern connection (a connection conpatible with the holmorphic structure), is not the same as a holomorhpic connection, which has a more restrictive definition. 
-
-We remark without explanation that on the tangent bundle of a Kahler manifold, the Chern connection coincides with the Levi-civita connection of the underlying Riemannian metric.  
-
-\subsubsection{Chern connection on the holomorphic line bundle}
-Let $E$ be a holomorphic line bundle. \understandBetter{One can show the hermitian structure locally $h\in \smooth(U)$ is a positive real function on this bundle.} Locally the chern connection on this bundle is given by 
-$$\nabla = d + \partial \ \text{log} h$$
-\finish{[UNDERSTAND THIS FORMULA!! AND WHY?]}
-
-\subsubsection{Chern connection on the complex torus}
-\finish{[SEE your notes on HUYBRETCHS AND WRITE]}
-
-
-\subsubsection{Fubini study metric on tangent bundle of $\complexnos P^n$}
-\finish{MOVE THIS SECTION TO APPROPRIATE PLACE}
-
-Let $(U_j, \phi_j)$ be the standard atlas of $\complexnos P^n$, where we recall that $\phi_j:U_j\simeq \complexnos$ such that $\phi_j((z_0 : \ldots : z_n))=(\frac{z_0}{z_j}, \ldots, \frac{z_{j-1}}{z_j}, \frac{z_{j+1}}{z_j}, \ldots, \frac{z_n}{z_j})\sim (1, w^1, \ldots, w^n)$. This gives a local frame for the holomorphic tangent bundle of $\complexnos P^n$, namely $\{\partial_1, \ldots, \partial_n\}$, where $\partial_i=\frac{\partial}{\partial w^i}$ over $U_j$. 
-
-We define a hermitian metric on the tangent bundle for $\complexnos P^n$ as follows. On $U_j$ let
-$$h_{i\bar{j}}:=h(\partial_i,\bar{\partial}_j):=\frac{((1+|w|^2))\delta_{ij}-\bar{w}
-_i w_j}{(1+|w|^2)^2}$$
-where $\delta_{ij}$ is the Kronecker delta and $|w|^2 = |w^1|^2 + \ldots + |w^n|^2$. Note that $h_{i\bar{j}}$ is a positive definite hermitian matrix, and defines the \defn{Fubini-study metric}. 
-
-We define the \defn{Fubini-study form} locally over $U_j$
+\subsubsection{Chern connection on a holomorphic line bundle}
+Let $E$ be a holomorphic line bundle. 
+Since $E$ is rank $1$, at a point $p$, and a base vector $e \in E_p$ we have the hermitian inner product $h(e, e)$ is positive and real (by definition). Hence the matrix representing $h$ at $p$ is a positive real number. Thus over an open neighbourhood $U$, we have that locally $h\in \smooth(U)$ is a positive real function on this bundle. Thus locally the chern connection on this bundle is given by 
 \begin{align*}
-    \omega_{FS} & := \checkCorrect{\frac{i}{2\pi} \sum_{i, j} h_{i\bar{j}} dw^i \wedge d\bar{w}^j} \\
- & = \checkCorrect{ \frac{i}{2\pi} \partial \bar{\partial} \text{log} \left( 1 + \sum_{i=1}^k |w_k|^2  \right) \in \Omega^{1,1}(U_j)} 
+\nabla & = d + h^{-1}\partial h \\
+& = d + \partial \text{log} (h)
 \end{align*}
-
-
-Note one can show that in fact $\omega_{FS}$ can be defined as a global form in $\Omega^{1,1}(M)$ since it is compatible over all intersections $U_i\cap U_j$. 
-
-One can show that $\omega_{FS}$ is a closed, \checkCorrect{real}, positive definite $(1,1)$-form. \question{Definition of a real (1,1) form?? is this correct?} 
-
-Furthermore we show that on $1$-dimensional projective space, $\int_{\complexnos P^1} \omega_{FS}=1$. This is since
-\begin{align*}
-  \int_{\complexnos P^1} \omega_{FS} & = \int_\complexnos \frac{i}{2\pi}\frac{1}{(1+|z|^2)^2}dz\wedge d\bar{z}\\
-  & = \frac{1}{\pi}\int_{\realnos^2}\frac{1}{(1+||(x,y)||^2)^2}dx\wedge dy \\
-  & = 2 \int_0^\infty \frac{rdr}{(1+r^2)^2} \\
-  & = 2 \left( \frac{1}{2} \int_1^\infty \frac{du}{u^2 }\right) \\
-  & = \int_1^\infty \frac{du}{u^2}  = \left[ - \frac{1}{u} \right]_1^\infty = 1
-\end{align*}
+where the second equality follows from recalling calculus, i.e. differentiating the log function ($\frac{d}{dx} \text{log}(x) = \frac{1}{x}$) and thus the chain rule gives ($\frac{d}{dx} \text{log}(f(x)) = \frac{1}{f} f'(x)$ for a (positive, real) function $f$). 
 
 \subsubsection{Chern connection on $\complexnos P^n$}
 
 Recall the Fubini-study metric $h_{i\bar{j}}$ defined previously on a standard chart $U\subseteq \complexnos P^n$ with coordinates $(w_1, \dots, w_n)$. We define the matrix representation of this metric as
 \begin{align*}
-H & := \checkCorrect{\frac{1}{2\pi}} \left[  h_{i\bar{j}} \right] \\
-& = \checkCorrect{\frac{1}{2\pi}} \frac{1}{(1+|w|^2)^2}\begin{pmatrix}
+H & := \frac{1}{2\pi} \left[  h_{i\bar{j}} \right] \\
+& = \frac{1}{2\pi} \frac{1}{(1+|w|^2)^2}\begin{pmatrix}
 1+|w|^2-|w_1|^2 & -\bar{w}_1w_2 & \cdots & -\bar{w}_1w_n \\
 -\bar{w}_2w_1 & 1+|w|^2-|w_1|^2 & \cdots & -\bar{w}_2w_n \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -904,11 +884,7 @@ H & := \checkCorrect{\frac{1}{2\pi}} \left[  h_{i\bar{j}} \right] \\
 where $|w|^2 = |w_1|^2 + \ldots + |w_n|^2$. 
 Then the Chern connection locally on $U_i$ is given by 
 $$\nabla = d + \bar{H}^{-1}(\partial \bar{H})$$
-\checkCorrect{where $\partial$ is the Dolbeault operator. \understandBetter{OR IS IT JUST componentwise partial derivitave, on each component of the matrix??}}
-
-\subsubsection{Chern connection on holomorphic bundle with hermitian structure}
-
-Note that one can show in fact for any holomorphic vector bundle $E$ with hermitian structure locally given by $H$, the Chern connection is given by $$\nabla = d+\bar{H}^{-1}\partial(\bar{H})$$. \checkCorrect{CHECK THIS IS TRUE}
+where $\partial \bar{H}$ means that $\partial$ is applied to each component of the matrix. 
 
 \subsubsection{Connection on the dual bundle}
 Let $\pi:E\to M$ be a vector bundle with connection $\nabla$.
@@ -926,7 +902,7 @@ such that for $X\in \Gamma(TM), \eta\in \Gamma(E^*), \sigma\in \Gamma(E)$,
 $$X \langle \eta, \sigma \rangle := \langle \nabla^*_X \eta , \sigma \rangle + \langle \eta, \nabla^*_X \sigma \rangle$$
 or in other words
 $$ \langle \nabla^*_X \eta , \sigma \rangle := X \langle \eta, \sigma \rangle - \langle \eta, \nabla^*_X \sigma \rangle$$
-To show this is indeed a connection, one would need to show that $\nabla^*_X \eta \in \Gamma(E^*)$ (i.e. that it is $\smooth(M)$-linear as a map $\Gamma(E)\to \smooth(M)$) and that $\nabla^*$ is $\smooth(M)$-linear in the first argument and satisfies Liebniz rule. \finish{WRITE PROOF? - see exposition notes}
+To show this is indeed a connection, one would need to show that $\nabla^*_X \eta \in \Gamma(E^*)$ (i.e. that it is $\smooth(M)$-linear as a map $\Gamma(E)\to \smooth(M)$) and that $\nabla^*$ is $\smooth(M)$-linear in the first argument and satisfies Liebniz rule. 
 
 Note that locally if $\nabla^1 = \nabla^2 + A$, then $(\nabla^1)^* = (\nabla^2)^* + A^*$.
 
@@ -950,22 +926,9 @@ $$\nabla(s\oplus \sigma)=\nabla^E(s)\oplus \nabla^F(s)$$
 
 \finish{On pull back bundle - GO OVER AND WRITE UP. in huybrechts?}. If $\nabla = d+A$ is a connection on $U\subseteq N$ locally and $f:M\to N$ is smooth map of manifolds, then the \defn{pull back connection} is a connection on $M$ locally given by $f^*\nabla |_{f^-1(U)}=d+f^*A$.
 
-\section{Curvature and Torsion}
+\section{Curvature}
 
 To motivate curvature, we not that a connection $\nabla$ is not a differential (in other words $\nabla^2\neq 0$ in general). We note that the obstruction to $\nabla$ being a differential is the curvature, which is defined with respect to a connection. 
- 
-\subsubsection{Torsion definition}
-Given an affine connection $\nabla:\mathfrak{X}(M) \times \mathfrak{X}(M)\to \mathfrak{X}(M)$, the \defn{torsion} is defined
-\begin{align*}
-T_\nabla & : \mathfrak{X}(M)\times \mathfrak{X}(M)\to \mathfrak{X}(M)\\
-& (X, Y)\mapsto \nabla_X Y - \nabla_Y X - [X, Y]
-\end{align*}
-and it is easy to check that $T_\nabla$ is $\smooth (M)$-bilinear.
-
-Note that we can express $T_\nabla$ as a $\smooth (M)$-linear map $\Gamma(TM\otimes TM)\to \Gamma(TM)$ and show that it is tensorial. 
-
-\subsubsection{Torsion of Levi-Civita connection on $\realnos^n$}
-\finish{WRITE UP - see exposition notes (towards end), and for local formula of lie bracket}
 
 \subsubsection{Classical curvature form}
 Given a connection $\nabla$ on $E$, define the \defn{curvature}
@@ -974,10 +937,8 @@ R^\nabla : & \Gamma(TM)\times \Gamma(TM)\times \Gamma(E)\to \Gamma(E) \\
 & (X, Y, s) \mapsto \nabla_X(\nabla_Y s) - \nabla_Y(\nabla_X s) - \nabla_{[X, Y]} s
 \end{align*}
 which one can show is $\smooth (M)$-trilinear.
-
-A few useful identities in relation to curvature (which follow from direct computation) are
+A useful identity in relation to curvature (which follows from direct computation) is
 $$R^\nabla (X, Y, s)=-R^\nabla (Y, X, s)$$
-\finish{WRITE more identities useful}
 
 \subsubsection{Curvature of the trivial line bundle}
 Consider the trivial line bundle $E=M\times \complexnos$. Recall that $\nabla:=d:\smooth(M)\to \Omega^1(M)$ is a connection on this bundle, where $\nabla_X f = \nabla f(X) = df(X) = Xf$, for $f\in \smooth(M)$. 
@@ -1002,26 +963,14 @@ $\nabla_X Y = \sum_i X(Y^i) \frac{\partial}{\partial x^i}$. Then
 \end{align*}
 Hence the Levi-Civita connection on $T\realnos^n$ is flat. 
 
-\subsubsection{Covarient derivative of differential forms with vector coefficients}
-We define the \defn{covarient derivative} $D:\Omega^k(E, M)\to \Omega^{k+1}(E, M)$ such that for $\alpha\in \Omega^k(M)$, $s\in \Gamma(E, U)$,
-$$D(\alpha \otimes s)=d\alpha \otimes s + (-1)^k \alpha \wedge Ds$$
-
-We note that for any $f\in \smooth(U)$,
-$$D(\alpha \otimes fs) = D (f\alpha \otimes s)$$
-
-Furthermore we obtain a general Liebniz rule
-$$D(\alpha \wedge \gamma)=d\alpha \wedge \gamma + (-1)^k \alpha \wedge D\gamma$$
-for $\alpha \in \Omega^k(M)$, $\gamma\in \Omega^l(E, M)$. 
-
 \subsubsection{General curvature form}
 Given a connection $\nabla$, define the \defn{curvature form} as
 $$F_\nabla := D^2 = D\circ D: \Omega^0(E, M)\to \Omega^1(E, M) \to \Omega^2(E, M)$$
-where $D:\Omega^k(E, M)\to \Omega^{k+1}(E, M)$ is the covarient derivative. 
+where $D:\Omega^k(E, M)\to \Omega^{k+1}(E, M)$ is the covarient derivative (defined earlier). 
 
 One can show that $F_\nabla$ is $\smooth(M)$-linear and so note $F_\nabla \in \Omega^2(\End(E), M)$. 
 
-One can show that the general curvature form $F_\nabla$ corresponds with the classical curvature form $R_\nabla$, defined previously.
-\understandBetter{WRITE in more detail}
+One can show that the general curvature form $F_\nabla$ corresponds with the classical curvature form $R^\nabla$, defined previously.
 
 \subsubsection{Example: Curvature of connections on the trivial bundle}
 Recall that $d$ is the trivial connection on the trivial bundle $M\times \complexnos^r$. Then the curvature associated with this connection is
@@ -1030,11 +979,11 @@ $F_d = d^2 = 0$.
 Note that any other connection on $M\times \complexnos^r$, is of the form $\nabla = d+A$ (globally) for $A\in M_r(\Omega^1(M))$. Hence (by applying the discussion on local expressions below on $M\times \complexnos^r$), the curvature form is (globally) given by $F_\nabla = dA+A\wedge A$. 
 
 \subsubsection{Curvature form local expression}
-Let $A\in M_r(\Omega^1(U))$ be the connection matrix associated to a connection $\nabla$, over a local frame $f=(f^1, \ldots , f^r)$. In other words say $\nabla=d+A$ locally over $f$. Then locally, the curvature form $F_\nabla$ is given by a matrix $\theta \in \checkCorrect{M_r(\Omega^2(M))}$ such that
+Let $A\in M_r(\Omega^1(U))$ be the connection matrix associated to a connection $\nabla$, over a local frame $f=(f^1, \ldots , f^r)$. In other words say $\nabla=d+A$ locally over $f$. Then locally, the curvature form $F_\nabla$ is given by a matrix $\theta \in M_r(\Omega^2(M))$ such that
 $$\mathbb{\theta}_{ij} := dA_{ij} + \sum_k A_{ik}\wedge A_{kj}$$
 or in short
 $$\mathbb{\theta} := dA + A\wedge A$$
-\understandBetter{how is $A\wedge A$ defined/computed?} To prove this we note that $F_\nabla = \nabla^2 = \nabla \circ \nabla$ and so locally for $s\in \Gamma(E, U)=\Gamma(U\times \complexnos^r)\simeq \smooth(U)^r$
+To prove this we note that $F_\nabla = \nabla^2 = \nabla \circ \nabla$ and so locally for $s\in \Gamma(E, U)=\Gamma(U\times \complexnos^r)\simeq \smooth(U)^r$
 \begin{align*}
     (d+A)(d+A)v & = d^2 v + A dv + d(Av) + (A\wedge A) v \\
     & = A dv + (dA) v - A  dv + (A\wedge A) v \\
@@ -1042,10 +991,16 @@ $$\mathbb{\theta} := dA + A\wedge A$$
     & = (dA + A\wedge A) v
 \end{align*}
 
-
-
 Note that if $g:U\to GL_r(\complexnos)$ is a change of frame, so that $f'=fg$ is a new frame, we have the following transformation law
 $$\mathfrak{\theta}(fg)=g^{-1} \mathbb{\theta}g$$
+
+One can show that for a holomorphic bundle $E$ with hermitian structure $h$, and Chern connection $\nabla$, the associated curvature $F_\nabla$ is a $(1,1)$-type, real, skew-hermitian form. In other words $F_\nabla\in \Omega^{1,1}_\realnos (\End(E), M)$. Hence locally, if $A$ is the connection matrix (so $\nabla = d+A$), then locally the associated curvature is given by
+\begin{align*}
+F_\nabla & = dA + (A\wedge A) \\
+& = (\partial + \bar{\partial})A + (A\wedge A) \\
+& = \bar{\partial} A
+\end{align*}
+where the last equality holds by comparing types.
 
 \subsubsection{Bianchi identity}
 \finish{WRITE UP BIANCHI IDENTITY}
@@ -1064,20 +1019,17 @@ $F=F_{\nabla^1}\otimes 1 + 1\otimes F_{\nabla^2}$
 On $E^*$ (with induced connection $\nabla^*$) we get
 $$F_{\nabla^*}=-F_{\nabla}^T$$
 
-On the pull back connection $f^*\nabla$ \finish{[HAVE I DEFINED THIS PROPERLY BEFORE?]} we get
+On the pull back connection $f^*\nabla$ (where $f:M\to N$ is a smooth map of manifolds), we get
 $$F_{f^* \nabla} = f^* F_\nabla$$
-(where $f:M\to N$ map of smooth manifolds).
 
 \subsubsection{Curvature of trivial bundle with constant hermitian structure}
-We state without proof that if $\nabla$ is a hermitian connection on a hermitian vector bundle $(E, h)$, then $F_\nabla$ satisfies $h(F_\nabla s, \sigma)+h(s, F_\nabla \sigma)=0$. In other words $F_\nabla\in \Omega^2(\understandBetter{\End(E,h)}, M)$.
+We state without proof that if $\nabla$ is a hermitian connection on a hermitian vector bundle $(E, h)$, then $F_\nabla$ satisfies $h(F_\nabla s, \sigma)+h(s, F_\nabla \sigma)=0$. In other words $F_\nabla\in \Omega^2(\End(E), M)$.
 
 Consider the trivial bundle $E=M\times \complexnos^r$, with constant hermitian structure \checkCorrect{$h_p(s_p, \sigma_p)=1$ for all $p\in M$, for $s, \sigma\in \Gamma(M\times \complexnos^r)$}. \checkCorrect{Then we have a hermitian connection is $\nabla=d+A$ with $\bar{A}^T=-A$}. Then the \checkCorrect{curvature} is given by $d(A+\bar{A}^T)+(A\wedge A +\overline{(A\wedge A)}^T)=0$ by the result mentioned above. Hence in particular when $r=1$, the real part of $A$
  is constant. 
  \checkCorrect{[DO NOT UNDERSTAND. UNDERSTAND, CHECK CORRCET AND REWRITE]}
 
 \subsubsection{Example: Cuvature associated with Chern connection on $T (\complexnos P^n)$}
-
-Recall that for a holomorphic bundle $E$ with hermitian structure $h$, and Chern connection $\nabla$, the associated curvature $F_\nabla$ is a $(1,1)$-type, real, skew-hermitian form. In other words $F_\nabla\in \Omega^{1,1}_\realnos (\End(E), M)$.
 
 Recall the Chern connection on $\complexnos P^n$ with hermitian structure $H$ given by the fubini-study metric, is given locally by $\nabla = d+\bar{H}^{-1}\partial(\bar{H})$. Let $A=\bar{H}^{-1}\partial(\bar{H})$, then the curvature associated to this Chern connection is locally 
 \begin{align*}
@@ -1086,106 +1038,128 @@ Recall the Chern connection on $\complexnos P^n$ with hermitian structure $H$ gi
     & = \bar{\partial}(\bar{H}^{-1}\partial(\bar{H})) + \partial(\bar{H}^{-1}\partial(\bar{H})) + \bar{H}^{-1}\partial(\bar{H}) \wedge \bar{H}^{-1}\partial(\bar{H}) \\
     & = \bar{\partial}(\bar{H}^{-1}\partial(\bar{H}))
 \end{align*}
-where the last equality holds, by comparing types. More precisely recall that $A$ is \checkCorrect{a matrix of} $(1, 0)$ forms, so $\partial A$ is a $(2,0)$-form, and $A\wedge A$ is a $(2,0)$-form, and so are zero as curvature is a $(1,1)$ form.
+where the last equality holds, by comparing types. More precisely recall that $A$ is a matrix of $(1, 0)$ forms, so $\partial A$ is a $(2,0)$-form, and $A\wedge A$ is a $(2,0)$-form, and so are zero as curvature on a holomorphic bundle with hermitian structure, is a $(1,1)$ form.
 
-\subsubsection{Line bundle on $\complexnos P^n$}
-\understandBetter{[SEE EXAMPLE 4.3.12 HUYBRECHTS, and understand]}
-Let $(z^0, \ldots, z^n) \checkCorrect{\sim (1: w^1: \ldots : w^n)}$ standard coordinates on $\complexnos P^n$ \understandBetter{as sections of the holomorphic line bundle}. Recall we have a hermitian metric \checkCorrect{$h=(\sum_i |z^i|^2)^{-1}=(\sum_i 1+|w^i|^2)^{-1}$} on this bundle. Then one can show that the associated curvature to the Chern connection $\nabla$ on this bundle is
+\subsubsection{Curvature of line bundle on $\complexnos P^n$}
+Let $(z^0, \ldots, z^n) \checkCorrect{\sim (1: w^1: \ldots : w^n)}$ standard coordinates on the chart $U_k\subseteq \complexnos P^n$ \understandBetter{as sections of the holomorphic line bundle}. Recall we have a hermitian metric \checkCorrect{$h=(\sum_i |z^i|^2)^{-1}=(\sum_i 1+|w^i|^2)^{-1}$} on this bundle. Then one can show that the associated curvature to the Chern connection $\nabla$ on this bundle is
 $$F_\nabla = \frac{2\pi}{i} \omega_{FS} $$
-where $\omega_{FS}$ is the Fubini-study form. Locally we get 
-$$F_\nabla = \bar{\partial}\partial \text{log}(h) = \bar{\partial}\partial \text{log}(\sum_i 1+|w^i|^2)$$
+where $\omega_{FS}$ is the Fubini-study form. Recall the connection matrix $A$ on a holomorphic line bundle with hermitian structure is given by $A = \partial \text{log}(h)$, where $h$ is the hermitian metric (and a positive real function on the line bundle). Hence locally we have that the curvature form is given by 
+\begin{align*}
+F_\nabla = \bar{\partial}A & =  \bar{\partial}\partial \text{log}(h) \\
+& = \bar{\partial}\partial \text{log}(\sum_i 1+|w^i|^2)
+\end{align*}
 
 Note that this can be generalised to any holomorphic line bundle on any complex manifold $M$ using the pull-back of $\phi:M\to \complexnos P^n$ to give
 $$\frac{i}{2\pi}F_\nabla = \phi^* \omega_{FS}$$
 where $\omega_{FS}$ is the Fubini-study form on $\complexnos P^n$.
 
-\understandBetter{[UNDERSTAND BETTER AND REWRITE!]}
+\section{Chern classes}
+Let $E\to M$ be a (complex) vector bundle of rank $k$ (over $\complexnos$). The $i$'th Chern class is an element of de Rham cohomology
+$c^i(E)\in H^{2i}_{dR}(M)$. Our objective is to understand and compute these cohomology classes, in particular on complex projective space.
 
-\section{De Rham Cohomology}
-\finish{WRITE DEFINITION of de rham cohom - see Nakahara}
+\subsubsection{De Rham cohomology}
+An $r$-form $\omega\in \Omega^r(M)$ is closed if $d\omega=0$ and is exact if there exists a $\eta \in \Omega^{r-1}(M)$ such that $\omega = d\eta$. The closed $r$-forms are denoted $Z^r(M)$ and exact $r$-forms are denoted $B^r(M)$. Now since $d^2=0$, so that $B^r(M)\subseteq Z^r(M)$, we can define the $r$'th \defn{de Rham cohomology} group as 
+$$H_{dR}^r(M):=\frac{Z^r(M)}{B^r(M)}$$
+Thus two closed forms $\omega_1, \omega_2$ have equivalent cohomology class $[\omega_1]=[\omega_2]$ if $\omega_1 - \omega_2 = d\eta$ for some $\eta \in \Omega^{r-1}(M)$. 
 
-$H^*_{dR}(M) = \bigoplus_i^n H^i_{dR}(M)$ is a graded $\realnos$-algebra. (Recall that $H^m_{dR}(M)=0$ if $m>\text{dim}_\realnos M$). 
+Now $H^*_{dR}(M) = \bigoplus_i^n H^i_{dR}(M)$ is a graded $\realnos$-algebra, with product $\cup:H^p_{dR}(M)\times H^q_{dR}(M)\to H^{p+q}_{dR}(M)$. 
 
-Recall if $\omega \in H^{i}_{dR}(M)$, $\eta \in H^{j}_{dR}(M)$, then $\omega \eta = (-1)^{ij} \eta \omega$.
+Recall that $H^m_{dR}(M)=0$ if $m>\text{dim}_\realnos M$. Recall if $\omega \in H^{i}_{dR}(M)$, $\eta \in H^{j}_{dR}(M)$, then $\omega \eta = (-1)^{ij} \eta \omega$.
 
-\subsubsection{Pioncare duality}
+Note that de Rham's theorem says that singular cohomology and de Rham cohomology are equivalent $H(M; \realnos)\simeq H_{dR}(M)$ as cohomology rings.
 
 \subsubsection{Cohomology of $\complexnos P^n$}
+Note that $\dim_\realnos \complexnos P^n = 2n$, so that $\Omega^{2n}(M)$ are top forms.  
 
-\section{Chern classes}
-\finish{Introduce. There are a few different notions of characteristic classes....[GIVE SMALL INTRO TO CHAR CLASSES AND WHERE CHERN CLASSES FIT IN] and what they are geometrically}
+A fact we will require is the cohomology classes of $\complexnos P^n$ is a $1$-dimensional vector space for even degree, and zero otherwise. In other words,
+$$H^k_{dR}(\complexnos P^n)\simeq \begin{cases}
+\realnos, &  k \text{ even} \\ 
+\{0\}, & k \text{ odd}
+\end{cases}$$
 
-\understandBetter{Note that by de Rham theorem $H^*(M, \realnos)\simeq H^*_{dR}(M)$} and we are essentially \checkCorrect{interested in $H^*(M, \mathbb{Z})\simeq H^*(M, \realnos)$ -- TRUE??}
-Let $E\to M$ be a (complex) vector bundle of rank $k$ (over $\complexnos$). The $i$'th chern class is an element of de Rham cohomology
-$c^i(E)\in H^{2i}_{dR}(M)$
+Another required fact is that there exists a generator in the second de Rham cohomology class that gives an element in each of the other even degree cohomology classes. To be precise, there exists $h\in H^2_{dR}(\complexnos P^n)$ such that 
+$$h^k \in H^{2k}_{dR}(\complexnos P^n), \text{ for } 0\neq h^k := \underbrace{h\wedge h \wedge \cdots \wedge h}_{k \text{ times}}$$
+(Note also that since even degree cohomology classes are $1$-dimensional vector spaces, each generator $h^k$ is a basis for $H^{2k}_{dR}(\complexnos P^n)$).
 
-\subsubsection{Invarient polynomials}
+Using this fact we get the $\realnos$-algebra isomorphism
+$$H^*_{dR}(\complexnos P^n) \simeq \frac{\realnos [h]}{(h^{n+1})}$$
+where $\text{deg}(h)=2$. (So note $h^{n+1}=0$, since $h^n\in H_{dR}^{2n}(M)$ is of top degree). 
+
+Now we can choose the generator $h\in H^2_{dR}(\complexnos P^n)$, so that $h^n\in H^{2n}_{dR}(\complexnos P^n)$ is in top cohomology (i.e. of degree $2n$), and so that if $h^n=[\omega]$, then $\int \omega = 1$. Furthermore note that by Stokes theorem, this integral does not depend on the choice of representative $\omega$ of $h^n$. 
+
+Using this we find that if we took another generator $h'\in H^{2}_{dR}(\complexnos P^n)$ with $(h')^n=[\omega ']$. Then $(h')^n=ah^n$ for some $a\in \realnos$, since recall $h$ is a basis element of the top cohomology class (which is a real one-dimensional vector space). In other words $[\omega ']=a[\omega] = [a\omega]$. Thus we get that $\int \omega' = \int a\omega = a \int \omega = a\cdot 1 = a$. 
+
+To summarise we have shown that for any top form $\omega'\in \Omega^{2n}(\complexnos P^n)$, we can obtain a generator $h^k$ for the cohomology classes $H^{2k}_{dR}(\complexnos P^n)$ specified by 
+$$\int \omega' \in \realnos$$
+where $[\omega ']=h^{2n}\in H^{2n}_{dR}(\complexnos P^n)$ is a ($1$-dimensional) basis for the top cohomology class.
+
+\subsubsection{Pioncar{\' e} duality}
+
+\finish{WRITE ABOUT PIONCARE DUALITY ALSO}
+
+\subsubsection{Invariant polynomials}
 
 A $k$-multi-linear form $$\tilde{\phi}:\underbrace{M_r(\complexnos)\times \cdots \times M_r(\complexnos)}_{k \text{ times}}\to \complexnos$$
-is \defn{invarient} if for any $g\in GL_r(\complexnos)$
+is \defn{invariant} if for any $g\in GL_r(\complexnos)$
 $$\tilde{\phi}(A_1, \ldots, A_k) = \tilde{\phi}(gA_1g^{-1}, \ldots, gA_kg^{-1})$$
-We write $\tilde{I}_k(M_r(\complexnos))$ for the $\complexnos$-vector space of all \defn{invarient $k$-multilinear forms} on $M_r(\complexnos)$. 
+We write $\tilde{I}_k(M_r(\complexnos))$ for the $\complexnos$-vector space of all \defn{invariant $k$-multilinear forms} on $M_r(\complexnos)$. 
 
 Recall a polynomial is said to be \defn{homogeneous} if all its monomials are of the same degree (for example $x^5 + 7xy^4 + x^3y^2$ is homogeneous of degree 5). Now $\tilde{\phi}\in \tilde{I}_k(M_r(\complexnos))$ induces a homogeneous polynomial $\phi$ of degree $k$ (with entries in $A$) given by $\phi:M_r(\complexnos)\to \complexnos$ such that
 $$\phi(A):=\tilde{\phi}(A, A, \ldots, A)$$
-and we note then that $\phi(gAg^{-1})=\phi(A)$ (for $g\in GL_r(\complexnos)$), hence we call $\phi$ an \defn{invarient polynomial}. Note that $\phi$ is called the \defn{polarized} form of $\tilde{\phi}$. We write $I_k(M_r(\complexnos))$ for the \defn{space of invarient polynomials of degree $k$}. 
+and we note then that $\phi(gAg^{-1})=\phi(A)$ (for $g\in GL_r(\complexnos)$), hence we call $\phi$ an \defn{invariant polynomial}. Note that $\phi$ is called the \defn{polarized} form of $\tilde{\phi}$. We write $I_k(M_r(\complexnos))$ for the \defn{space of invariant polynomials of degree $k$}. 
 
-Converesly, given an invarient polynomial $\phi \in I_k(M_r(\complexnos))$, we can get an invarient k-multilinear form $\tilde{\phi} \in \tilde{I}_k(M_r(\complexnos))$, by defining
+Converesly, given an invariant polynomial $\phi \in I_k(M_r(\complexnos))$, we can get an invariant k-multilinear form $\tilde{\phi} \in \tilde{I}_k(M_r(\complexnos))$, by defining
 $$\tilde{\phi}(A, \ldots, A):=\phi(A)$$
-\understandBetter{(which is a restriction to the diagonal). [CHECK CORRECT AND REWRITE COMMENT]}
 
-An example of a (degree $r$) invarient polynomial is the determinant function
+An example of a (degree $r$) invariant polynomial is the determinant function
 $$\text{det}:M_r(\complexnos)\to \complexnos \in I_r(M_r(\complexnos))$$
 and furthermore, the map
 $$\text{det}(I+A)=\sum_{k=0}^r \gamma_k(A) $$
-give invarient polynomials $\gamma_k\in I_k(M_r(\complexnos))$, where $I$ is the identity, $A \in M_r(\complexnos)$.
+give invariant polynomials $\gamma_k\in I_k(M_r(\complexnos))$, where $I$ is the identity, $A \in M_r(\complexnos)$.
 
-\subsubsection{Chern-Weil theorem}
+\subsubsection{Chern-Weil theory}
+Given an invarient polynomial $\phi$, our goal is now to define $\phi(F_\nabla)$ as a $2k$-form which is closed. 
 
-\understandBetter{UNDERSTAND BETTER BELOW
-DEF OF INVARIENT POLY EXTENDED TO $\Omega^p(End(E), M)$.}
-Note that the Lie algebra $\mathfrak{gl}_r(\complexnos)\simeq M_r(\complexnos)$. Recall that a $k$-multilinear symmetric map $\tilde{P}:V\times \cdots \times V\to \complexnos$ over a vector space $V$ corresponds to an element $P\in S^k(V)^*$. Now such a symmetric $k$-multilinear map $\tilde{P}: \mathfrak{gl}_r(\complexnos)\times \cdots \times \mathfrak{gl}_r(\complexnos)\to \complexnos$ is invarient if and only if 
-$$\sum_j P(A_1, \ldots, A_j, [A, A_j], A_{j+1}, \ldots, A_k)=0$$
-(where $[A, A_j]$ is the Lie bracket in $\mathfrak{gl}_r(\complexnos)$). 
+Consider $\mathfrak{g}=\mathfrak{gl}_r(\complexnos)\simeq M_r(\complexnos)$, with a basis $(e_1, \ldots, e_N)$, $N=r^2$. Let $\phi:\mathfrak{g}\to \complexnos$ be an invariant homogeneous polynomial of degree $d$. (So we consider all multi-indices $v=(v_1, \ldots, v_N)$ such that $|v|=\sum_i v_i = d$). Then $\phi$ has the form 
+$$\phi(x)=\sum_{|v|=d} a_v x^v, \ \ x^v := (x^1)^{v_1}(x^2)^{v_2}\cdots (x^N)^{v_N}$$
+where $x^i\in \complexnos$ is the $i$'th component of $x\in \mathfrak{g}$ with respect to the basis $(e_1, \ldots, e_n)$, i.e. $x=\sum_i x^i e_i$. 
 
-Now given an invarient symmetric multilinear map $\tilde{P}$, it induces a $k$-linear map
-\begin{align*}
-    \tilde{P} : & \left( \bigwedge {}^{i_1}M\otimes \End(E) \right) \times \ldots \times \left( \bigwedge {}^{i_k}M\otimes \End(E) \right)  \to \bigwedge {}^m_\complexnos M \\
-    & (\alpha_1\otimes \gamma_1, \ldots, \alpha_k\otimes \gamma_k) \mapsto (\alpha_1\wedge \cdots \wedge \alpha_k)P(\gamma_1. \ldots, \gamma_k)
-\end{align*}
-where $i_1+\ldots +i_k=m$ is an arbitrary partition and $E$ any vector bundle. On the level of global sections this becomes a $k$-multilinear map 
-$$\tilde{P}:\Omega^{i_1}(M, \End(E))\times \ldots \times \Omega^{i_k}(M, \End(E))\to \Omega^m_\complexnos(M)$$
-If we restrict $\tilde{P}$ to only even froms, it stays a $k$-multilinear symmetric map, in particular if we restrict $\tilde{P}$ to $\Omega^{2}(M, \End(E))\times \ldots \times \Omega^{2}(M, \End(E))$
-then it can be recovered from the polarized form $P(\alpha\otimes \gamma)=\tilde{P}(\alpha\otimes\gamma, \ldots, \alpha\otimes\gamma)$.
+Let $\pi:E\to M$ be a vector bundle with local trivialisations 
+$\psi_\alpha:\pi^{-1}(U_\alpha)\to U_\alpha \times \complexnos^k$. Let $\nabla$ be a connection on $E$ with associated curvature $F_\nabla$, locally given by $F_\alpha \in \Omega^2(U_\alpha, \mathfrak{g})$ such that 
+$F_\alpha = \sum_{i=1}^N \omega^i_\alpha e_i$
+for some $\omega^i_\alpha\in \Omega^2(U_\alpha)$. 
 
-If $\nabla$ is a connection on $E$, and $\tilde{\nabla}$ the induced connection on $\End(E)$, then 
-$$dP(\gamma_1, \ldots, \gamma_k)=\sum_{j=1}^k (-1)^{2(j-1)}P(\gamma_1, \ldots, \checkCorrect{\tilde{\nabla}}(\gamma_j), \ldots, \gamma_k)$$
-for forms $\gamma_i\in \Omega^2(M, \End(E))$. \checkCorrect{DO I NEED THIS IN FULL GENERALITY?--IN HUYBRECTHS, OR IS DEG 2 FORMS ENOUGH?}
-\understandBetter{[CHECK AND UNDERSTAND PREVIOUS PARAS BETTER]}
+We define
+$$\phi(F_\nabla)|_{U_\alpha} : = \sum_{|v|=d} a_v\omega^v_\alpha$$
+where $\omega^v_\alpha = (\omega^1_\alpha)^{v_1} \wedge (\omega^2_\alpha)^{v_2} \wedge \cdots \wedge (\omega^N_\alpha)^{v_N} $. 
+We remark here that since the $\omega^i_\alpha$ are all of even degree, the wedge product in this case commutes $\omega^i_\alpha \wedge \omega^j_\alpha = \omega^j_\alpha \wedge \omega^i_\alpha$, and so can be written in any order.
 
+Now due to the invariance of the polynomial $\phi$, one can show that the above definitions agree on the intersections $U_\alpha\cap U_\beta$, and further $\phi(F_\nabla)$ is independent of the choice of basis $(e_i)$ used. Hence we have that $\phi(F_\nabla)\in \Omega^{2d}(M)$ is a global even degree form. 
 
-Let $P$ be an invarient k-multilinear symmetric polynomial on $\mathfrak{gl}(r, \complexnos)$. Then one can show the induced $2k$-form 
-$$\tilde{P}(F_\nabla)\in \Omega^{2k}_\complexnos(M)$$
+Let $P$ be an invarient polynomial on $\mathfrak{gl}(r, \complexnos)$. Then
+$$P(F_\nabla)\in \Omega^{2d}_\complexnos(M)$$
 is closed. Hence we can define cohomology classes
-$$[\tilde{P}(F_\nabla)]\in H^{2k}(M, \complexnos)$$
+$$[P(F_\nabla)]\in H^{2d}(M, \complexnos)$$
 which one can show is independent of the chosen connection $\nabla$, i.e.
-$$[\tilde{P}(F_\nabla)]=[\tilde{P}(F_{\tilde{\nabla}} )]$$
+$$[P(F_\nabla)]=[P(F_{\tilde{\nabla}} )]$$
 for any connections $\nabla, \tilde{\nabla}$. 
 
-\subsubsection{Chern-Weil homomorphism}
-\finish{[find ref. wells?/huybrechts?/tu]}
+Note that in the language of principle $G$-bundles, we can consider invarient polynomials from any Lie algebra $\mathfrak{g}:=Lie(G)\subseteq \End(V)$ of the structure group $G\subseteq GL(V)$ (which is a Lie group) of a local trivialisation, and then $\nabla$ becomes a $G$-connection, and $F_\nabla$ its associated curvature, in the definitions of $p(F_\nabla)$ above. 
 
+In fact from this we can obtain an algebra homomorphism from invarient polynomials over the structure group into the graded algebra of even degree cohomology classes $H^{2*}_{dR}(M)$ called the \defn{Chern-Weil homomorphism}. To be precise, fixing a vector bundle $E$ with connection $\nabla$, this is the algebra homomorphism given by
+\begin{align*}
+    c_E : \text{Inv}(\mathfrak{gl}_r(\complexnos)) & \to H^* (M) \\
+     P(X) & \mapsto [P(F_\nabla)]
+\end{align*}
+and sends $P(X)Q(X)\xmapsto{c_E} [P(F_\nabla)\wedge Q(F_\nabla)]$, (noting that $\text{Inv}(\mathfrak{gl}_r(\complexnos))$ denotes invariant polynomials on $\mathfrak{gl}_r(\complexnos)$).
 
 \subsubsection{Definition of Chern class}
-\finish{see your notes}
 We now consider specific invarient polynomials, to define Chern classes and other useful topological invarients. 
 
-We define $\{\tilde{P}_k\}$ to be the homogenous polynomial of $\text{deg}(\tilde{P}_k)=k$ defined by 
-$$det(I+B)=1+\tilde{P}_k(B)+\ldots +\tilde{P}_r(B)$$
-where $I$ is the identity. \question{What is B? What is r?}
-
-We then define the \defn{Chern forms} of a \checkCorrect{rank $r$} vector bundle $E$ endowed with a connection $\nabla$ as
-$$c_k(E, \nabla):=\tilde{P}_k \left( \frac{i}{2\pi} F_\nabla \right) \in \Omega^{2k}_\complexnos (M)$$
+We define $\{P_k\}$ to be the homogeneous invariant polynomial of $\text{deg}(P_k)=k$ defined by 
+$$det(I+B)=1+P_k(B)+\ldots +P_r(B)$$
+where $I$ is the identity, and $B\in M_k(\complexnos)$. Define the \defn{Chern forms} on a rank $r$ vector bundle $E$ endowed with a connection $\nabla$ as 
+$$c_k(E, \nabla):=P_k \left( \frac{i}{2\pi} F_\nabla \right) \in \Omega^{2k}_\complexnos (M)$$
 
 The $k$'th \defn{Chern class} of $E$ is then the induced cohomology class of the respective Chern form, i.e. 
 $$c_k(E):= [c_k(E, \nabla)] \in H^{2k}(M, \complexnos)$$
@@ -1199,7 +1173,7 @@ c(E)& :=c_0(E)+c_1(E)+\ldots +c_r(E) \\
 \end{align*}
 noting that $c_i(E)\in H^{2i}(M, \complexnos)$.
 
-\finish{WE CAN PROVE VARIOUS PROPERTIES OF CHERN CLASSES}
+One can show that in fact a Chern form $c(E, \nabla)$ is a real differentiable form, from which it follows the Chern class $c(E)\in H^*(X, \realnos)\subseteq H^*(X, \complexnos)$.  Hence by recalling the de Rham theorem ($H^*(X, \realnos)\simeq H^*_{dR}(M)$), we have $c(E)\in H^{2*}_{dR}(M)$.
 
 \subsubsection{Computing Chern classes}
 To make it less cumbersome to expand the determinant and compute Chern classes, we find formulas in terms of the traces for the $k$-th Chern class. 
@@ -1208,7 +1182,7 @@ We start by diagonalising the curvature form $F_\nabla$ by finding a matrix $g\i
 $$\Theta := g^{-1}\left( \frac{i}{2\pi} F_\nabla \right) g = \text{diag}(\omega_1, \ldots, \omega_r)$$
 for some $2$-forms $\omega_i$. 
 
-\understandBetter{For example, if we choose an anti-Hermitian generator $g\in SU(r)\subset GL_r(\complexnos)$,} then we have
+For example, if we choose an anti-Hermitian generator $g\in SU(r)\subset GL_r(\complexnos)$, then we have
 \begin{align*}
     \det(I+\Theta) &= \det (\text{diag}(1+\omega_1, \ldots, 1+\omega_r)) \\
     & = \prod_{i=1}^r (1+\omega_i) \\
@@ -1219,39 +1193,21 @@ and note that each summand is an elementery symmetric function of the $\omega_i$
 Now since $\det(I+\Theta)$ is an invarient polynomial we have $\det(I+\Theta)=\det(I+g\Theta g^{-1})=\det(I+g (g^{-1} (\frac{i}{2\pi} F_\nabla) g) g^{-1}) = \det (I+ \frac{i}{2\pi} F_\nabla)$. 
 Or in other words for the general curvature $F_\nabla$, we have 
 $$\det(I+F_\nabla)=\det(I+\frac{2\pi}{i}\Theta)$$
-$$\tr(F_\nabla)= \tr( \frac{2\pi}{i} \Theta)= \checkCorrect{\frac{2\pi}{i} \tr(\Theta)}$$
+$$\tr(F_\nabla)= \tr( \frac{2\pi}{i} \Theta)= \frac{2\pi}{i} \tr(\Theta)$$
 This then gives us the Chern classes with respect to the curvature form $F_\nabla$ as
 \begin{align*}
     c_0 & = 1 \\
     c_1 & = \tr(\Theta) = \frac{i}{2\pi} \tr(F_\nabla)
     \\
-     c_2 & = \frac{1}{2}(\tr(\Theta)^2 - \tr(\Theta^2))  = \frac{1}{2} \understandBetter{\left( \frac{i}{2\pi} \right)^2 (\tr(F_\nabla)\wedge\tr(F_\nabla) - \tr(F_\nabla\wedge F_\nabla))} \\
+     c_2 & = \frac{1}{2}(\tr(\Theta)^2 - \tr(\Theta^2))  = \frac{1}{2} \left( \frac{i}{2\pi} \right)^2 (\tr(F_\nabla)\wedge\tr(F_\nabla) - \tr(F_\nabla\wedge F_\nabla)) \\
     \vdots & \\
      c_r & = \det(\Theta)=\left( \frac{i}{2\pi} \right)^r \det(F_\nabla) 
 \end{align*}
 
-
-\subsubsection{Properties of Chern forms}
-
-\finish{SEE WELLS. COMBINE WITH NEXT SECTION}
-
-One can show that in fact a Chern form $c(E, \nabla)$ is a real differentiable form, from which it follows the Chern class $c(E)\in H^*(X, \realnos)\subseteq H^*(X, \complexnos)$.  Now note that the de Rham group $H^*(X, \realnos)$ on a smooth manifold has a ring structure given by 
-$$c\cdot c' = [\omega \wedge \omega'] $$
-for $c=[\omega], c'=[\omega '] \in H^*(X, \realnos)$.
-
-\question{IS this the same as the product in de rham cohomology?}
-
-\subsubsection{Axiomatic definition of Chern classes}
-Denote the set of (complex) vector bundles $E\to M$ of $\complexnos$-rank $k$, over a fixed smooth manifold $M$ as $\mathfrak{E}$. Define
-\begin{align*}
-    c: \mathfrak{E} & \to H^*_{dR}(M) \\
-    E & \mapsto c(E) = c_0(E)+c_1(E)+\ldots +c_k(E)
-\end{align*}
-where $c_i(E)\in H^{2i}_{dR}(M)$, with the following properties
+\subsubsection{Properties of Chern classes}
+From the definition, it is possible to derive various useful properties of Chern classes. We now list these properties.
 \begin{enumerate}
-    \item Naturality:
-    
-    Given two isomorphic bundles $E\simeq F$ over $M$, then $c(E)=c(F)$ (i.e. $c_i(E)=c_i(F) \forall i$)
+    \item Given two isomorphic bundles $E\simeq F$ over $M$, then $c(E)=c(F)$ (i.e. $c_i(E)=c_i(F), \forall i$).
 
     \item Triviality:
 
@@ -1262,45 +1218,50 @@ where $c_i(E)\in H^{2i}_{dR}(M)$, with the following properties
     If $E, F$ are two bundles over $M$ then
     $c(E\oplus F) = c(E) \cup c(F)$
     
-    Note $\cup$ is multiplication in $H^*_{dR}(M)$, \checkCorrect{defined as}
+    Recall that $\cup$ is multiplication in $H^*_{dR}(M)$ defined as
     \begin{align*}
-        c(E) \cup c(F) & = (c_0(E)+\ldots + c_{k}(E)) + (c_0(E)+\ldots + c_{s}(F)) \\
+        c(E) \cup c(F) & = (c_0(E)+\ldots + c_{k}(E)) \cup (c_0(E)+\ldots + c_{s}(F)) \\
         & = (c_0(E) c_0(F)) + (c_0(E)\cup c_1(F) + c_1(E)\cup c_0(F)) + \ldots
     \end{align*}
     where in the last equality the first summand is degree 0, the second is degree 2, etc. 
-    \understandBetter{Is this a recursive formula?}
     
-    \item Functoriality
+    \item Naturality:
 
     Let $F:M\to N$ be a smooth map of manifolds, and $E\to N$ a vector bundle over $N$. Recall the pull back bundle $F^*E$ is a bundle over $M$, with fibres $(F^*E)_p=E_{F(p)}$ for $p\in M$. 
     
     Then functoriality says that 
     $c(F^* E) = F^*(c(E)) \in H^*_{dR}(M)$, (i.e. $c_i(F^* E) = F^*(c_i(E)) \in H^{2i}_{dR}(M)$ for all $i$).
     
-    \item Normalisation (Euler)
-    \finish{WRITE UP}
+    \item Normalisation:
 
-    \item 
-    \checkCorrect{More properties??- check}
+    $c(L)=1+x$, for the tautological line bundle $L$ on $\complexnos P^k$, where $x$ is the Pioncar{\' e} dual of the hyperplane $\complexnos P^{k-1} \subseteq \complexnos P^k$. 
 
-    \item \checkCorrect{Is THIS AN axiom or just a property?} Duality:
+    \item Duality:
 
     If $E^*$ is the dual bundle of $E$ then $c_i(E^*)=(-1)^ic_i(E)$
 
 \end{enumerate}
 
-As an application of the naturality and triviality axioms, we observe that if $\forall i\geq 1, c^i(E)\neq 0$ (and so $c(E)=\neq 1$), then the bundle $E$ is not trivial. 
+As an application of axiom 1, and the triviality axiom, we observe that if $\forall i\geq 1, c^i(E)\neq 0$ (and so $c(E)\neq 1$), then the bundle $E$ is not trivial. 
+
+\subsubsection{Axiomatic definition of Chern classes}
+It is also possible to define Chern classes axiomatically. Denote the set of (complex) vector bundles $E\to M$ of $\complexnos$-rank $k$, over a fixed smooth manifold $M$ as $\mathfrak{E}$. Define
+\begin{align*}
+    c: \mathfrak{E} & \to H^*_{dR}(M) \\
+    E & \mapsto c(E) = c_0(E)+c_1(E)+\ldots +c_k(E)
+\end{align*}
+where $c_i(E)\in H^{2i}_{dR}(M)$, with the properties of triviality, naturality, Whitney sum, and normailsation (defined above). Then one can show that these axioms uniquely define a Chern class and the axiomatic definition is equivalent to our previous definition in terms of Chern-Weil theory. 
 
 \subsubsection{Chern classes on induced bundles}
-[WRITE UP from huybrechts]
+\finish{[WRITE UP from huybrechts]}
 
 \subsubsection{Chern characters}
 We now use a different invarient homogeneous polynomial to define Chern characters. 
 
-Define the invarient polynomials $\{\tilde{Q}_k\}$ given by 
-$$tr(e^B)=\tilde{Q}_0(B)+\tilde{Q}_1(B)+\tilde{Q}_1(B)+\ldots $$
+Define the invarient polynomials $\{Q_k\}$ given by 
+$$tr(e^B)=Q_0(B)+Q_1(B)+Q_1(B)+\ldots $$
 Then we define the $2k$-forms 
-$$ch_k(E,\nabla):=\tilde{Q}_k \left( \frac{i}{2\pi}F_\nabla \right) \in \Omega^{2k}_\complexnos (M)$$.
+$$ch_k(E,\nabla):=Q_k \left( \frac{i}{2\pi}F_\nabla \right) \in \Omega^{2k}_\complexnos (M)$$.
 The $k$'th \defn{Chern character} is then defined as the cohomology classes of these forms, namely
 $$ch_k(E):= [ch_k(E, \nabla)]\in H^{2k}(M, \complexnos)$$
 
@@ -1309,15 +1270,13 @@ We note that $ch_0(E)=\text{rank}(E)$.
 Finally we define the \defn{total Chern character} as 
 $$ch(E):=ch_0(E)+ch_1(E)+ch_2(E)+\ldots$$
 
-\subsubsection{Example: Chern class of tangent bundle to $\complexnos P^1$}
-\checkCorrect{UNDERSTAND THIS EXAMPLE BETTER AND REWRITE. WELLS EX 3.8, PG 96}
-
-\understandBetter{Note that the tangent bundle $T(\complexnos P^1)$ is $\realnos$-linear isomophic to the real tangent bundle $T(S^2)$.} Given coordinates $z$ on $\complexnos P^1$, define a natural metric on $T(\complexnos P^1)$ as
+\subsubsection{Example: First Chern class of tangent bundle to $\complexnos P^1$}
+Note that the tangent bundle $T(\complexnos P^1)$ is $\realnos$-linear isomophic to the real tangent bundle $T(S^2)$. Given coordinates $z$ on $\complexnos P^1$, recall the metric on $T(\complexnos P^1)$ is the Fubini-study metric given by
 $$h(z):= h(\partial_z, \partial_z) := \frac{1}{(1+|z|^2)^2}$$
-Note that if we view this in $T(S^2)$ with coordinates $w=\frac{1}{z}$ \checkCorrect{(using stereographic projection from infinity)} then we get the same form 
-$$\checkCorrect{h(\partial_w, \partial_w)=\frac{1}{(1+|w|^2)^2}}$$
+Note that if we view this in $T(S^2)$ with coordinates $w=\frac{1}{z}$ at infinity, then we get the same form 
+$$h(\partial_w, \partial_w)=\frac{1}{(1+|w|^2)^2}$$
 
-We now have that locally the connection matrix is
+We now have that locally the connection matrix $A$ (so $\nabla=d+A$) is 
 \begin{align*}
 A(z) & =h(z)^{-1}\partial h(z) \\
 & = (1+|z|^2)^2 \partial \left( \frac{1}{(1+|z|^2)^2} \right) \\
@@ -1325,46 +1284,44 @@ A(z) & =h(z)^{-1}\partial h(z) \\
 & = (1+|z|^2)^2 \left( -2 (1+z\bar{z})^{-3} \bar{z} \right)dz \\
 & = -\frac{2\bar{z}}{1+|z|^2} dz
 \end{align*}
-\understandBetter{CHECK IF COMPUTATION IS CORRECT!}
 
-The associated curvature form is then locally
-$$\theta = \bar{\partial} A = \frac{2}{(1+|z|^2)^2} dz \wedge d\bar{z}$$
-\understandBetter{WHY?? understand and fill details}
+The associated curvature form $F_\nabla$ is then locally
+\begin{align*}
+\theta & = \bar{\partial} A \\
+& = \frac{\partial}{\partial \bar{z}} \left( -\frac{2\bar{z}}{1+|z|^2} dz \right) d\bar{z} \\
+& = 2 \frac{\partial}{\partial \bar{z}} \left(\frac{\bar{z}}{1+z\bar{z}} \right) dz\wedge d\bar{z} \\
+& = 2 \left(\frac{1\cdot (1+z\bar{z})-\bar{z}z}{(1+z\bar{z})^2} \right) dz\wedge d\bar{z} \\
+& = 2 \left(\frac{1}{(1+z\bar{z})^2} \right) dz\wedge d\bar{z} \\
+& = \frac{2}{(1+|z|^2)^2} dz \wedge d\bar{z}
+\end{align*}
+
 
 Hence the first Chern form is given by 
-$$c_1(E, \nabla) = \frac{i}{\pi(1+|z|^2)^2} dz \wedge d\bar{z} = \frac{2dx\wedge dy}{\pi(1+|z|^2)^2}$$
-\understandBetter{[WHY IS THIS THE FIRST CHERN FORM?]}
+$$c_1(E, \nabla) = \frac{i}{2\pi} \theta = \frac{i}{\pi(1+|z|^2)^2} dz \wedge d\bar{z} = \frac{2dx\wedge dy}{\pi(1+|z|^2)^2}$$
 
-\understandBetter{WHY IS THIS THE CHERN CLASS?}
+Since on $\complexnos P^1$ the top cohomology class is of degree 2, so the first Chern class $c_1(\complexnos P^1)\in H^2_{dR}(\complexnos P^1)$ is in the top cohomology class. Recall by the discussion of the cohomology on $\complexnos P^n$, that $H^2_{dR}(\complexnos P^1)\simeq \realnos$ as a vector space, and so is generated by a basis element $h$. Then $c_1(\complexnos P^n) = ah$ for some $a\in \realnos$ given by the integral of the first Chern form $a=\int_{\complexnos P^1} c_1(E, \nabla)$. Let us compute this number $a$.
 \begin{align*}
-    \checkCorrect{c_1(E)} & =\int_{\complexnos P^1} c_1(E, \nabla) \\
-    & = \checkCorrect{ \frac{2}{\pi} \int_{-\infty}^\infty \int_{-\infty}^\infty \frac{dx dy}{(1+||(x,y)||^2)^2}} \\
+    \int_{\complexnos P^1} c_1(E, \nabla) & =  \frac{2}{\pi} \int_{-\infty}^\infty \int_{-\infty}^\infty \frac{dx dy}{(1+||(x,y)||^2)^2} \\
     & = \frac{2}{\pi} \int_{0}^\infty \int_{0}^{2\pi} \frac{\rho}{(1+\rho^2)^2} d\rho d\theta \\
     & = 4 \int_{0}^\infty \frac{\rho}{(1+\rho^2)^2} d\rho  \\
     & = 2 \int_{1}^\infty \frac{du}{u^2}  \\
     & = 2
 \end{align*}
-[CHECK COMPUTATION. WHY IS THIS FIRST CHERN CLASS IF IT IS? ]
-WHAT ABOUT OTHER CHERN CLASSES? -- SEE WELLS FOR REMAINING DISCSUSSION
-
-\checkCorrect{Using the formula for the first Chern class in terms of the trace, we find that
-$$c_1(E) = \frac{i}{2\pi} \tr (\theta) = \frac{i}{2\pi} \frac{4}{1+|z|^2}$$
-[I AM CERTAIN THIS IS WRONG!] I THINK IT SHOULD BE 2.}
-
-\subsubsection{Example: Chern class of $\complexnos P^n$}
-\finish{[LOOK UP and write up!!!]}
-
-\section{Conclusion}
-\finish{WRITE UP}
+Since this integral is non-zero, the closed form $c_1(E,\nabla)$ is not exact (by Stokes theorem). Hence the cohomology class $H^2_{dR}(\complexnos P^1)$ is non-zero. Hence $T(\complexnos P^1)$ is a non-trivial complex line bundle. 
 
 \section*{References}
 \begin{enumerate}
-\item Wells
-\item Huybrechts
-\item Nakahara
-\item Tu
-\item J.M.Lee; \textit{Introduction to Smooth Manifolds, 2nd ed.} Springer (2012)
+\item R.O.Wells Jr.; \textit{Differential Analysis on Complex Manifolds, 3rd ed.} Springer (2008)  
+\item D.Huybrechts; \textit{Complex Geometry, an Introduction.} Springer (2005)
+\item J.W.Milnor, J.D.Stasheff; \textit{Characteristic Classes.} Princeton University Press (1974)
+\item M.Nakahara; \textit{Geometry, Topology and Physics.} IOP Publishing Ltd (1990)
+\item J.W.Robbin, D.A.Salamon; \textit{Introduction to Differential Topology.} (2018) 
 \item I.Madsen, J.Tornehave; \textit{From Calculus to Cohomology, De Rham Cohomology and characteristic classes.} Cambridge University Press (1997)
 \item P.B.Gilkey, R.Ivanova, S.Nik{\u c}evi\'c; \textit{Characteristic classes.} Elsevier Ltd (2006)
+\item L.W.Tu; \textit{Differential Geometry; Connections, Curvature and Characteristic Classes.} Springer (2017)
+\item J.M.Lee; \textit{Introduction to Riemannian Manifolds, 2nd ed.} Springer (2018)
+\item J.M.Lee; \textit{Introduction to Smooth Manifolds, 2nd ed.} Springer (2012)
+\item M.Atiyah; \textit{The Geometry and Physics of Knots.} Cambridge University Press (1990)
+\item M.H.Freedman, A.Kitaev, M.J.Larsen, Z.Wang; \textit{Topological Quantum Computing.} arxiv:quant-ph/0101025v2 (2008)
 \end{enumerate}
 \end{document}
