@@ -7,6 +7,8 @@
 \usepackage{verbatim}
 \usepackage[dvipsnames]{xcolor}
 
+\setcounter{secnumdepth}{1}
+
 \theoremstyle{definition} \newtheorem*{definition}{Definition}
 \theoremstyle{definition} \newtheorem*{definitions}{Definitions}
 \theoremstyle{plain} \newtheorem{theorem}{Theorem}[section]
@@ -357,19 +359,19 @@ Furthermore, if $g:U\to GL_r(\complexnos)$ is a change of frame mapping with $f'
 $$h(f')=\overline{g^T}h(f)g$$
 for the local representation of $h$ with respect to the frames $f, f'$.
 
-\subsubsection{Constant hermitian structure on the trivial bundle}
+\subsubsection{Example: Constant hermitian structure on the trivial bundle}
 Consider the trivial bundle $E=M\times \complexnos^r$. Recall the trivial bundle gives a global trivialisation hence a global frame, thus any sections $s, \sigma \in \Gamma(E)$ can be written as  $s=(s^1, \ldots, s^r)$, $\sigma=(\sigma^1, \ldots, \sigma^r)$ over the frame, where $s^i, \sigma^i \in \smooth_\complexnos (M)$. Now we can consider the \defn{constant hermitian structure} defined on the trivial bundle as
 $$h(s, \sigma)=s^1\bar{\sigma^1} + \ldots s^r\bar{\sigma^r}$$
 (This is `constant' in the sense that if we take the hermitian inner product of two vectors at a point, and `the same' two vectors at another point, it will give you some constant complex number). 
 
-\subsubsection{Hermitian metric on a holomorphic line bundle}
+\subsubsection{Example: Hermitian metric on a holomorphic line bundle}
 Let $E$ be a holomorphic line bundle, with global holomorphic sections $s^1, \ldots, s^r$ of $E$, so that at every point at least one of the sections is non-zero. Let $\psi:E|_U\to U\times \complexnos^r$ be a local trivialisation over $U$ (so that for $p\in U$, $\psi_p:E_p\to \{p\}\times \complexnos^r \simeq \complexnos^r$). Then $\forall p\in U$ define
 $$h(v_p):=\frac{|\psi_p(v_p)|^2}{\sum_{i=1}^r |\psi_p (s^i_p)|^2}$$
 for $v_p\in E_p$. This is a Hermitian inner product at $p$, and hence gives a hermitian metric on $E$. Note by an abuse of language, this can be written in shorthand as $h(v_p)=(\sum_i |s^i|^2)^{-1}$.
 
 In particular, $\mathcal{O}(1)$, the dual of the tautological line bundle on $\complexnos P^n$ (with the standard globally generating sections $s^1, \dots, s^r\in \Gamma(\mathcal{O}(1))$) has this Hermitian metric.
 
-\subsubsection{Fubini-Study metric on tangent bundle of $\complexnos P^n$}
+\subsubsection{Example: Fubini-Study metric on tangent bundle of $\complexnos P^n$}
 Let $(U_j, \phi_j)$ be the standard atlas of $\complexnos P^n$, where we recall that $\phi_j:U_j\simeq \complexnos$ such that $\phi_j((z_0 : \ldots : z_n))=(\frac{z_0}{z_j}, \ldots, \frac{z_{j-1}}{z_j}, \frac{z_{j+1}}{z_j}, \ldots, \frac{z_n}{z_j})\sim (1, w^1, \ldots, w^n)$. This gives a local frame for the holomorphic tangent bundle of $\complexnos P^n$, namely $\{\partial_1, \ldots, \partial_n\}$, where $\partial_i=\frac{\partial}{\partial w^i}$ over $U_j$. 
 
 We define a hermitian metric on the tangent bundle for $\complexnos P^n$ as follows. On $U_j$ let
@@ -634,7 +636,7 @@ To show that these two definitions of a connection are equivalent, let us write 
 
 Notice that we could have equivalently expressed the connection as $\nabla:\Omega^0(M, E)\to \Omega^1(M, E)$ in the language of differential $p$-forms with coefficients in $E$ (since we showed previously that $\Omega^0(M, E)=\Gamma(E)$, $\Omega^1(M, E)=\Gamma(T^*M\otimes E)$ by definition). This view agrees with the generalised definition of the exterior derivative.
 
-\subsubsection{Trivial connection on trivial line bundle}
+\subsubsection{Example: Trivial connection on trivial line bundle}
 As an example consider the trivial vector bundle of rank 1 (trivial line bundle)
 $\pi:E\to M$, with $E=M\times \realnos$.
 Note in this case a section on $E$ is a smooth function $\Gamma(E)=\Gamma(M\times \realnos)\simeq \smooth(M)$, since $s(p)\in \{p\}\times \realnos \simeq \realnos$ for $s\in \Gamma(E)$, $\forall p\in M$.
@@ -653,14 +655,14 @@ Hence we have shown that $\nabla$ is indeed a connection on the trivial line bun
 
 Let us also view this connection in terms of the definition $\nabla:\Gamma(E)\to \Gamma(T^*M\otimes E)$. Recall since $E=M\times \realnos$ in this case, then $\Gamma(E)\simeq \smooth (M)$. Now $\Gamma(T^*M\otimes E)\simeq \Hom_{\smooth(M)}(\Gamma(TM), \Gamma(E)) = \Hom_{\smooth(M)}(\Gamma(TM), \smooth(M)) \simeq \Gamma(TM)^* \simeq \Gamma(T^*M)=\Omega^1(M)$. So we have shown $\nabla:\smooth(M)\to \Omega^1(M)$ (or in other words $\nabla:\Omega^0(M)\to \Omega^1(M)$) on the trivial line bundle. Defining $(\nabla f)X=Xf$ for $f\in \smooth(M)$ as above, we observe this is simply the definition of the exterior derivative $d:\Omega^0(M)\to \Omega^1(M)$ (since $df(X)=Xf$ by definition). So we have that the trivial connection on the trivial line bundle is the exterior derivative (acting on smooth functions $\nabla f=df \in \Omega^1(M)$). 
 
-\subsubsection{Trivial connection on trivial bundle}
+\subsubsection{Example: Trivial connection on trivial bundle}
 We now consider the trivial rank $k$ vector bundle, $E=M\times \realnos^k$ on $M$. In this case we notice that $\Gamma(E)=\Gamma(M\times \realnos^k)\simeq \smooth (M)^k$ since for a section $s\in \Gamma(E)$ and for $p\in M$ we have $s(p)\in E_p=\{p\}\times \realnos^k\simeq \realnos^k$, hence we can write $s(p)=(s^1(p),\ldots, s^k(p))\in \realnos^k$, and $s^i\in \smooth(M)$. Note that $s^i$ is smooth since it is a composition of smooth maps $s^i=\pi_i\circ s$, where $\pi_i$ is the $i$'th projection. Note also that $fs=(fs^1, \ldots, fs^k)$ for $f\in \smooth(M)$. Now we claim that $\nabla:\Gamma(TM)\times \smooth(M)^k\to \smooth(M)^k$ such that $\nabla_X s = (Xs^1, Xs^2, \ldots, Xs^k)$, where $s=(s^1, \ldots, s^k)\in \smooth (M)^k$ and $X\in \Gamma(TM)$ is a connection on the trivial bundle. The proof follows similarly to that of the trivial connection on the trivial line bundle. We call this connection the \defn{standard trivial connection} on the trivial $k$-bundle. 
 
 Let us also view this connection in the definition $\nabla:\Gamma(E)\to \Gamma(T^*M\otimes E)$. Now $\Gamma(E)\simeq \smooth(M)^k$ on the trivial bundle. So  $\Gamma(T^*M\otimes E)\simeq \Hom_{\smooth(M)}(\Gamma(TM), \smooth(M)^k)\simeq \Gamma(TM^*)^k \simeq \Omega^1(M)^k$. Note that we have used the fact here that if $M$ is a module over a commutative ring $R$, then 
 $$\Hom(M, R^k)\simeq \underbrace{M^*\oplus \cdots \oplus M^*}_{k \text{ times}} \simeq (M^*)^{k}$$
 So we have shown that $\nabla:\smooth(M)^k\to \Omega^1(M)^k$. As before, for $f=(f^1, \ldots, f^k)\in \smooth(M)^k, X\in \Gamma(TM)$, let us define $(\nabla f)(X)=(Xf^1, \ldots, Xf^k)=(df^1(X), \ldots, df^k(X))=(df^1, \ldots, df^k)(X)$, noting that $(df^1, \ldots, df^k)\in \Omega^1(M)^k$.
 
-\subsubsection{Affine connection on $\realnos^n$}
+\subsubsection{Example: Affine connection on $\realnos^n$}
 Consider $M=\realnos^n$, $T_pM=\realnos^n$ for all $p\in M$.
 The atlas consisting of a single chart $\text{id}=(u^1, \ldots, u^n)$ on $\realnos^n$, gives us a global frame $\{\frac{\partial}{\partial u^i}\}_i$ on $\realnos^n$. Hence we can write any sections $X, Y\in \Gamma(TM)$ as $X=\sum_{i=1}^n x_i \frac{\partial}{\partial u^i}$, $Y=\sum_{i=1}^n y_i \frac{\partial}{\partial u^i}$, for $x_i, y_i \in \smooth(M)$. We define an affine connection $\nabla:\Gamma(TM)\times \Gamma(TM)\to \Gamma(TM)$ such that 
 \begin{align*}
@@ -824,7 +826,7 @@ under the isomorphism $\Gamma(E, U)\simeq \smooth(U)^k$, where $\mathbbm{1}:x\ma
 \end{align*}
 where the last equality holds since the deriviative of a constant function is zero ($X\mathbbm{1}$=0).
 
-\subsubsection{Local expression for connection on the trivial line bundle}
+\subsubsection{Example: Local expression for connection on the trivial line bundle}
 As an example let us consider an arbitrary connection $\nabla$ on the trivial bundle $M\times \complexnos$ and understand its local formula. 
 
 Recall that the exterior derivative $d$ is a connection on $M\times \complexnos$, and hence $\nabla - d$ is tensorial, and comes from a bundle morphism $M\times \complexnos\to T^*M\otimes E \simeq T^*M\otimes (M\times \complexnos)\simeq T^* M$, where the last isomorphism is a globally analogous to the linear isomorphism $V\otimes \complexnos\simeq V$ (where $V$ is a $\complexnos$-vector space). 
@@ -832,7 +834,7 @@ Now $\Hom(M\times \complexnos, T^*M)\simeq \Gamma((M\times \complexnos)^*\otimes
 $$\nabla = d + \omega$$
 for $\omega \in \Omega^1(M)$, where $\omega(f)=f\omega \in \Omega^1(M)$, for $f\in \Gamma(E)=\smooth(M)$.
 
-\subsubsection{Local expression for connection on the trivial rank $r$-bundle}
+\subsubsection{Example: Local expression for connection on the trivial rank $r$-bundle}
 In a similar fashion to the example above for a line bundle, one can show that for the trivial rank $r$ bundle, we have any connection $\nabla$ satisfies $\nabla - d\in \Omega^1(M)^r$, hence we can write
 $$\nabla = d + A$$
 for a matrix of $1$-forms $A\in \Omega^1(M)^r$.
@@ -880,7 +882,7 @@ $$\partial A= -A \wedge A$$
 
 Note that the Chern connection (a connection conpatible with the holmorphic structure), is not the same as a holomorhpic connection, which has a more restrictive definition. We remark without further explanation that on the tangent bundle of a Kahler manifold, the Chern connection coincides with the Levi-civita connection of the underlying Riemannian metric.  
 
-\subsubsection{Chern connection on a holomorphic line bundle}
+\subsubsection{Example: Chern connection on a holomorphic line bundle}
 Let $E$ be a holomorphic line bundle. 
 Since $E$ is rank $1$, at a point $p$, and a base vector $e \in E_p$ we have the hermitian inner product $h(e, e)$ is positive and real (by definition). Hence the matrix representing $h$ at $p$ is a positive real number. Thus over an open neighbourhood $U$, we have that locally $h\in \smooth(U)$ is a positive real function on this bundle. Thus locally the chern connection on this bundle is given by 
 \begin{align*}
@@ -889,7 +891,7 @@ Since $E$ is rank $1$, at a point $p$, and a base vector $e \in E_p$ we have the
 \end{align*}
 where the second equality follows from recalling calculus, i.e. differentiating the log function ($\frac{d}{dx} \text{log}(x) = \frac{1}{x}$) and thus the chain rule gives ($\frac{d}{dx} \text{log}(f(x)) = \frac{1}{f} f'(x)$ for a (positive, real) function $f$). 
 
-\subsubsection{Chern connection on $\complexnos P^n$}
+\subsubsection{Example: Chern connection on $\complexnos P^n$}
 
 Recall the Fubini-study metric $h_{i\bar{j}}$ defined previously on a standard chart $U\subseteq \complexnos P^n$ with coordinates $(w_1, \dots, w_n)$. We define the matrix representation of this metric as
 \begin{align*}
@@ -1058,7 +1060,7 @@ Recall the Chern connection on $\complexnos P^n$ with hermitian structure $H$ gi
 \end{align*}
 where the last equality holds, by comparing types. More precisely recall that $A$ is a matrix of $(1, 0)$ forms, so $\partial A$ is a $(2,0)$-form, and $A\wedge A$ is a $(2,0)$-form, and so are zero as curvature on a holomorphic bundle with hermitian structure, is a $(1,1)$ form.
 
-\subsubsection{Curvature of tautological line bundle on $\complexnos P^n$}
+\subsubsection{Example: Curvature of tautological line bundle on $\complexnos P^n$}
 Consider the standard coordinates $(z^0, \ldots, z^n)\in \Gamma(\mathcal{O}(1))$ as sections of the dual bundle $\mathcal{O}(1)$ to the tautological line bundle $\mathcal{O}(-1)$ on $M:=\complexnos P^n$. 
 
  Recall we have a hermitian metric $h=(\sum_i |z^i|^2)^{-1}=(\sum_i 1+|w^i|^2)^{-1}$ on this bundle. Then one can show that the associated curvature to the Chern connection $\nabla$ on this bundle is
